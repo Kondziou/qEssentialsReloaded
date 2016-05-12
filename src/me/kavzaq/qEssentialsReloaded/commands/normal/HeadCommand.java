@@ -15,31 +15,31 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class HeadCommand extends CommandImpl {
 
-	public HeadCommand() {
-		super("head", "Gives a player head", "/head [player]", "head", Arrays.asList("dajmiglowe", "qhead"), true);
-	}
+    public HeadCommand() {
+        super("head", "Gives a player head", "/head [player]", "head", Arrays.asList("dajmiglowe", "qhead"), true);
+    }
 
-	@Override
-	public void onExecute(CommandSender s, String[] args) {
-		Player p = (Player)s;
-		ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short)SkullType.PLAYER.ordinal());
-		SkullMeta skull = (SkullMeta)head.getItemMeta();
-		if (args.length == 0) {
-			skull.setDisplayName(Util.fixColors(MessagesImpl.HEAD_NAME
-					.replace("%player%", p.getName())));
-			skull.setOwner(p.getName());
-		}
-		else if (args.length == 1) {
-			skull.setDisplayName(Util.fixColors(MessagesImpl.HEAD_NAME
-					.replace("%player%", args[0])));
-			skull.setOwner(args[0]);
-		}
-		else {
-			Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
-			return;
-		}
-		head.setItemMeta(skull);
-		p.getInventory().addItem(head);
-	}
+    @Override
+    public void onExecute(CommandSender s, String[] args) {
+        Player p = (Player)s;
+        ItemStack head = new ItemStack(Material.SKULL_ITEM, 1, (short)SkullType.PLAYER.ordinal());
+        SkullMeta skull = (SkullMeta)head.getItemMeta();
+        if (args.length == 0) {
+            skull.setDisplayName(Util.fixColors(MessagesImpl.HEAD_NAME
+                    .replace("%player%", p.getName())));
+            skull.setOwner(p.getName());
+        }
+        else if (args.length == 1) {
+            skull.setDisplayName(Util.fixColors(MessagesImpl.HEAD_NAME
+                    .replace("%player%", args[0])));
+            skull.setOwner(args[0]);
+        }
+        else {
+            Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
+            return;
+        }
+        head.setItemMeta(skull);
+        p.getInventory().addItem(head);
+    }
 
 }

@@ -12,21 +12,21 @@ import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class PlayerMoveListener implements Listener {
-	
-	@EventHandler(priority = EventPriority.LOW)
-	public void onMove(PlayerMoveEvent e){
-		Player p = e.getPlayer();
-		Location nfrom = e.getFrom();
-		Location nto = e.getTo();
-		
-		if(nfrom == null || nto == null) return;
-		if(nfrom.getBlockX() == nto.getBlockX() && nfrom.getBlockZ() == nto.getBlockZ()) return;
-		
-		if(TeleportUtils.users.contains(p)){
-			TeleportUtils.users.remove(p);
-			Util.sendMessage(p, MessagesImpl.TELEPORT_DENY);
-		}
-		
-	}
+    
+    @EventHandler(priority = EventPriority.LOW)
+    public void onMove(PlayerMoveEvent e){
+        Player p = e.getPlayer();
+        Location nfrom = e.getFrom();
+        Location nto = e.getTo();
+        
+        if(nfrom == null || nto == null) return;
+        if(nfrom.getBlockX() == nto.getBlockX() && nfrom.getBlockZ() == nto.getBlockZ()) return;
+        
+        if(TeleportUtils.users.contains(p)){
+            TeleportUtils.users.remove(p);
+            Util.sendMessage(p, MessagesImpl.TELEPORT_DENY);
+        }
+        
+    }
 
 }

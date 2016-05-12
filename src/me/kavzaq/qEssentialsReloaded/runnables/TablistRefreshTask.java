@@ -7,13 +7,13 @@ import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 
 public class TablistRefreshTask implements Runnable {
 
-	@Override
-	public void run() {
-		try {
-			for (Player p : Bukkit.getOnlinePlayers()) {
-				TablistUtils.updateTab(p);
-			}
-		} catch (Exception e) { e.printStackTrace(); }
-	}
+    @Override
+    public void run() {
+        try {
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                TablistUtils.updateTab(p);
+            }
+        } catch (Exception e) { e.printStackTrace(); }
+    }
 
 }

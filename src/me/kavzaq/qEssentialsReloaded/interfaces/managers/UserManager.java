@@ -8,10 +8,10 @@ import org.bukkit.entity.Player;
 import me.kavzaq.qEssentialsReloaded.interfaces.User;
 
 public interface UserManager {
-	
-	User getUser(Player player);
-	User getUser(CommandSender sender);
-	User getUser(UUID uuid);
-	
-	User implementUser(Player player);
+    
+    User getUser(Player player);
+    User getUser(CommandSender sender);
+    User getUser(UUID uuid);
+    
+    User implementUser(Player player);
 }

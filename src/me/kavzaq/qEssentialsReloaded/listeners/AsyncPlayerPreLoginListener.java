@@ -13,14 +13,14 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.timed.TemporaryBanTimed;
 
 public class AsyncPlayerPreLoginListener implements Listener {
-	
-	@EventHandler(priority = EventPriority.LOW)
-	public void onAsyncPlayerPreLogin(AsyncPlayerPreLoginEvent e) {
-		UUID p = e.getUniqueId();
-		if (TemporaryBanTimed.isBlocked(p)) {
-			e.disallow(Result.KICK_BANNED, Util.fixColors(MessagesImpl.KICK_TEMPBAN
-					.replace("%cooldown%", TemporaryBanTimed.timeRemain(p))));
-		}
-	}
+    
+    @EventHandler(priority = EventPriority.LOW)
+    public void onAsyncPlayerPreLogin(AsyncPlayerPreLoginEvent e) {
+        UUID p = e.getUniqueId();
+        if (TemporaryBanTimed.isBlocked(p)) {
+            e.disallow(Result.KICK_BANNED, Util.fixColors(MessagesImpl.KICK_TEMPBAN
+                    .replace("%cooldown%", TemporaryBanTimed.timeRemain(p))));
+        }
+    }
 
 }

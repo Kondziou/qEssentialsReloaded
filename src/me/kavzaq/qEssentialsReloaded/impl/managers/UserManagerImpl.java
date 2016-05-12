@@ -20,75 +20,75 @@ import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 
 public class UserManagerImpl implements UserManager {
 
-	private final List<UserImpl> users = Lists.newArrayList();
-	
-	public List<UserImpl> getUsers() {
-		return users;
-	}
-	
-	public UserManagerImpl() {
-		Connection conn = SQLite.createConnection();
-		Statement stat;
-		try {
-			stat = conn.createStatement();
-			String query = "SELECT * FROM users";
-					
-			ResultSet rs = stat.executeQuery(query);
-			while (rs.next()) {
-				UserImpl user = new UserImpl(rs.getString("name"), 
-							UUID.fromString(rs.getString("uuid")));
-				user.setGod(false);
-				user.setHomes(SerializeUtils.deserializeList(rs.getString("homes")));
-				user.setKits(SerializeUtils.deserializeList(rs.getString("kits")));
-				users.add(user);
-			}
-		} catch (SQLException sqle) {
-				sqle.printStackTrace();
-		}
-	}
-	
-	@Override
-	public UserImpl implementUser(Player player) {
-		UserImpl user = new UserImpl(player);
-		
-		user.setGod(false);
-		user.setHomes(Lists.newArrayList());
-		user.setKits(Lists.newArrayList());
-		
-		PreparedStatement stat = null;
-		try {
-			stat = SQLite.createConnection().prepareStatement(
-					"INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`) VALUES (NULL, ?, ?, ?, ?)");
-			stat.setString(1, user.getName());
-			stat.setString(2, user.getUUID().toString());
-			stat.setString(3, SerializeUtils.serializeList(user.getHomes()));
-			stat.setString(4, SerializeUtils.serializeList(user.getKits()));
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		SQLite.executeUpdate(stat);
-		users.add(user);
-		return user;
-	}
-	
-	@Override
-	public UserImpl getUser(Player player) {
-		for (UserImpl user : users) {
-			if (user.getUUID().equals(player.getUniqueId())) return user;
-		}
-		return null;
-	}
+    private final List<UserImpl> users = Lists.newArrayList();
+    
+    public List<UserImpl> getUsers() {
+        return users;
+    }
+    
+    public UserManagerImpl() {
+        Connection conn = SQLite.createConnection();
+        Statement stat;
+        try {
+            stat = conn.createStatement();
+            String query = "SELECT * FROM users";
+                    
+            ResultSet rs = stat.executeQuery(query);
+            while (rs.next()) {
+                UserImpl user = new UserImpl(rs.getString("name"), 
+                            UUID.fromString(rs.getString("uuid")));
+                user.setGod(false);
+                user.setHomes(SerializeUtils.deserializeList(rs.getString("homes")));
+                user.setKits(SerializeUtils.deserializeList(rs.getString("kits")));
+                users.add(user);
+            }
+        } catch (SQLException sqle) {
+                sqle.printStackTrace();
+        }
+    }
+    
+    @Override
+    public UserImpl implementUser(Player player) {
+        UserImpl user = new UserImpl(player);
+        
+        user.setGod(false);
+        user.setHomes(Lists.newArrayList());
+        user.setKits(Lists.newArrayList());
+        
+        PreparedStatement stat = null;
+        try {
+            stat = SQLite.createConnection().prepareStatement(
+                    "INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`) VALUES (NULL, ?, ?, ?, ?)");
+            stat.setString(1, user.getName());
+            stat.setString(2, user.getUUID().toString());
+            stat.setString(3, SerializeUtils.serializeList(user.getHomes()));
+            stat.setString(4, SerializeUtils.serializeList(user.getKits()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        SQLite.executeUpdate(stat);
+        users.add(user);
+        return user;
+    }
+    
+    @Override
+    public UserImpl getUser(Player player) {
+        for (UserImpl user : users) {
+            if (user.getUUID().equals(player.getUniqueId())) return user;
+        }
+        return null;
+    }
 
-	@Override
-	public UserImpl getUser(CommandSender sender) {
-		return null;
-	}
+    @Override
+    public UserImpl getUser(CommandSender sender) {
+        return null;
+    }
 
-	@Override
-	public UserImpl getUser(UUID uuid) {
-		return null;
-	}
+    @Override
+    public UserImpl getUser(UUID uuid) {
+        return null;
+    }
 
 
 }

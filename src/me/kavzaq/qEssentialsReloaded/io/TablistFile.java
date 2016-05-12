@@ -10,47 +10,47 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import me.kavzaq.qEssentialsReloaded.Main;
 
 public class TablistFile {
-	
-	private TablistFile() { }
-	
-	private static final File dataFolder = Main.getInstance().getDataFolder();
-	private static final File tablistFile = new File(dataFolder, "tablist.yml");
-	
-	public static File getFile()
-	{
-		return tablistFile;
-	}
+    
+    private TablistFile() { }
+    
+    private static final File dataFolder = Main.getInstance().getDataFolder();
+    private static final File tablistFile = new File(dataFolder, "tablist.yml");
+    
+    public static File getFile()
+    {
+        return tablistFile;
+    }
 
-	public static void loadFile()
-	{
-		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
+    public static void loadFile()
+    {
+        Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 
-			@Override
-			public void run() {
-				if(!dataFolder.exists())
-				{
-					dataFolder.mkdirs();
-				}
-				else if(!tablistFile.exists())
-				{
-					try{
-						tablistFile.createNewFile();
-						return;
-					}catch(IOException ex) {
-						ex.printStackTrace();
-					}
-				}
-				
-				
-			}
-			
-		});
-		
-	}
+            @Override
+            public void run() {
+                if(!dataFolder.exists())
+                {
+                    dataFolder.mkdirs();
+                }
+                else if(!tablistFile.exists())
+                {
+                    try{
+                        tablistFile.createNewFile();
+                        return;
+                    }catch(IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                
+                
+            }
+            
+        });
+        
+    }
 
-	public static FileConfiguration getFileConfiguration()
-	{
-		return YamlConfiguration.loadConfiguration(tablistFile);
-	}
+    public static FileConfiguration getFileConfiguration()
+    {
+        return YamlConfiguration.loadConfiguration(tablistFile);
+    }
 
 }

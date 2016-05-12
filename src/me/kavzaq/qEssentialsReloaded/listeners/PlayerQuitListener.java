@@ -9,13 +9,13 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class PlayerQuitListener implements Listener {
-	
-	@EventHandler
-	public void onPlayerQuit(PlayerQuitEvent e) {
-		String quitMessage = Main.getInstance().getConfig().getString("quit-format");
-		quitMessage = StringUtils.replace(quitMessage, "{PLAYER}", e.getPlayer().getName());
-		quitMessage = StringUtils.replace(quitMessage, "{DISPLAYNAME}", e.getPlayer().getDisplayName());
-		e.setQuitMessage(Util.fixColors(quitMessage));
-	}
+    
+    @EventHandler
+    public void onPlayerQuit(PlayerQuitEvent e) {
+        String quitMessage = Main.getInstance().getConfig().getString("quit-format");
+        quitMessage = StringUtils.replace(quitMessage, "{PLAYER}", e.getPlayer().getName());
+        quitMessage = StringUtils.replace(quitMessage, "{DISPLAYNAME}", e.getPlayer().getDisplayName());
+        e.setQuitMessage(Util.fixColors(quitMessage));
+    }
 
 }

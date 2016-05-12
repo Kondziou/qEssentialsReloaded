@@ -11,21 +11,21 @@ import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class SunAlias extends CommandImpl {
-	
-	public SunAlias() {
-		super("sun", "Weather alias", "/sun", "weather.aliases", Lists.newArrayList());
-		
-	}
+    
+    public SunAlias() {
+        super("sun", "Weather alias", "/sun", "weather.aliases", Lists.newArrayList());
+        
+    }
 
-	@Override
-	public void onExecute(CommandSender s, String[] args) {
-		World world = Bukkit.getWorlds().get(0);
-		world.setWeatherDuration(999999999);
-		world.setThunderDuration(999999999);
-		world.setStorm(false);
-		world.setThundering(false);
-		Util.sendMessage(s, MessagesImpl.WEATHER_SUNNY_SUCCESS.replace("%world%", world.getName()));
-	}
+    @Override
+    public void onExecute(CommandSender s, String[] args) {
+        World world = Bukkit.getWorlds().get(0);
+        world.setWeatherDuration(999999999);
+        world.setThunderDuration(999999999);
+        world.setStorm(false);
+        world.setThundering(false);
+        Util.sendMessage(s, MessagesImpl.WEATHER_SUNNY_SUCCESS.replace("%world%", world.getName()));
+    }
 
 
 }

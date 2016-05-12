@@ -12,16 +12,16 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class DayAlias extends CommandImpl  {
 
-	public DayAlias() {
-		super("day", "Time alias", "/day", "time.aliases", Lists.newArrayList());
-		
-	}
+    public DayAlias() {
+        super("day", "Time alias", "/day", "time.aliases", Lists.newArrayList());
+        
+    }
 
-	@Override
-	public void onExecute(CommandSender s, String[] args) {
-		World world = Bukkit.getWorlds().get(0);
-		world.setTime(2500L);
-		Util.sendMessage(s, MessagesImpl.TIME_DAY_SUCCESS.replace("%world%", world.getName()));
-	}
+    @Override
+    public void onExecute(CommandSender s, String[] args) {
+        World world = Bukkit.getWorlds().get(0);
+        world.setTime(2500L);
+        Util.sendMessage(s, MessagesImpl.TIME_DAY_SUCCESS.replace("%world%", world.getName()));
+    }
 
 }

@@ -7,18 +7,18 @@ import me.kavzaq.qEssentialsReloaded.Main;
 
 public class MetricsCollector implements Runnable {
 
-	@Override
-	public void run() {
-		Graph g = Main.getMetrics().createGraph("qEssentials Graph");
-		g.addPlotter(new Plotter("Users") {
+    @Override
+    public void run() {
+        Graph g = Main.getMetrics().createGraph("qEssentials Graph");
+        g.addPlotter(new Plotter("Users") {
 
-			@Override
-			public int getValue() {
-				return Main.getUserManager().getUsers().size();
-			}
-			
-		});
-		Main.getMetrics().start();
-	}
+            @Override
+            public int getValue() {
+                return Main.getUserManager().getUsers().size();
+            }
+            
+        });
+        Main.getMetrics().start();
+    }
 
 }
