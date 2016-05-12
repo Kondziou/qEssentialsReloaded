@@ -5,6 +5,8 @@ import java.util.List;
 
 public class MessagesImpl {
 	
+	private MessagesImpl() { }
+	
 	// General
 	public static String LANGUAGE = "pl";
 	public static String TRANSLATION_AUTHOR = "AdamGrzegorz aka KaVzaQ/KHaliT";

@@ -42,4 +42,6 @@ public class UpdaterImpl {
 		});
 	}
 
+	private UpdaterImpl() { }
+
 }

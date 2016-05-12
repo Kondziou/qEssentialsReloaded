@@ -32,7 +32,7 @@ public class TabManagerImpl implements TabManager{
 			e.printStackTrace();
 		}
 		
-		List<Object> ppilist = new ArrayList<Object>();
+		List<Object> ppilist = new ArrayList<>();
 		ppilist.add(PacketPlayerInfo.getPlayerInfo(Main.getUserManager().getUser(player), gp, slot));
 		
 		try {

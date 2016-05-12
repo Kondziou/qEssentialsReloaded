@@ -11,8 +11,10 @@ import me.kavzaq.qEssentialsReloaded.Main;
 
 public class MessageFile {
 	
-	private static File dataFolder = Main.getInstance().getDataFolder();
-	private static File messageFile = new File(dataFolder, "messages_" 
+	private MessageFile() { }
+	
+	private static final File dataFolder = Main.getInstance().getDataFolder();
+	private static final File messageFile = new File(dataFolder, "messages_" 
 				+ Main.getInstance().getConfig().getString("language") + ".yml");
 	
 	public static File getFile()

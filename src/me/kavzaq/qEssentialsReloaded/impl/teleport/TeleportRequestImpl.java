@@ -10,9 +10,9 @@ import me.kavzaq.qEssentialsReloaded.interfaces.teleport.TeleportRequest;
 
 public class TeleportRequestImpl implements TeleportRequest{
 	
-	private static HashMap<Player, Player> lastReceiverByRequester = Maps.newHashMap();
-	private static HashMap<Player, Player> lastRequesterByReceiver = Maps.newHashMap();
-	private static HashMap<Player, Long> lastRequest = Maps.newHashMap();
+	private static final HashMap<Player, Player> lastReceiverByRequester = Maps.newHashMap();
+	private static final HashMap<Player, Player> lastRequesterByReceiver = Maps.newHashMap();
+	private static final HashMap<Player, Long> lastRequest = Maps.newHashMap();
 
 	@Override
 	public HashMap<Player, Player> getRequesterByReceiver() {

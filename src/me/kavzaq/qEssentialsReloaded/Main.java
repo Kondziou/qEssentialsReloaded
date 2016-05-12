@@ -94,7 +94,6 @@ public class Main extends JavaPlugin{
 	private static Metrics metrics;
 	private static Main inst;
 	private static UserManagerImpl userManager;
-	private static MessagesImpl messages;
 	private static CommandImpl command;
 	private static TabManagerImpl tabmanager;
 	private static TabExecutorImpl tabexecutor;
@@ -103,7 +102,7 @@ public class Main extends JavaPlugin{
 	private static MessageContainerImpl messagecontainer;
 	private static KitManagerImpl kitmanager;
 	private static Random random;
-	private static Logger l = Bukkit.getLogger();
+	private static final Logger l = Bukkit.getLogger();
 	
 	// FunnyGuilds
 	public static boolean funnyguilds_support = false;
@@ -171,10 +170,6 @@ public class Main extends JavaPlugin{
 		return tabexecutor;
 	}
 	
-	public static MessagesImpl getMessages() {
-		return messages;
-	}
-	
 	public static CommandImpl getCommandManager() {
 		return command;
 	}
@@ -191,11 +186,13 @@ public class Main extends JavaPlugin{
 		l.info(string);
 	}
 	
+    @Override
 	public void onLoad() {
 		l.info("[qEssentialsReloaded] [Preload] Instantiating java plugin...");
 		inst = this;
 	}
 	
+    @Override
 	public void onDisable() {
 		try {
 			for (User user : getUserManager().getUsers()) {
@@ -206,6 +203,7 @@ public class Main extends JavaPlugin{
 		}
 	}
 	
+    @Override
 	public void onEnable() {
 		startTime = System.currentTimeMillis();
 		l.info("[qEssentialsReloaded] Loading resources...");
@@ -213,7 +211,6 @@ public class Main extends JavaPlugin{
 		new SQLite();
 		l.info("[qEssentialsReloaded] Instantiating object implementations...");
 		userManager = new UserManagerImpl();
-		messages = new MessagesImpl();
 		tabmanager = new TabManagerImpl();
 		tabexecutor = new TabExecutorImpl();
 		teleportupdater = new TeleportUpdaterImpl();
@@ -332,7 +329,7 @@ public class Main extends JavaPlugin{
 		l.info("[qEssentialsReloaded] Loading kits...");
 		Main.getKitManager().load();
 		loadTime = System.currentTimeMillis() - startTime;
-		l.info("[qEssentialsReloaded] Completed successfuly! (" + (loadTime) + "ms)");
+		l.info("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
 
 		UpdaterImpl.checkUpdate();
 		if (!UpdaterImpl.isUpdated()) {

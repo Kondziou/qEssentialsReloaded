@@ -10,7 +10,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public abstract class CommandImpl extends Command {
 	
-	private String permission;
+	private final String permission;
 	private boolean isPlayerOnly;
 	
 	public CommandImpl(String name, String description, String usage, String permission, List<String> aliases) {

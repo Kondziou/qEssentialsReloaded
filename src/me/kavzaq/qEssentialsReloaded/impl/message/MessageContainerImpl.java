@@ -6,13 +6,10 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.Maps;
 
-import me.kavzaq.qEssentialsReloaded.interfaces.message.MessageContainer;
-
-public class MessageContainerImpl implements MessageContainer {
+public class MessageContainerImpl  {
 
 	private static final HashMap<Player, Player> messageContainer = Maps.newHashMap();
 	
-	@Override
 	public HashMap<Player, Player> getMessageContainer() {
 		return messageContainer;
 	}

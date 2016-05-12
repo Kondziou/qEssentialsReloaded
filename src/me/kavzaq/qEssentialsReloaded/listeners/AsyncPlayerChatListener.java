@@ -17,7 +17,7 @@ public class AsyncPlayerChatListener implements Listener {
 	
 	// nie jest thread-safe, bede musial pomyslec nad tym
 	@EventHandler(priority = EventPriority.LOWEST)
-	public void onPlayerChat(AsyncPlayerChatEvent e) {
+	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
 		if (!ChatSwitch.getChat()) {
 			if (!p.hasPermission("qessentials.chat.bypass")) {

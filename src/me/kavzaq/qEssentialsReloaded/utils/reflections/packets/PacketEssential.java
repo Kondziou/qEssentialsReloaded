@@ -12,6 +12,8 @@ import net.minecraft.server.v1_9_R1.Packet;
 import net.minecraft.server.v1_9_R1.PlayerConnection;
 
 public class PacketEssential {
+    
+	private PacketEssential() { }
 	
 	public static Class<?> PACKET_PLAY_OUT_PLAYER_INFO = ReflectionUtils.getCraftClass("PacketPlayOutPlayerInfo");
 	public static Class<?> PACKET_PLAY_OUT_PLAYER_LIST_HEADER_FOOTER = ReflectionUtils.getCraftClass("PacketPlayOutPlayerListHeaderFooter");

@@ -11,8 +11,10 @@ import me.kavzaq.qEssentialsReloaded.Main;
 
 public class TablistFile {
 	
-	private static File dataFolder = Main.getInstance().getDataFolder();
-	private static File tablistFile = new File(dataFolder, "tablist.yml");
+	private TablistFile() { }
+	
+	private static final File dataFolder = Main.getInstance().getDataFolder();
+	private static final File tablistFile = new File(dataFolder, "tablist.yml");
 	
 	public static File getFile()
 	{

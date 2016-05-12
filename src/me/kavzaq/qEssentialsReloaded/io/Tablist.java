@@ -12,6 +12,8 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class Tablist {
 	
+	private Tablist() { }
+	
 	public static void saveTablist() {
 		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 

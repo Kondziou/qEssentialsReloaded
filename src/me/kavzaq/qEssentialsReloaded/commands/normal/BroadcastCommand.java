@@ -11,7 +11,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class BroadcastCommand extends CommandImpl{
 
-	private static StringBuilder localsb = new StringBuilder();
+	private static final StringBuilder localsb = new StringBuilder();
 	
 	public BroadcastCommand() {
 		super("broadcast", "A global message to server users", "/broadcast <message>", "broadcast", Arrays.asList("bc", "ogloszenie", "qbc"));

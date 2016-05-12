@@ -17,11 +17,11 @@ public class TPSMonitor implements Runnable {
 	}
 	
 	public static double getPercentage() {
-		return Double.valueOf(Util.round(100 - (getCurrentTPS() * 5), 2));
+		return Util.round(100 - (getCurrentTPS() * 5), 2);
 	}
 	
 	public static double getPercentage(double tps) {
-		return Double.valueOf(Util.round(100 - (tps * 5), 2));
+		return Util.round(100 - (tps * 5), 2);
 	}
 	 
 	public static double getCurrentTPS() {

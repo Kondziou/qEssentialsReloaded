@@ -12,6 +12,8 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class Messages {
 	
+	private Messages() { }
+	
 	public static void saveMessages() {
 		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 

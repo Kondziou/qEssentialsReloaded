@@ -2,6 +2,8 @@ package me.kavzaq.qEssentialsReloaded.impl;
 
 public class TabConfigurationImpl {
 	
+	private TabConfigurationImpl() { }
+	
 	public static boolean tablistEnabled = true;
 	public static int tablistRefreshTime = 1;
 	public static String tablistHeader = "&cqEssentialsReloaded &7rises from the ashes";

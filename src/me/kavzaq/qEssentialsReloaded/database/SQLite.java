@@ -53,10 +53,8 @@ public class SQLite {
 			@Override
 			public void run() {
 				try {
-					Connection conn = createConnection();
 					stat.executeUpdate();
 					stat.close();
-					conn.close();
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -85,7 +83,7 @@ public class SQLite {
 				+ "homes VARCHAR(320),"
 				+ "kits VARCHAR(320))";
 		
-		PreparedStatement stat = createConnection().prepareStatement(queryUsers);			
+		PreparedStatement stat = createConnection().prepareStatement(queryUsers);		
 		executeUpdate(stat);
 	}
 

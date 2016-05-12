@@ -13,7 +13,7 @@ import me.kavzaq.qEssentialsReloaded.impl.KitDataImpl;
 
 public class SerializeUtils {
 	
-	private static StringBuilder strb = new StringBuilder();
+	private static final StringBuilder strb = new StringBuilder();
 	private SerializeUtils() { }
 	
 	//Kits

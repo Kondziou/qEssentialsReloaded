@@ -1,11 +1,13 @@
 package me.kavzaq.qEssentialsReloaded.utils.switches;
 
 public class ChatSwitch {
+    
+    private ChatSwitch() { }
 	
 	private static boolean chat;
 	
 	public static boolean switchChat(){
-		chat = chat ? false : true;
+		chat = !chat;
 		return chat;
 	}
 	

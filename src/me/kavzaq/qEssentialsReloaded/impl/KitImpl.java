@@ -9,7 +9,7 @@ import me.kavzaq.qEssentialsReloaded.interfaces.Kit;
 public class KitImpl implements Kit{
 	
 	public static List<Kit> list = Lists.newArrayList();
-	private String name;
+	private final String name;
 	private long cooldown;
 	private List<String> items;
 
