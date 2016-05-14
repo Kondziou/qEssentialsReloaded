@@ -9,6 +9,7 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
 
 public class ReplyCommand extends CommandImpl {
 
@@ -25,11 +26,12 @@ public class ReplyCommand extends CommandImpl {
             Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
-        Player other = Main.getMessageData().getMessageContainer().get(p);
-        if (other == null) {
+        String otherName = Main.getMessageData().getMessageContainer().get(p.getName());
+        if (Bukkit.getPlayer(otherName) == null) {
             Util.sendMessage(p, MessagesImpl.REPLY_OFFLINE_OR_NO_CONV);
             return;
         }
+        Player other = Bukkit.getPlayer(otherName);
         localsb.setLength(0);
         for (String str : args) {
             if (localsb.length() > 0) {
@@ -39,8 +41,8 @@ public class ReplyCommand extends CommandImpl {
         }
         
         String message = Util.fixColors(localsb.toString());
-        Main.getMessageData().getMessageContainer().put(p, other);
-        Main.getMessageData().getMessageContainer().put(other, p);
+        Main.getMessageData().getMessageContainer().put(p.getName(), other.getName());
+        Main.getMessageData().getMessageContainer().put(other.getName(), p.getName());
         
         Util.sendMessage(p, MessagesImpl.MESSAGE_TO_FORMAT
                 .replace("%player%", other.getName())

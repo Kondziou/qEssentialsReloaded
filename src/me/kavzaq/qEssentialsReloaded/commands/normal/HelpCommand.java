@@ -13,7 +13,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 public class HelpCommand extends CommandImpl {
 
     public HelpCommand() {
-        super("help", "Shows a command help", "/help [page]", "help", Arrays.asList("cmdlist", "qhelp"));
+        super("help", "Shows a command help", "/help [page]", "help", Arrays.asList("cmdlist", "qhelp", "pomoc", "??", "?"));
     }
 
     @Override

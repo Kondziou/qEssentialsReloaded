@@ -2,17 +2,16 @@ package me.kavzaq.qEssentialsReloaded.impl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
-import me.kavzaq.qEssentialsReloaded.interfaces.User;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 
-public class UserImpl implements User {
+public class UserImpl {
 
     private final String name;
     private final UUID uuid;
@@ -32,83 +31,71 @@ public class UserImpl implements User {
         this.uuid = uuid;
     }
     
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public UUID getUUID() {
         return uuid;
     }
 
-    @Override
     public boolean isGod() {
         return god;
     }
     
-    @Override
     public List<String> getKits() {
         return kits;
     }
 
-    @Override
     public void addKit(KitDataImpl kitData) {
         this.kits.add(SerializeUtils.serializeKit(kitData));
         changed = true;
     }
 
-    @Override
     public void delKit(KitDataImpl kitData) {
         this.kits.remove(SerializeUtils.serializeKit(kitData));
         changed = true;
     }
 
-    @Override
     public void setKits(List<String> kits) {
         this.kits = kits;
         changed = true;
     }
     
-    @Override
     public void setGod(boolean god) {
         this.god = god;
     }
 
-    @Override
     public List<String> getHomes() {
         return homes;
     }
     
-    @Override
     public void setHomes(List<String> homes) {
         this.homes = homes;
         changed = true;
     }
     
-    @Override
     public void addHome(HomeDataImpl homeData) {
         this.homes.add(SerializeUtils.serializeHome(homeData));
         changed = true;
     }
     
 
-    @Override
     public void delHome(HomeDataImpl homeData) {
         this.homes.remove(SerializeUtils.serializeHome(homeData));
         changed = true;
     }
 
-    @Override
     public void save() {
         if (!changed) return;
         Connection conn = SQLite.createConnection();
-        Statement stat;
+        PreparedStatement stat = null;
         try {
-            stat = conn.createStatement();
-            String query = String.format("UPDATE `users` SET `homes`='%s',`kits`='%s' WHERE `uuid`='%s'", 
-                    SerializeUtils.serializeList(this.getHomes()), SerializeUtils.serializeList(this.getKits()), this.getUUID().toString());
-            stat.execute(query);
+            stat = conn.prepareStatement("UPDATE `users` SET `homes`=?,`kits`=? WHERE `uuid`=?");
+            stat.setString(1, SerializeUtils.serializeList(this.getHomes()));
+            stat.setString(2, SerializeUtils.serializeList(this.getKits()));
+            stat.setString(3, this.getUUID().toString());
+            SQLite.executeUpdate(stat);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
@@ -118,6 +105,4 @@ public class UserImpl implements User {
     public boolean isChanged() {
         return changed;
     }
-    
-
 }

@@ -9,7 +9,7 @@ public class UpdaterImpl {
 
     private static boolean actualVersion = true;
     private static String newestVersion = "1.0.0R";
-    private static String currentVersion = 
+    private static final String currentVersion = 
             Main.getInstance().getDescription().getVersion();
     
     public static boolean isUpdated() {
@@ -26,7 +26,7 @@ public class UpdaterImpl {
 
     public static void checkUpdate() {
         Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
-            @Override
+            
             public void run() {
                 try {
                     newestVersion = Util.readUrl("http://kavz.za.pl/plugins/qessentials/update.txt");

@@ -20,8 +20,6 @@ public class ThunderAlias extends CommandImpl {
     @Override
     public void onExecute(CommandSender s, String[] args) {
         World world = Bukkit.getWorlds().get(0);
-        world.setWeatherDuration(999999999);
-        world.setThunderDuration(999999999);
         world.setStorm(true);
         world.setThundering(true);
         Util.sendMessage(s, MessagesImpl.WEATHER_THUNDER_SUCCESS.replace("%world%", world.getName()));

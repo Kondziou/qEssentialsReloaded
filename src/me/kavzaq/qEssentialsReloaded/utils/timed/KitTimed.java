@@ -5,13 +5,15 @@ import org.bukkit.entity.Player;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.interfaces.Kit;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
 
 public class KitTimed {
     
-    public static void takeKit(Kit kit, Player p) {
+    private KitTimed() { }
+    
+    public static void takeKit(KitImpl kit, Player p) {
         UserImpl u = Main.getUserManager().getUser(p);
         if (getKitData(kit, p) != null) {
             u.delKit(getKitData(kit, p));
@@ -22,7 +24,7 @@ public class KitTimed {
         u.save();
     }
     
-    public static KitDataImpl getKitData(Kit kit, Player p) {
+    public static KitDataImpl getKitData(KitImpl kit, Player p) {
         UserImpl u = Main.getUserManager().getUser(p);
         String _kit = null;
         for (String kitStr : u.getKits()) {
@@ -33,7 +35,7 @@ public class KitTimed {
         return _kitData;
     }
     
-    public static boolean canTake(Kit kit, Player p) {
+    public static boolean canTake(KitImpl kit, Player p) {
         if (getKitData(kit, p) == null) 
         {
             return true;
@@ -47,7 +49,7 @@ public class KitTimed {
         return true;
     }
     
-    public static String timeRemain(Kit kit, Player p) {
+    public static String timeRemain(KitImpl kit, Player p) {
         return Util.parseTime(((getKitData(kit, p).getCooldown() == null ? 0 : getKitData(kit, p).getCooldown() - System.currentTimeMillis())) + 1);
     }
 

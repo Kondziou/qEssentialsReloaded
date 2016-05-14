@@ -15,31 +15,29 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 public class MessageCommand extends CommandImpl {
 
     public MessageCommand() {
-        super("message", "Sends a message to player", "/message <player>", "message", Arrays.asList("qmessage", "msg", "m"), true);
+        super("message", "Sends a message to player", "/message <player>", "message", Arrays.asList("qmessage", "msg", "m"));
     }
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        // @TODO console support
-        Player p = (Player)s;
         if (args.length < 2) {
-            Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
+            Util.sendMessage(s, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
         Player other = Bukkit.getPlayer(args[0]);
         if (other == null) {
-            Util.sendMessage(p, MessagesImpl.OFFLINE_PLAYER);
+            Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
             return;
         }
         String message = Util.fixColors(StringUtils.join(args, " ", 1, args.length));
-        Main.getMessageData().getMessageContainer().put(p, other);
-        Main.getMessageData().getMessageContainer().put(other, p);
+        Main.getMessageData().getMessageContainer().put(s.getName(), other.getName());
+        Main.getMessageData().getMessageContainer().put(other.getName(), s.getName());
         
-        Util.sendMessage(p, MessagesImpl.MESSAGE_TO_FORMAT
+        Util.sendMessage(s, MessagesImpl.MESSAGE_TO_FORMAT
                 .replace("%player%", other.getName())
                 .replace("%message%", message));
         Util.sendMessage(other, MessagesImpl.MESSAGE_FROM_FORMAT
-                .replace("%player%", p.getName())
+                .replace("%player%", s.getName())
                 .replace("%message%", message));
     }
 

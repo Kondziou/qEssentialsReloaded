@@ -56,9 +56,7 @@ public class PacketEssential {
     public static void sendPacket(Player p, Object packet) {
         try {
             getPlayerConnection(p).sendPacket((Packet<?>) packet);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
+        } catch (SecurityException | IllegalArgumentException e) {
             e.printStackTrace();
         }
     }

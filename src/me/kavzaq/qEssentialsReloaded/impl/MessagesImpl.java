@@ -11,6 +11,7 @@ public class MessagesImpl {
     public static String LANGUAGE = "pl";
     public static String TRANSLATION_AUTHOR = "AdamGrzegorz aka KaVzaQ/KHaliT";
     public static String NO_PERMISSION = "&4Blad: &cNie masz uprawnien do tej komendy! &7(%permission%)";
+    public static String BYPASS_PERMISSION = "&4Blad: &cNie mozesz zrobic tego na tym graczu!";
     public static String ONLY_PLAYER = "&rNie mozesz wykonac tej komendy jako konsola!";
     public static String BAD_ARGS = "&4Blad: &cPoprawne uzycie: ";
     public static String OFFLINE_PLAYER = "&4Blad: &cWyglada na to, ze wybrany gracz jest offline!";

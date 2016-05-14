@@ -2,7 +2,6 @@ package me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor;
 
 import org.bukkit.Bukkit;
 
-import me.kavzaq.qEssentialsReloaded.enums.AverageTime;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class TPSMonitor implements Runnable {
@@ -32,14 +31,14 @@ public class TPSMonitor implements Runnable {
         return Util.round(100 / (elapsedTime / 1000.0), 3);
     }
     
-    public static double getAverageTPS(AverageTime time) {
+    public static double getAverageTPS(int time) {
         double[] tps = Bukkit.getTPS();
         switch (time) {
-            case ONE_MIN:
+            case 1:
                 return formatTPS(tps[0]);
-            case FIVE_MIN:
+            case 5:
                 return formatTPS(tps[1]);
-            case FIFTEEN_MIN:
+            case 15:
                 return formatTPS(tps[2]);
         }
         return -1;

@@ -40,7 +40,7 @@ public class HomeCommand extends CommandImpl {
             String homeName = args[0];
             String _home = null;
             for (String home : u.getHomes()) {
-                if (home.contains(homeName)) _home = home;
+                if (SerializeUtils.deserializeHomeName(home).equals(homeName)) _home = home;
             }
             if ((_home == null) || (u.getHomes().size() == 0)) {
                 Util.sendMessage(p, MessagesImpl.HOME_UNKNOWN);

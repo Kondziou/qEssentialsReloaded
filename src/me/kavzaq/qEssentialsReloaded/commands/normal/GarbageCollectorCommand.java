@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import org.bukkit.command.CommandSender;
 
-import me.kavzaq.qEssentialsReloaded.enums.AverageTime;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
@@ -26,9 +25,9 @@ public class GarbageCollectorCommand extends CommandImpl {
         String percentage = String.valueOf(TPSMonitor.getPercentage()).contains("105.0") ? "0%" : 
             String.valueOf(TPSMonitor.getPercentage()) + "%";
         
-        double _averageTPS1 = Util.round(TPSMonitor.getAverageTPS(AverageTime.ONE_MIN), 3);
-        double _averageTPS2 = Util.round(TPSMonitor.getAverageTPS(AverageTime.FIVE_MIN), 3);
-        double _averageTPS3 = Util.round(TPSMonitor.getAverageTPS(AverageTime.FIFTEEN_MIN), 3);
+        double _averageTPS1 = Util.round(TPSMonitor.getAverageTPS(1), 3);
+        double _averageTPS2 = Util.round(TPSMonitor.getAverageTPS(5), 3);
+        double _averageTPS3 = Util.round(TPSMonitor.getAverageTPS(15), 3);
         
         String averageTPS1 = String.valueOf(_averageTPS1).contains("-1") ? "Calculating..." : 
             String.valueOf(_averageTPS1);

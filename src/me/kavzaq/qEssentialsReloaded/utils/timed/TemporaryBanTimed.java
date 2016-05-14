@@ -9,6 +9,8 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class TemporaryBanTimed {
     
+    private TemporaryBanTimed() { }
+    
     private static HashMap<UUID, Long> lastTempBan = Maps.newHashMap();
 
     public static HashMap<UUID, Long> getLastTempBans() {

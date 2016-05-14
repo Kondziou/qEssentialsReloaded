@@ -8,10 +8,9 @@ import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.interfaces.tab.TabExecutor;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
-public class TabExecutorImpl implements TabExecutor {
+public class TabExecutorImpl {
     
     // inspirowane systemem Karolka, kappa.
 
@@ -27,7 +26,7 @@ public class TabExecutorImpl implements TabExecutor {
         }
     }
     
-    @Override
+    
     public void executeTab(Player player) {
         for (int columns = 0; columns < 4; columns++) {
             for (int rows = 0; rows < 20; rows++) {
@@ -38,18 +37,18 @@ public class TabExecutorImpl implements TabExecutor {
         }
     }
 
-    @Override
+    
     public void addSlot(Player player, int row, int column, String content) {
         tabslots[row][column] = Util.fixColors(content);
     }
 
-    @Override
+    
     public void updateSlot(Player player, int row, int column, String content) {
         tabslots[row][column] = Util.fixColors(content);
         Main.getTabManager().sendPacket(player, gameprofiles[row][column], tabslots[row][column], "UPDATE_DISPLAY_NAME");
     }
 
-    @Override
+    
     public void clearTab(Player player) {
         for (int columns = 0; columns < 4; columns++) {
             for (int rows = 0; rows < 20; rows++) {
@@ -58,7 +57,7 @@ public class TabExecutorImpl implements TabExecutor {
         }
     }
 
-    @Override
+    
     public Property getProperty(String nickname) {
         return null;
         

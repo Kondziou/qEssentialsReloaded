@@ -28,6 +28,10 @@ public class InvseeCommand extends CommandImpl {
             return;
         }
         Player other = Bukkit.getPlayer(args[0]);
+        if (other.hasPermission("qessentials.invsee.bypass")) {
+            Util.sendMessage(p, MessagesImpl.BYPASS_PERMISSION);
+            return;
+        }
         p.openInventory(other.getInventory());
     }
 

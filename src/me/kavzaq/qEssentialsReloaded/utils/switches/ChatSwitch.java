@@ -6,7 +6,7 @@ public class ChatSwitch {
     
     private static boolean chat;
     
-    public static boolean switchChat(){
+    public static boolean switchChat() {
         chat = !chat;
         return chat;
     }

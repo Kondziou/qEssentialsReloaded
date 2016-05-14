@@ -50,6 +50,9 @@ public class HelpopCommand extends CommandImpl {
                 .replace("%player%", s.getName())
                 .replace("%message%", localsb.toString()));
         for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getName().equals(s.getName())) {
+                return;
+            }
             if (p.hasPermission("qessentials.helpop.receiver")) {
                 Util.sendMessage(p, MessagesImpl.HELPOP_FORMAT
                         .replace("%player%", s.getName())

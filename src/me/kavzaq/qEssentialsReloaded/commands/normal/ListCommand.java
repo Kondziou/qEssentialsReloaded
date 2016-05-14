@@ -22,8 +22,8 @@ public class ListCommand extends CommandImpl {
     
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        int players = Bukkit.getOnlinePlayers().size();
         Collection<? extends Player> online = Bukkit.getOnlinePlayers();
+        int players = online.size();
         Util.sendMessage(s, MessagesImpl.LIST_HEADER
                 .replace("%players%", String.valueOf(players))
                 .replace("%maxplayers%", String.valueOf(Bukkit.getMaxPlayers())));

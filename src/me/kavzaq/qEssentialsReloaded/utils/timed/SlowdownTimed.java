@@ -10,6 +10,8 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class SlowdownTimed {
     
+    private SlowdownTimed() { }
+    
     private static HashMap<Player, Long> lastMessageSended = Maps.newHashMap();
 
     public static HashMap<Player, Long> getLastMessages() {

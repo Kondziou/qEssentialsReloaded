@@ -9,17 +9,16 @@ import org.bukkit.entity.Player;
 import com.mojang.authlib.GameProfile;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.interfaces.tab.TabManager;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.json.JSONPacketBuilder;
 import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
 import me.kavzaq.qEssentialsReloaded.utils.reflections.packets.PacketEssential;
 import me.kavzaq.qEssentialsReloaded.utils.reflections.packets.PacketPlayerInfo;
 
-public class TabManagerImpl implements TabManager{
+public class TabManagerImpl {
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    @Override
+    
     public void sendPacket(Player player, GameProfile gp, String slot, String mode) {
         Object cons = ReflectionUtils.getConstructor(PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO);
         Field a = ReflectionUtils.getField(PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO, "a");
@@ -45,7 +44,7 @@ public class TabManagerImpl implements TabManager{
         PacketEssential.sendPacket(player, cons);
     }
 
-    @Override
+    
     public void sendPacketHeaderFooter(Player player, String header, String footer) {
         Object cons = ReflectionUtils.getConstructor(PacketEssential.PACKET_PLAY_OUT_PLAYER_LIST_HEADER_FOOTER);
         Field a = ReflectionUtils.getField(PacketEssential.PACKET_PLAY_OUT_PLAYER_LIST_HEADER_FOOTER, "a");

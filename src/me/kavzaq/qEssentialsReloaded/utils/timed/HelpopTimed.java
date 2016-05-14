@@ -10,6 +10,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class HelpopTimed {
     
+    private HelpopTimed() { }
     private static HashMap<CommandSender, Long> lastHelpopSended = Maps.newHashMap();
 
     public static HashMap<CommandSender, Long> getLastHelpops() {

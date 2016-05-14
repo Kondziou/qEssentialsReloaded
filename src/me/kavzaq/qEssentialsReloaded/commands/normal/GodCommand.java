@@ -12,7 +12,6 @@ import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
-import me.kavzaq.qEssentialsReloaded.utils.switches.GodSwitch;
 
 public class GodCommand extends CommandImpl {
 
@@ -33,7 +32,7 @@ public class GodCommand extends CommandImpl {
             }
             Player p = (Player)s;
             UserImpl u = Main.getUserManager().getUser(p);
-            boolean godState = GodSwitch.switchGod(u);
+            boolean godState = !u.isGod();
             p.setHealth(20.0);
             p.setFoodLevel(20);
             u.setGod(godState);
@@ -53,7 +52,7 @@ public class GodCommand extends CommandImpl {
                     return;
                 }
                 UserImpl otheru = Main.getUserManager().getUser(other);
-                boolean godState = GodSwitch.switchGod(otheru);
+                boolean godState = !otheru.isGod();
                 other.setHealth(20.0);
                 other.setFoodLevel(20);
                 otheru.setGod(godState);

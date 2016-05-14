@@ -10,7 +10,6 @@ import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
-import me.kavzaq.qEssentialsReloaded.utils.switches.FlySwitch;
 
 public class FlyCommand extends CommandImpl {
 
@@ -30,7 +29,7 @@ public class FlyCommand extends CommandImpl {
                 return;
             }
             Player p = (Player)s;
-            boolean flyState = FlySwitch.switchFlying(p);
+            boolean flyState = !p.isFlying();
             p.setAllowFlight(flyState);
             Util.sendMessage(p, MessagesImpl.FLY_SWITCHED
                     .replace("%mode%", BooleanUtils.getParsedBoolean(flyState)));
@@ -47,7 +46,7 @@ public class FlyCommand extends CommandImpl {
                     Util.sendMessage(s, MessagesImpl.SAME_PERSON);
                     return;
                 }
-                boolean flyState = FlySwitch.switchFlying(other);
+                boolean flyState = !other.isFlying();
                 other.setAllowFlight(flyState);
                 Util.sendMessage(s, MessagesImpl.FLY_OTHER_SUCCESS
                         .replace("%mode%", BooleanUtils.getParsedBoolean(flyState))

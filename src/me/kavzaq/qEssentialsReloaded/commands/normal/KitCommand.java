@@ -14,7 +14,6 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.interfaces.Kit;
 import me.kavzaq.qEssentialsReloaded.utils.ParsingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.timed.KitTimed;
@@ -38,8 +37,8 @@ public class KitCommand extends CommandImpl {
             return;
         }
         else if (args.length == 1) {
-            Kit kit = null;
-            for (Kit k : KitImpl.list) {
+            KitImpl kit = null;
+            for (KitImpl k : KitImpl.list) {
                 if (k.getName().equals(args[0])) kit = k;
             }
             if (kit == null) {

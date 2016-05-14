@@ -14,7 +14,7 @@ public class TeleportUpdaterImpl {
     public Location getLocation(Player player) {
         return locations.get(player) != null ? 
                 locations.get(player) : player.getWorld().getSpawnLocation();
-    }
+    }  
 
     public void setLocation(Player player) {
         locations.put(player, player.getLocation());

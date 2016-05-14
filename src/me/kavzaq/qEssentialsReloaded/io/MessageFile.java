@@ -24,28 +24,19 @@ public class MessageFile {
 
     public static void loadFile()
     {
-        Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
-
-            @Override
-            public void run() {
-                if(!dataFolder.exists())
-                {
-                    dataFolder.mkdirs();
-                }
-                else if(!messageFile.exists())
-                {
-                    try{
-                        messageFile.createNewFile();
-                        return;
-                    }catch(IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-                
-                
+        if(!dataFolder.exists())
+        {
+            dataFolder.mkdirs();
+        }
+        else if(!messageFile.exists())
+        {
+            try{
+                messageFile.createNewFile();
+                return;
+            }catch(IOException ex) {
+                ex.printStackTrace();
             }
-            
-        });
+        }  
     }
 
     public static FileConfiguration getFileConfiguration()

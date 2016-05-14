@@ -56,7 +56,6 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WorldCommand;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.KitManagerImpl;
@@ -66,7 +65,6 @@ import me.kavzaq.qEssentialsReloaded.impl.tab.TabExecutorImpl;
 import me.kavzaq.qEssentialsReloaded.impl.tab.TabManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.teleport.TeleportRequestImpl;
 import me.kavzaq.qEssentialsReloaded.impl.teleport.TeleportUpdaterImpl;
-import me.kavzaq.qEssentialsReloaded.interfaces.User;
 import me.kavzaq.qEssentialsReloaded.io.MessageFile;
 import me.kavzaq.qEssentialsReloaded.io.Messages;
 import me.kavzaq.qEssentialsReloaded.io.Tablist;
@@ -86,11 +84,13 @@ import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
 import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
+import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.entity.Player;
 
-public class Main extends JavaPlugin{
-    
+public class Main extends JavaPlugin {
+
     private static Metrics metrics;
     private static Main inst;
     private static UserManagerImpl userManager;
@@ -103,20 +103,19 @@ public class Main extends JavaPlugin{
     private static KitManagerImpl kitmanager;
     private static Random random;
     private static final Logger l = Bukkit.getLogger();
-    
+
     // FunnyGuilds
     public static boolean funnyguilds_support = false;
-    
+
     // Vault
     public static Economy economy = null;
     public static Chat chat = null;
     public static boolean economy_support = false;
     public static boolean chat_support = false;
-    
-    private boolean setupChat()
-    {
-        RegisteredServiceProvider<Chat> chatProvider = 
-                getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
+
+    private boolean setupChat() {
+        RegisteredServiceProvider<Chat> chatProvider
+                = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
         if (chatProvider != null) {
             chat = chatProvider.getProvider();
         }
@@ -124,85 +123,84 @@ public class Main extends JavaPlugin{
         return (chat != null);
     }
 
-    private boolean setupEconomy()
-    {
-        RegisteredServiceProvider<Economy> economyProvider = 
-                getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+    private boolean setupEconomy() {
+        RegisteredServiceProvider<Economy> economyProvider
+                = getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
         if (economyProvider != null) {
             economy = economyProvider.getProvider();
         }
 
         return (economy != null);
     }
-    
+
     private long startTime;
     private long loadTime;
-    
+
     public static Random getRandom() {
         return random;
     }
-    
+
     public static Metrics getMetrics() {
         return metrics;
     }
-    
+
     public static Main getInstance() {
         return inst;
     }
-    
+
     public static KitManagerImpl getKitManager() {
         return kitmanager;
     }
-    
+
     public static MessageContainerImpl getMessageData() {
         return messagecontainer;
     }
-    
+
     public static TeleportRequestImpl getTeleportRequests() {
         return teleportrequests;
     }
-    
+
     public static TabManagerImpl getTabManager() {
         return tabmanager;
     }
-    
+
     public static TabExecutorImpl getTabExecutor() {
         return tabexecutor;
     }
-    
+
     public static CommandImpl getCommandManager() {
         return command;
     }
-    
+
     public static UserManagerImpl getUserManager() {
         return userManager;
     }
-    
+
     public static TeleportUpdaterImpl getTeleportUpdater() {
         return teleportupdater;
     }
-    
+
     public static void Debug(String string) {
         l.info(string);
     }
-    
+
     @Override
     public void onLoad() {
         l.info("[qEssentialsReloaded] [Preload] Instantiating java plugin...");
         inst = this;
     }
-    
+
     @Override
     public void onDisable() {
         try {
-            for (User user : getUserManager().getUsers()) {
+            for (UserImpl user : getUserManager().getUsers()) {
                 user.save();
             }
         } catch (Exception e) {
             // null
         }
     }
-    
+
     @Override
     public void onEnable() {
         startTime = System.currentTimeMillis();
@@ -221,16 +219,14 @@ public class Main extends JavaPlugin{
         l.info("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
         if (!Bukkit.getPluginManager().isPluginEnabled("FunnyGuilds")) {
             l.info("[qEssentialsReloaded] [Misc] FunnyGuilds missing, disabling tab variables...");
-        }
-        else {
+        } else {
             l.info("[qEssentialsReloaded] [Misc] FunnyGuilds found, enabling tab variables...");
             funnyguilds_support = true;
         }
         l.info("[qEssentialsReloaded] [Misc] Loading Vault optionally...");
         if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
             l.info("[qEssentialsReloaded] [Misc] Vault missing, disabling vault functions...");
-        }
-        else {
+        } else {
             l.info("[qEssentialsReloaded] [Misc] Vault found, enabling vault functions...");
             setupChat();
             setupEconomy();
@@ -245,7 +241,7 @@ public class Main extends JavaPlugin{
         MessageFile.loadFile();
         Messages.loadMessages();
         Messages.saveMessages();
-        
+
         TablistFile.loadFile();
         Tablist.loadTablist();
         Tablist.saveTablist();
@@ -305,12 +301,16 @@ public class Main extends JavaPlugin{
         CommandManager.registerCommand(new ThunderAlias());
         CommandManager.registerCommand(new DayAlias());
         CommandManager.registerCommand(new NightAlias());
+        l.info("[qEssentialsReloaded] Loading online users...");
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            Main.getUserManager().loadUser(p);
+        }
         l.info("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
         try {
             metrics = new Metrics(this);
             l.info("[qEssentialsReloaded] [Metrics] Successfully instantiated metrics!");
         } catch (IOException e) {
-            l.info("[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
+            l.info("[qEssentialsReloaded] [Metrics] Failed to insłtantiate the metrics!");
         }
         l.info("[qEssentialsReloaded] Configuring tablist messages...");
         TablistUtils.configureMessages();
@@ -320,7 +320,7 @@ public class Main extends JavaPlugin{
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new AutoMessageTask(), 0L, getConfig().getLong("automessage-delay") * 20);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TablistRefreshTask(), 0L, TabConfigurationImpl.tablistRefreshTime * 20);
         Bukkit.getScheduler().runTaskLaterAsynchronously(this, new MetricsCollector(), 20);
-        
+
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TPSMonitor(), 100L, 1);
         l.info("[qEssentialsReloaded] Configuring help paged map...");
         PaginatorUtils.configureHelp();
@@ -338,10 +338,9 @@ public class Main extends JavaPlugin{
             l.info("[qEssentialsReloaded] [Updater]   Current version: " + UpdaterImpl.getCurrentVersion());
             l.info("[qEssentialsReloaded] [Updater] Please update it on github.com/xVacuum/qEssentialsReloaded/releases");
             l.info("[qEssentialsReloaded] [Updater] It's important.");
-        }
-        else {
+        } else {
             l.info("[qEssentialsReloaded] [Updater] You have a current version of qEssentialsReloaded!");
         }
-    
+
     }
 }

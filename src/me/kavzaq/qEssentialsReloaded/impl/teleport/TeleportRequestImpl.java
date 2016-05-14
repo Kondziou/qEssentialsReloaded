@@ -6,37 +6,36 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.Maps;
 
-import me.kavzaq.qEssentialsReloaded.interfaces.teleport.TeleportRequest;
 
-public class TeleportRequestImpl implements TeleportRequest{
+public class TeleportRequestImpl {
     
     private static final HashMap<Player, Player> lastReceiverByRequester = Maps.newHashMap();
     private static final HashMap<Player, Player> lastRequesterByReceiver = Maps.newHashMap();
     private static final HashMap<Player, Long> lastRequest = Maps.newHashMap();
 
-    @Override
+    
     public HashMap<Player, Player> getRequesterByReceiver() {
         return lastRequesterByReceiver;
     }
 
-    @Override
+    
     public HashMap<Player, Player> getReceiverByRequester() {
         return lastReceiverByRequester;
     }
 
-    @Override
+    
     public HashMap<Player, Long> getLastRequest() {
         return lastRequest;
     }
 
-    @Override
+    
     public void sendRequest(Player requester, Player receiver) {
         lastReceiverByRequester.put(requester, receiver);
         lastRequesterByReceiver.put(receiver, requester);
-        lastRequest.put(requester, Long.valueOf(System.currentTimeMillis()));
+        lastRequest.put(requester, System.currentTimeMillis());
     }
 
-    @Override
+    
     public void removeRequest(Player requester, Player receiver) {
         lastReceiverByRequester.remove(requester);
         lastRequesterByReceiver.remove(receiver);
@@ -44,12 +43,12 @@ public class TeleportRequestImpl implements TeleportRequest{
         
     }
 
-    @Override
+    
     public boolean alreadyRequested(Player requester, Player receiver) {
         return lastRequesterByReceiver.get(receiver) == requester;
     }
 
-    @Override
+    
     public boolean hasRequestPending(Player receiver) {
         return lastRequesterByReceiver.get(receiver) != null;
     }

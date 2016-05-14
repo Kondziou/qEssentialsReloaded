@@ -23,28 +23,19 @@ public class TablistFile {
 
     public static void loadFile()
     {
-        Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
-
-            @Override
-            public void run() {
-                if(!dataFolder.exists())
-                {
-                    dataFolder.mkdirs();
-                }
-                else if(!tablistFile.exists())
-                {
-                    try{
-                        tablistFile.createNewFile();
-                        return;
-                    }catch(IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-                
-                
+        if(!dataFolder.exists())
+        {
+            dataFolder.mkdirs();
+        }
+        else if(!tablistFile.exists())
+        {
+            try{
+                tablistFile.createNewFile();
+                return;
+            }catch(IOException ex) {
+                ex.printStackTrace();
             }
-            
-        });
+        } 
         
     }
 

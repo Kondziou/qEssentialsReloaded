@@ -33,12 +33,12 @@ public class FeedCommand extends CommandImpl {
             return;
         }
         else if(args.length == 1){
-            if (Bukkit.getPlayer(args[0]) == null) {
-                Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
-                return;
-            }
             if (!s.hasPermission("qessentials.feed.others")) {
                 Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.feed.others"));
+                return;
+            }
+            if (Bukkit.getPlayer(args[0]) == null) {
+                Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                 return;
             }
             Player other = Bukkit.getPlayer(args[0]);

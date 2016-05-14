@@ -17,9 +17,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.google.common.collect.Lists;
+import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 
-import me.kavzaq.qEssentialsReloaded.interfaces.User;
+import com.google.common.collect.Lists;
 
 public class Util {
     
@@ -60,7 +60,7 @@ public class Util {
         sender.sendMessage(fixColors(s));
     }
     
-    public static void sendMessage(User u, String s) {
+    public static void sendMessage(UserImpl u, String s) {
         Bukkit.getPlayer(u.getUUID()).sendMessage(fixColors(s));
     }
 

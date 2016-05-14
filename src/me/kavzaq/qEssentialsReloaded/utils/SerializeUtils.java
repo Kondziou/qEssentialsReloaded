@@ -28,6 +28,11 @@ public class SerializeUtils {
         String[] split = kitData.split(" ");
         return new KitDataImpl(split[0], Long.valueOf(split[1]));
     }
+        
+    public static String deserializeKitName(String kitData) {
+        String[] split = kitData.split(" ");
+        return split[0];
+    }
     
     public static String serializeList(List<String> list) {
         strb.setLength(0);
@@ -47,6 +52,11 @@ public class SerializeUtils {
             result.add(str);
         }
         return result;
+    }
+    
+    public static String deserializeHomeName(String homeData) {
+        String[] split = homeData.split(" ");
+        return split[0];
     }
     
     public static String serializeHome(HomeDataImpl homeData) {

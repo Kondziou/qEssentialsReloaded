@@ -6,13 +6,12 @@ import org.bukkit.configuration.ConfigurationSection;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
-import me.kavzaq.qEssentialsReloaded.interfaces.managers.KitManager;
 
-public class KitManagerImpl implements KitManager {
+public class KitManagerImpl {
     
     private static final StringBuilder localsb = new StringBuilder();
 
-    @Override
+    
     public void load() {
         ConfigurationSection csKits = Main.getInstance().getConfig().getConfigurationSection("kits");
         for (String kitStr : csKits.getKeys(false)) {
@@ -28,7 +27,7 @@ public class KitManagerImpl implements KitManager {
         }
     }
 
-    @Override
+    
     public String getKits() {
         localsb.setLength(0);
         for (String kitStr : Main.getInstance().getConfig().getConfigurationSection("kits").getKeys(false)){

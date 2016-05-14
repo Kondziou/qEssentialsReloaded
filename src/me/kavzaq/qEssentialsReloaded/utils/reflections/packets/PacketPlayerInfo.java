@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import com.mojang.authlib.GameProfile;
 
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
-import me.kavzaq.qEssentialsReloaded.interfaces.User;
+import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.json.JSONPacketBuilder;
 import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
@@ -19,7 +19,7 @@ public class PacketPlayerInfo {
             ReflectionUtils.getConstructor(PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO);
     
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public static Object getPlayerInfo(User user, GameProfile gp, String slot) {
+    public static Object getPlayerInfo(UserImpl user, GameProfile gp, String slot) {
         Constructor<?> cons = null;
         try {
             cons = PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO$PLAYER_INFO_DATA

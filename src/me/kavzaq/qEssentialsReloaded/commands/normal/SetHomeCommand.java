@@ -10,6 +10,7 @@ import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class SetHomeCommand extends CommandImpl {
@@ -27,14 +28,14 @@ public class SetHomeCommand extends CommandImpl {
         }
         UserImpl u = Main.getUserManager().getUser(p);
         
-        int maxhomes = Main.getInstance().getConfig().getInt("max-homes") - 1;
+        int maxhomes = Main.getInstance().getConfig().getInt("max-homes");
         if (u.getHomes().size() > maxhomes) {
             Util.sendMessage(p, MessagesImpl.SETHOME_MAX);
             return;
         }
         
         for (String home : u.getHomes()) {
-            if (home.contains(args[0])){
+            if (SerializeUtils.deserializeHomeName(home).equals(args[0])){
                 Util.sendMessage(p, MessagesImpl.SETHOME_HAS_THIS_NAME);
                 return;
             }

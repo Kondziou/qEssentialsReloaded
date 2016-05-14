@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,13 +11,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.google.common.collect.Lists;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.interfaces.managers.UserManager;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 
-public class UserManagerImpl implements UserManager {
+public class UserManagerImpl {
 
     private final List<UserImpl> users = Lists.newArrayList();
     
@@ -26,53 +25,61 @@ public class UserManagerImpl implements UserManager {
         return users;
     }
     
-    public UserManagerImpl() {
+    public UserImpl loadUser(Player player) {
         Connection conn = SQLite.createConnection();
-        Statement stat;
+        PreparedStatement stat = null;
         try {
-            stat = conn.createStatement();
-            String query = "SELECT * FROM users";
-                    
-            ResultSet rs = stat.executeQuery(query);
+            stat = conn.prepareStatement("SELECT * FROM users WHERE uuid=?");
+            stat.setString(1, player.getUniqueId().toString());
+            
+            ResultSet rs = stat.executeQuery();
             while (rs.next()) {
                 UserImpl user = new UserImpl(rs.getString("name"), 
                             UUID.fromString(rs.getString("uuid")));
                 user.setGod(false);
-                user.setHomes(SerializeUtils.deserializeList(rs.getString("homes")));
-                user.setKits(SerializeUtils.deserializeList(rs.getString("kits")));
+                
+                List<String> homes = SerializeUtils.deserializeList(rs.getString("homes"));
+                List<String> kits = SerializeUtils.deserializeList(rs.getString("kits"));
+                
+                user.setHomes(homes == null ? Lists.newArrayList() : homes);
+                user.setKits(kits == null ? Lists.newArrayList() : kits);
                 users.add(user);
+                return user;
             }
         } catch (SQLException sqle) {
-                sqle.printStackTrace();
+            sqle.printStackTrace();
         }
+        return null;
     }
     
-    @Override
     public UserImpl implementUser(Player player) {
         UserImpl user = new UserImpl(player);
-        
         user.setGod(false);
-        user.setHomes(Lists.newArrayList());
         user.setKits(Lists.newArrayList());
+        user.setHomes(Lists.newArrayList());
+        if (!player.hasPlayedBefore()) {
+            PreparedStatement stat = null;
+            try {
+                stat = SQLite.createConnection().prepareStatement(
+                        "INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`) VALUES (NULL, ?, ?, ?, ?)");
+                stat.setString(1, user.getName());
+                stat.setString(2, user.getUUID().toString());
+                stat.setString(3, SerializeUtils.serializeList(user.getHomes()));
+                stat.setString(4, SerializeUtils.serializeList(user.getKits()));
+            } catch (SQLException e) {
+               e.printStackTrace();
+            }
         
-        PreparedStatement stat = null;
-        try {
-            stat = SQLite.createConnection().prepareStatement(
-                    "INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`) VALUES (NULL, ?, ?, ?, ?)");
-            stat.setString(1, user.getName());
-            stat.setString(2, user.getUUID().toString());
-            stat.setString(3, SerializeUtils.serializeList(user.getHomes()));
-            stat.setString(4, SerializeUtils.serializeList(user.getKits()));
-        } catch (SQLException e) {
-            e.printStackTrace();
+            SQLite.executeUpdate(stat);
+            users.add(user);
         }
-        
-        SQLite.executeUpdate(stat);
-        users.add(user);
+        else {
+            user = loadUser(player);
+        }
         return user;
     }
     
-    @Override
+    
     public UserImpl getUser(Player player) {
         for (UserImpl user : users) {
             if (user.getUUID().equals(player.getUniqueId())) return user;
@@ -80,12 +87,12 @@ public class UserManagerImpl implements UserManager {
         return null;
     }
 
-    @Override
+    
     public UserImpl getUser(CommandSender sender) {
         return null;
     }
 
-    @Override
+    
     public UserImpl getUser(UUID uuid) {
         return null;
     }

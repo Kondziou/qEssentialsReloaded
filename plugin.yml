@@ -1,5 +1,0 @@
-name: qEssentialsReloaded
-author: KaVzaQ
-version: 1.0.3R
-main: me.kavzaq.qEssentialsReloaded.Main
-softdepend: [FunnyGuilds, Vault, PermissionsEx]
