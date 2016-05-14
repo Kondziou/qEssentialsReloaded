@@ -310,7 +310,7 @@ public class Main extends JavaPlugin {
             metrics = new Metrics(this);
             l.info("[qEssentialsReloaded] [Metrics] Successfully instantiated metrics!");
         } catch (IOException e) {
-            l.info("[qEssentialsReloaded] [Metrics] Failed to insłtantiate the metrics!");
+            l.info("[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
         }
         l.info("[qEssentialsReloaded] Configuring tablist messages...");
         TablistUtils.configureMessages();

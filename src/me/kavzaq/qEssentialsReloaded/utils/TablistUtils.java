@@ -9,10 +9,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import com.google.common.collect.Lists;
+import java.util.Map.Entry;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.io.TablistFile;
 import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
 import net.dzikoysk.funnyguilds.FunnyGuilds;
 import net.dzikoysk.funnyguilds.basic.Guild;
@@ -28,14 +30,9 @@ public class TablistUtils {
     
     public static void configureMessages() {
         strings = Lists.newArrayList();
-        for(Field f : TabConfigurationImpl.class.getFields()) {
-            String name = f.getName();
-            if(name.startsWith("tabSlot_")) {
-                try {
-                    strings.add(f.get(f.getName()).toString());
-                } catch (IllegalArgumentException | IllegalAccessException ex) {
-                    ex.printStackTrace();
-                }
+        for(Entry<String, Object> entry : TablistFile.getFileConfiguration().getValues(true).entrySet()) {
+            if (entry.getKey().startsWith("tabSlot_")) {
+                strings.add(entry.getValue().toString());
             }
         }
     }
@@ -92,6 +89,7 @@ public class TablistUtils {
             message++;
         }
         Main.getTabExecutor().executeTab(p);
+        Main.Debug("gowno");
     }
     
     // variables from qEssentialsReloaded
