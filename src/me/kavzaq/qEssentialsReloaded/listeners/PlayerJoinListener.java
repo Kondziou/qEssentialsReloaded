@@ -1,5 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.listeners;
 
+import java.io.IOException;
+import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,14 +12,35 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.io.input.SynchronizedInput;
+import me.kavzaq.qEssentialsReloaded.utils.ReplaceUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
 
 public class PlayerJoinListener implements Listener{
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
+        
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+            @Override
+            public void run() { 
+                try {   
+                    SynchronizedInput si = new SynchronizedInput("motd.txt");
+                    List<String> list = si.getLines();
+            
+                    for (String s : list) {
+                        Util.sendMessage(p, ReplaceUtils.replaceVariables(p, s));
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                    return;
+                }       
+            }
+        });
+        
         UserImpl u = Main.getUserManager().getUser(p);
         
         String joinMessage = Main.getInstance().getConfig().getString("join-format");

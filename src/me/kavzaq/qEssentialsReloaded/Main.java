@@ -303,7 +303,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new NightAlias());
         l.info("[qEssentialsReloaded] Loading online users...");
         for (Player p : Bukkit.getOnlinePlayers()) {
-            Main.getUserManager().loadUser(p);
+            Main.getUserManager().implementUser(p);
         }
         l.info("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
         try {

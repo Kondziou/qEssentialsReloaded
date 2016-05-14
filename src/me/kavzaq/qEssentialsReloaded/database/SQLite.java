@@ -84,7 +84,8 @@ public class SQLite {
                 + "kits VARCHAR(320))";
         
         PreparedStatement stat = createConnection().prepareStatement(queryUsers);        
-        executeUpdate(stat);
+        stat.executeUpdate();
+        stat.close();
     }
 
 }

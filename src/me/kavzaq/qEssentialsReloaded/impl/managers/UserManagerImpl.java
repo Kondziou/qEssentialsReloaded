@@ -11,7 +11,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.google.common.collect.Lists;
-import me.kavzaq.qEssentialsReloaded.Main;
 
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
@@ -57,7 +56,7 @@ public class UserManagerImpl {
         user.setGod(false);
         user.setKits(Lists.newArrayList());
         user.setHomes(Lists.newArrayList());
-        if (!player.hasPlayedBefore()) {
+        if ((!player.hasPlayedBefore()) || (!users.contains(player))) {
             PreparedStatement stat = null;
             try {
                 stat = SQLite.createConnection().prepareStatement(
@@ -78,7 +77,6 @@ public class UserManagerImpl {
         }
         return user;
     }
-    
     
     public UserImpl getUser(Player player) {
         for (UserImpl user : users) {
