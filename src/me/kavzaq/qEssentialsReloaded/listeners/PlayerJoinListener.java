@@ -38,8 +38,6 @@ public class PlayerJoinListener implements Listener{
             Util.sendMessage(p, "&a  Current version: &l" + UpdaterImpl.getCurrentVersion());
             Util.sendMessage(p, "&aPlease update it on &lhttp://github.com/xVacuum/qEssentialsReloaded/releases");
             Util.sendMessage(p, "&aIt's important.");
-            
-            Util.sendMessage(p, "xd");
         }
         
         if (!TabConfigurationImpl.tablistEnabled) {
