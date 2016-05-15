@@ -24,6 +24,8 @@ helpop-delay: 10
 ####################################################
 # Delay after command execute. In seconds.
 delay: 10
+# Spawn teleport effects
+teleport-spawn-effects: true
 
 ####################################################
 ##                     Homes                      ##

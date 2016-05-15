@@ -37,7 +37,6 @@ public class PaginatorUtils {
         return page <= getSize(pageLength);
     }
     
-    // lagozerny potwor XDDDD
     public static void configureHelp() {
         map.put(0, MessagesImpl.HELP_INDEX.replace("%command%", "back").replace("%description%", MessagesImpl.BACK_DESC));
         map.put(1, MessagesImpl.HELP_INDEX.replace("%command%", "broadcast").replace("%description%", MessagesImpl.BROADCAST_DESC));
@@ -78,6 +77,8 @@ public class PaginatorUtils {
         map.put(36, MessagesImpl.HELP_INDEX.replace("%command%", "kick").replace("%description%", MessagesImpl.KICK_DESC));
         map.put(37, MessagesImpl.HELP_INDEX.replace("%command%", "hat").replace("%description%", MessagesImpl.HAT_DESC));
         map.put(38, MessagesImpl.HELP_INDEX.replace("%command%", "displayname").replace("%description%", MessagesImpl.DISPLAYNAME_DESC));
+        map.put(39, MessagesImpl.HELP_INDEX.replace("%command%", "powertool").replace("%description%", MessagesImpl.POWERTOOL_DESC));
+        map.put(40, MessagesImpl.HELP_INDEX.replace("%command%", "tphere").replace("%description%", MessagesImpl.TPHERE_DESC));
     }
 
 }

@@ -3,10 +3,8 @@ package me.kavzaq.qEssentialsReloaded.io;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
-import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 

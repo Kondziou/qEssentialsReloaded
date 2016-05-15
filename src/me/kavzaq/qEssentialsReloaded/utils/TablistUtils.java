@@ -40,10 +40,6 @@ public class TablistUtils {
             message++;
         }
         for (int i = 0; i <= 19; i++) {
-            if (message >= 79) {
-                Main.getTabExecutor().updateSlot(p, i, 3, Util.fixColors(ReplaceUtils.replaceVariables(p, strings.get(78))));
-                break;
-            }
             Main.getTabExecutor().updateSlot(p, i, 3, Util.fixColors(ReplaceUtils.replaceVariables(p, strings.get(message))));
             message++;
         }
@@ -69,10 +65,6 @@ public class TablistUtils {
             message++;
         }
         for (int i = 0; i <= 19; i++) {
-            if (message >= 79) {
-                Main.getTabExecutor().addSlot(p, i, 3, Util.fixColors(ReplaceUtils.replaceVariables(p, strings.get(78))));
-                break;
-            }
             Main.getTabExecutor().addSlot(p, i, 3, Util.fixColors(ReplaceUtils.replaceVariables(p, strings.get(message))));
             message++;
         }

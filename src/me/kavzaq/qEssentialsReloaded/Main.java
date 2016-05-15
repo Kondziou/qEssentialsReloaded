@@ -41,6 +41,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.KickCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.KitCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ListCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.MessageCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.PowerToolCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.RepairCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ReplyCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.SetHomeCommand;
@@ -50,6 +51,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.TimeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpAcceptCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpDenyCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.TpHereCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpaCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WeatherCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
@@ -85,6 +87,9 @@ import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
+import me.kavzaq.qEssentialsReloaded.listeners.PlayerInteractListener;
+import me.kavzaq.qEssentialsReloaded.listeners.PlayerRespawnListener;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
@@ -245,6 +250,12 @@ public class Main extends JavaPlugin {
         TablistFile.loadFile();
         Tablist.loadTablist();
         Tablist.saveTablist();
+        
+        CacheFile.loadFile();
+        CacheFile.getFileConfiguration().set("SPAWN_LOCATION", "world 0 100 0 0.0 0.0");
+        CacheFile.save();
+        CacheFile.saveDefaultConfig();
+        
         saveDefaultConfig();
         l.info("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();
@@ -256,6 +267,8 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new FoodLevelChangeListener(), this);
         pm.registerEvents(new SignChangeListener(), this);
         pm.registerEvents(new AsyncPlayerPreLoginListener(), this);
+        pm.registerEvents(new PlayerInteractListener(), this);
+        pm.registerEvents(new PlayerRespawnListener(), this);
         l.info("[qEssentialsReloaded] Registering commands...");
         CommandManager.registerCommand(new GameModeCommand());
         CommandManager.registerCommand(new BroadcastCommand());
@@ -296,6 +309,8 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new KickCommand());
         CommandManager.registerCommand(new HatCommand());
         CommandManager.registerCommand(new DisplayNameCommand());
+        CommandManager.registerCommand(new PowerToolCommand());
+        CommandManager.registerCommand(new TpHereCommand());
         //aliases
         CommandManager.registerCommand(new SunAlias());
         CommandManager.registerCommand(new ThunderAlias());

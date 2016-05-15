@@ -87,6 +87,7 @@ public class TabConfigurationImpl {
     public static String tabSlot_72 = "";
     public static String tabSlot_73 = "";
     public static String tabSlot_74 = "";
+    public static String tabSlot_75 = "";
     public static String tabSlot_76 = "";
     public static String tabSlot_77 = "";
     public static String tabSlot_78 = "";

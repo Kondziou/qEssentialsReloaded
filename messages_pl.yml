@@ -1,6 +1,7 @@
 LANGUAGE: pl
 TRANSLATION_AUTHOR: AdamGrzegorz aka KaVzaQ/KHaliT
 NO_PERMISSION: '&4Blad: &cNie masz uprawnien do tej komendy! &7(%permission%)'
+BYPASS_PERMISSION: '&4Blad: &cNie mozesz zrobic tego na tym graczu!'
 ONLY_PLAYER: '&rNie mozesz wykonac tej komendy jako konsola!'
 BAD_ARGS: '&4Blad: &cPoprawne uzycie: '
 OFFLINE_PLAYER: '&4Blad: &cWyglada na to, ze wybrany gracz jest offline!'
@@ -114,6 +115,7 @@ HOME_LIST_HEADER: '&7Lista twoich domow: '
 HOME_SUCCESS: '&7Przeteleportowano do domu o nazwie &c%home%&7!'
 DELHOME_UNKNOWN: '&4Blad: &cNie znaleziono domu o takiej nazwie!'
 DELHOME_SUCCESS: '&7Pomyslnie usunales dom o nazwie &c%home%&7!'
+TPHERE_SUCCESS: '&7Pomyslnie przeteleportowano gracza &c%player%&7 do ciebie!'
 MESSAGE_TO_FORMAT: '&7[&cJa&7 -> &c%player%&7] &c%message%'
 MESSAGE_FROM_FORMAT: '&7[&c%player% &7-> &cJa&7] &c%message%'
 REPLY_OFFLINE_OR_NO_CONV: '&4Blad: &cGracz jest offline lub nie masz ostatniej konwersacji!'
@@ -170,6 +172,10 @@ DISPLAYNAME_OTHER_SUCCESS: '&7Pomyslnie ustawiono wyswietlana nazwe gracza &c%pl
   na &c%displayname%&7!'
 DISPLAYNAME_OTHER_CHANGED: '&7Twoja wyswietlana nazwa zostala ustawiona na &c%displayname%
   &7przez &c%player%&7!'
+POWERTOOL_UNKNOWN: '&4Blad: &cPrzedmiot ktory trzymasz w rece nie moze byc powertoolem.'
+POWERTOOL_SUCCESS_ASSIGNED: '&7Pomyslnie przypisano komende &c%command% &7do tego
+  przedmiotu.'
+POWERTOOL_SUCCESS: '&7Pomyslnie zresetowales komendy na tym przedmiocie.'
 BACK_DESC: Teleportacja do ostatniej lokacji
 BROADCAST_DESC: Globalne ogloszenie
 CHAT_DESC: Zarzadzanie czatem
@@ -209,3 +215,5 @@ REPAIR_DESC: Zarzadzanie naprawiem ekwipunku
 KICK_DESC: Wyrzuca gracza z powodem
 HAT_DESC: Ustawia nowa czapke
 DISPLAYNAME_DESC: Zarzadza wyswietlana nazwa
+POWERTOOL_DESC: Przydziela komende do przedmiotu
+TPHERE_DESC: Teleportuje gracza do ciebie

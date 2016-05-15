@@ -167,6 +167,9 @@ public class MessagesImpl {
     public static String DELHOME_UNKNOWN = "&4Blad: &cNie znaleziono domu o takiej nazwie!";
     public static String DELHOME_SUCCESS = "&7Pomyslnie usunales dom o nazwie &c%home%&7!";
     
+    // Tphere command
+    public static String TPHERE_SUCCESS = "&7Pomyslnie przeteleportowano gracza &c%player%&7 do ciebie!";
+    
     // Message command
     public static String MESSAGE_TO_FORMAT = "&7[&cJa&7 -> &c%player%&7] &c%message%";
     public static String MESSAGE_FROM_FORMAT = "&7[&c%player% &7-> &cJa&7] &c%message%";
@@ -237,6 +240,11 @@ public class MessagesImpl {
     public static String DISPLAYNAME_OTHER_SUCCESS = "&7Pomyslnie ustawiono wyswietlana nazwe gracza &c%player%&7 na &c%displayname%&7!";
     public static String DISPLAYNAME_OTHER_CHANGED = "&7Twoja wyswietlana nazwa zostala ustawiona na &c%displayname% &7przez &c%player%&7!";
     
+    // Powertool command
+    public static String POWERTOOL_UNKNOWN = "&4Blad: &cPrzedmiot ktory trzymasz w rece nie moze byc powertoolem.";
+    public static String POWERTOOL_SUCCESS_ASSIGNED = "&7Pomyslnie przypisano komende &c%command% &7do tego przedmiotu.";
+    public static String POWERTOOL_SUCCESS = "&7Pomyslnie zresetowales komendy na tym przedmiocie.";
+    
     // Commands desc
     public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
     public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -277,4 +285,6 @@ public class MessagesImpl {
     public static String KICK_DESC = "Wyrzuca gracza z powodem";
     public static String HAT_DESC = "Ustawia nowa czapke";
     public static String DISPLAYNAME_DESC = "Zarzadza wyswietlana nazwa";
+    public static String POWERTOOL_DESC = "Przydziela komende do przedmiotu";
+    public static String TPHERE_DESC = "Teleportuje gracza do ciebie";
 }
