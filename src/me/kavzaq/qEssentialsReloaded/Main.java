@@ -52,6 +52,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.TpAcceptCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpDenyCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpHereCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.TpPosCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpaCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WeatherCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
@@ -87,6 +88,7 @@ import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.impl.managers.GroupChatManager;
 import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerInteractListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerRespawnListener;
@@ -311,6 +313,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new DisplayNameCommand());
         CommandManager.registerCommand(new PowerToolCommand());
         CommandManager.registerCommand(new TpHereCommand());
+        CommandManager.registerCommand(new TpPosCommand());
         //aliases
         CommandManager.registerCommand(new SunAlias());
         CommandManager.registerCommand(new ThunderAlias());
@@ -343,6 +346,8 @@ public class Main extends JavaPlugin {
         EnchantmentUtils.configureEnchantments();
         l.info("[qEssentialsReloaded] Loading kits...");
         Main.getKitManager().load();
+        l.info("[qEssentialsReloaded] Loading groups...");
+        GroupChatManager.loadGroups();
         loadTime = System.currentTimeMillis() - startTime;
         l.info("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
 
@@ -356,6 +361,5 @@ public class Main extends JavaPlugin {
         } else {
             l.info("[qEssentialsReloaded] [Updater] You have a current version of qEssentialsReloaded!");
         }
-
     }
 }

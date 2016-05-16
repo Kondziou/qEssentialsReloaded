@@ -40,6 +40,10 @@ max-homes: 3
 chat-format: "&8[&c{HEALTH}/10.0&8] &8[&e{FOOD}/10&8] &7{PLAYER}&8: &f{MESSAGE}"
 # Chat slowdown (in seconds)
 chat-slowdown: 3
+# Group chat
+groups:
+  default: '&7{PLAYER}&8: &f{MESSAGE}'
+  admin: '&8[&4Admin&8] &7{PLAYER}&8: &f{MESSAGE}'
 
 ####################################################
 ##                     Kits                       ##

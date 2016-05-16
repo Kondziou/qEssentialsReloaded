@@ -12,6 +12,7 @@ import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.apache.commons.lang.StringUtils;
 
 public class SetHomeCommand extends CommandImpl {
 
@@ -39,6 +40,11 @@ public class SetHomeCommand extends CommandImpl {
                 Util.sendMessage(p, MessagesImpl.SETHOME_HAS_THIS_NAME);
                 return;
             }
+        }
+        
+        if (!StringUtils.isAlpha(args[0])) {
+            Util.sendMessage(p, MessagesImpl.SETHOME_INVALID);
+            return;
         }
         
         u.addHome(new HomeDataImpl(args[0], p.getLocation()));

@@ -79,6 +79,7 @@ public class PaginatorUtils {
         map.put(38, MessagesImpl.HELP_INDEX.replace("%command%", "displayname").replace("%description%", MessagesImpl.DISPLAYNAME_DESC));
         map.put(39, MessagesImpl.HELP_INDEX.replace("%command%", "powertool").replace("%description%", MessagesImpl.POWERTOOL_DESC));
         map.put(40, MessagesImpl.HELP_INDEX.replace("%command%", "tphere").replace("%description%", MessagesImpl.TPHERE_DESC));
+        map.put(41, MessagesImpl.HELP_INDEX.replace("%command%", "tppos").replace("%description%", MessagesImpl.TPPOS_DESC));
     }
 
 }

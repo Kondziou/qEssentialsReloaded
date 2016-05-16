@@ -14,9 +14,6 @@ import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 
 public class TeleportUtils {
     
-    // obiekt zamiast po prostu hashmapy poniewaz zamierzam
-    // dodac pare rzeczy ktore tego obiektu beda wymagaly
-    
     public static List<Player> users = Lists.newArrayList();
     
     private Player player;
@@ -37,7 +34,6 @@ public class TeleportUtils {
                 .replace("%delay%", String.valueOf(Main.getInstance().getConfig().getLong("delay"))));
         
         task = Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
-
             @Override
             public void run() {
                 if (users.contains(player)) {
@@ -47,6 +43,35 @@ public class TeleportUtils {
                     }
                     
                     player.teleport(loc);
+                    Util.sendMessage(player, MessagesImpl.TELEPORT_SUCCESS);
+                    users.remove(player);
+                    Bukkit.getScheduler().cancelTask(task.getTaskId());
+                } 
+            }
+        }, Main.getInstance().getConfig().getLong("delay") * 20L);
+    }
+    
+    public void teleport(Location loc, boolean dontSend) {
+        if (player.hasPermission("qessentials.teleport.bypass")) {
+            player.teleport(loc);
+            return;
+        }
+        
+        users.add(player);
+        Util.sendMessage(player, MessagesImpl.TELEPORT_PROCESS
+                .replace("%delay%", String.valueOf(Main.getInstance().getConfig().getLong("delay"))));
+        
+        task = Main.getInstance().getServer().getScheduler().runTaskLater(Main.getInstance(), new Runnable() {
+            @Override
+            public void run() {
+                if (users.contains(player)) {
+                    if (!player.isOnline()) {
+                        users.remove(player);
+                        return;
+                    }
+                    
+                    player.teleport(loc);
+                    if (!dontSend) Util.sendMessage(player, MessagesImpl.TELEPORT_SUCCESS);
                     users.remove(player);
                     Bukkit.getScheduler().cancelTask(task.getTaskId());
                 } 

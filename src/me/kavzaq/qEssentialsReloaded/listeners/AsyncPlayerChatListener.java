@@ -9,6 +9,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.managers.GroupChatManager;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.switches.ChatSwitch;
 import me.kavzaq.qEssentialsReloaded.utils.timed.SlowdownTimed;
@@ -26,11 +27,25 @@ public class AsyncPlayerChatListener implements Listener {
                 return;
             }
         }
+        String format = null;
+        String defaultFormat = format = Main.getInstance().getConfig().getString("chat-format");
         
-        String format = Main.getInstance().getConfig().getString("chat-format");
-        if (Main.chat_support) {
+        if (!Main.chat_support) {
+            format = defaultFormat;
+        }
+        else if ((Main.chat.getPrimaryGroup(p) == null) || (GroupChatManager.getGroups().get(Main.chat.getPrimaryGroup(p)).isEmpty())) {
+            format = defaultFormat;
             format = StringUtils.replace(format, "{SUFFIX}", Main.chat.getPlayerSuffix(p));
             format = StringUtils.replace(format, "{PREFIX}", Main.chat.getPlayerPrefix(p));
+        } 
+        else if (!GroupChatManager.getGroups().get(Main.chat.getPrimaryGroup(p)).isEmpty()){
+            String primaryGroup = Main.chat.getPrimaryGroup(p);
+            format = GroupChatManager.getGroups().get(primaryGroup);
+            format = StringUtils.replace(format, "{SUFFIX}", Main.chat.getPlayerSuffix(p));
+            format = StringUtils.replace(format, "{PREFIX}", Main.chat.getPlayerPrefix(p));
+        }
+        else {
+            format = defaultFormat;
         }
         format = StringUtils.replace(format, "{PLAYER}", p.getName());
         format = StringUtils.replace(format, "{DISPLAYNAME}", p.getDisplayName());

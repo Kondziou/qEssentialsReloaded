@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class TpCommand extends CommandImpl {
@@ -36,8 +37,8 @@ public class TpCommand extends CommandImpl {
                 Util.sendMessage(p, MessagesImpl.TP_ALL_SUCCESS);
                 for (Player online : Bukkit.getOnlinePlayers()){
                     if (online.equals(p)) return;
-                    online.teleport(p.getLocation());
-                    Util.sendMessage(online, MessagesImpl.TELEPORT_SUCCESS);
+                    TeleportUtils tpu = new TeleportUtils(online);
+                    tpu.teleport(p.getLocation());
                 }
                 return;
             }else{
@@ -47,8 +48,8 @@ public class TpCommand extends CommandImpl {
                         Util.sendMessage(s, MessagesImpl.TELEPORT_SAME_PERSON);
                         return;
                     }
-                    p.teleport(tpTo);
-                    Util.sendMessage(p, MessagesImpl.TELEPORT_SUCCESS);
+                    TeleportUtils tpu = new TeleportUtils(p);
+                    tpu.teleport(tpTo.getLocation());
                     return;
                 }else{
                     Util.sendMessage(p, MessagesImpl.OFFLINE_PLAYER);
@@ -72,7 +73,8 @@ public class TpCommand extends CommandImpl {
                     Util.sendMessage(s, MessagesImpl.TP_FROM_TO_SUCCESS
                             .replace("%player_from%", tpFrom.getName())
                             .replace("%player_to%", tpTo.getName()));
-                    tpFrom.teleport(tpTo.getLocation());
+                    TeleportUtils tpu = new TeleportUtils(tpFrom);
+                    tpu.teleport(tpTo.getLocation());
                     Util.sendMessage(tpFrom, MessagesImpl.TP_TELEPORTED
                             .replace("%player%", tpTo.getName()));
                 } else {

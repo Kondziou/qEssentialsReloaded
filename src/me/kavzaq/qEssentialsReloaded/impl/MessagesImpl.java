@@ -157,6 +157,7 @@ public class MessagesImpl {
     public static String SETHOME_MAX = "&4Blad: &cOsiagnieto maksymalna ilosc domow!";
     public static String SETHOME_HAS_THIS_NAME = "&4Blad: &cJuz masz dom o tej nazwie!";
     public static String SETHOME_SUCCESS = "&7Pomyslnie dodales nowy dom o nazwie &c%home%&7!";
+    public static String SETHOME_INVALID = "&4Blad: &cNazwa domu jest niepoprawna! (Jest za krotka, lub posiada niedozwolone znaki)";
     
     // Home command
     public static String HOME_UNKNOWN = "&4Blad: &cNie znaleziono domu o takiej nazwie!";
@@ -245,6 +246,12 @@ public class MessagesImpl {
     public static String POWERTOOL_SUCCESS_ASSIGNED = "&7Pomyslnie przypisano komende &c%command% &7do tego przedmiotu.";
     public static String POWERTOOL_SUCCESS = "&7Pomyslnie zresetowales komendy na tym przedmiocie.";
     
+    // TpPos command
+    public static String TPPOS_SUCCESS = "&7Zostales przeteleportowany w nastepujace koordynaty: &c%coords%";
+    public static String TPPOS_COORDS_INVALID = "&4Blad: &cKoordynaty nie sa prawidlowe!";
+    public static String TPPOS_OTHER_SUCCESS = "&7Gracz &c%player%&7 zostal przeteleportowany na koordynaty &c%coords%";
+    public static String TPPOS_OTHER_TELEPORTED = "&7Zostales przeteleportowany na koordynaty &c%coords%&7 przez &c%player%";
+    
     // Commands desc
     public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
     public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -287,4 +294,5 @@ public class MessagesImpl {
     public static String DISPLAYNAME_DESC = "Zarzadza wyswietlana nazwa";
     public static String POWERTOOL_DESC = "Przydziela komende do przedmiotu";
     public static String TPHERE_DESC = "Teleportuje gracza do ciebie";
+    public static String TPPOS_DESC = "Teleportuje w okreslone koordynaty";
 }

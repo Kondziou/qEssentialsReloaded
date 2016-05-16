@@ -11,10 +11,11 @@ public class KitManagerImpl {
     
     private static final StringBuilder localsb = new StringBuilder();
 
-    
     public void load() {
+        boolean preloaded = false;
         ConfigurationSection csKits = Main.getInstance().getConfig().getConfigurationSection("kits");
         for (String kitStr : csKits.getKeys(false)) {
+            preloaded = true;
             ConfigurationSection cs = csKits.getConfigurationSection(kitStr);
             
             int cooldown = cs.getInt("cooldown");
@@ -24,6 +25,9 @@ public class KitManagerImpl {
             kit.setCooldown(cooldown * 1000);
             kit.setItems(items);
             KitImpl.list.add(kit);
+        }
+        if (!preloaded) { // nadal nie potrafie naprawic tego bledu. chuj wie co jest.
+            Main.Debug("[qEssentialsReloaded] [Configuration] An error occured: kits did not loaded successfuly. Please /reload or restart server!");
         }
     }
 

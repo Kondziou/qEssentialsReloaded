@@ -28,7 +28,7 @@ public class TpHereCommand extends CommandImpl {
         }
         Player other = Bukkit.getPlayer(args[0]);
         TeleportUtils tpu = new TeleportUtils(other);
-        tpu.teleport(p.getLocation());
+        tpu.teleport(p.getLocation(), true);
         Util.sendMessage(p, MessagesImpl.TPHERE_SUCCESS
             .replace("%player%", other.getName()));
     }
