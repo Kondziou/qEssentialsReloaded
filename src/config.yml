@@ -36,6 +36,8 @@ max-homes: 3
 ####################################################
 ##                     Chat                       ##
 ####################################################
+# Default chat state
+chat-default-enabled: true
 # Default chat format
 chat-format: "&8[&c{HEALTH}/10.0&8] &8[&e{FOOD}/10&8] &7{PLAYER}&8: &f{MESSAGE}"
 # Chat slowdown (in seconds)
@@ -45,6 +47,13 @@ groups:
   default: '&7{PLAYER}&8: &f{MESSAGE}'
   admin: '&8[&4Admin&8] &7{PLAYER}&8: &f{MESSAGE}'
 
+####################################################
+##                  First join                    ##
+####################################################
+# First join message
+first-join-message: '&ePlayer {PLAYER} is for first time on our server!'
+# First-join kit
+first-join-kit: custom
 ####################################################
 ##                     Kits                       ##
 ####################################################

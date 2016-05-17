@@ -109,6 +109,7 @@ public class Main extends JavaPlugin {
     private static MessageContainerImpl messagecontainer;
     private static KitManagerImpl kitmanager;
     private static Random random;
+    private static SQLite sqlite;
     private static final Logger l = Bukkit.getLogger();
 
     // FunnyGuilds
@@ -145,6 +146,10 @@ public class Main extends JavaPlugin {
 
     public static Random getRandom() {
         return random;
+    }
+    
+    public static SQLite getSQLite() {
+        return sqlite;
     }
 
     public static Metrics getMetrics() {
@@ -213,7 +218,7 @@ public class Main extends JavaPlugin {
         startTime = System.currentTimeMillis();
         l.info("[qEssentialsReloaded] Loading resources...");
         l.info("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
-        new SQLite();
+        sqlite = new SQLite();
         l.info("[qEssentialsReloaded] Instantiating object implementations...");
         userManager = new UserManagerImpl();
         tabmanager = new TabManagerImpl();
@@ -257,7 +262,7 @@ public class Main extends JavaPlugin {
         CacheFile.getFileConfiguration().set("SPAWN_LOCATION", "world 0 100 0 0.0 0.0");
         CacheFile.save();
         CacheFile.saveDefaultConfig();
-        
+
         saveDefaultConfig();
         l.info("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();

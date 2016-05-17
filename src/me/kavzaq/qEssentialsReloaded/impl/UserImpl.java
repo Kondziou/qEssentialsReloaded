@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.UUID;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.entity.Player;
 
@@ -88,14 +89,13 @@ public class UserImpl {
 
     public void save() {
         if (!changed) return;
-        Connection conn = SQLite.createConnection();
         PreparedStatement stat = null;
         try {
-            stat = conn.prepareStatement("UPDATE `users` SET `homes`=?,`kits`=? WHERE `uuid`=?");
+            stat = Main.getSQLite().getConnection().prepareStatement("UPDATE `users` SET `homes`=?,`kits`=? WHERE `uuid`=?");
             stat.setString(1, SerializeUtils.serializeList(this.getHomes()));
             stat.setString(2, SerializeUtils.serializeList(this.getKits()));
             stat.setString(3, this.getUUID().toString());
-            SQLite.executeUpdate(stat);
+            Main.getSQLite().executeUpdate(stat);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }

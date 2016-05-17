@@ -1,5 +1,6 @@
 package me.kavzaq.qEssentialsReloaded.utils.reflections;
 
+import com.google.common.collect.Maps;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -32,13 +33,11 @@ public class ReflectionUtils {
         Method entity_getHandle = getMethod(entity.getClass(), "getHandle");
         try {
             nms_entity = entity_getHandle.invoke(entity);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException 
+                | IllegalAccessException 
+                | InvocationTargetException e) {
             e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        } 
         return nms_entity;
     }
  
@@ -46,11 +45,9 @@ public class ReflectionUtils {
         try {
             Field field = cl.getDeclaredField(field_name);
             return field;
-        } catch (SecurityException e) {
+        } catch (SecurityException | NoSuchFieldException e) {
             e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
+        } 
         return null;
     }
  
@@ -67,7 +64,7 @@ public class ReflectionUtils {
     public static Method getMethod(Class<?> cl, String method, Integer args) {
         for (Method m : cl.getMethods()) {
             if (m.getName().equals(method)
-                    && args.equals(Integer.valueOf(m.getParameterTypes().length))) {
+                    && args.equals(m.getParameterTypes().length)) {
                 return m;
             }
         }
@@ -152,9 +149,9 @@ public class ReflectionUtils {
     }
 
 
-    private static final Map<String, Class<?>> _loadedNMSClasses = new HashMap<String, Class<?>>();
+    private static final Map<String, Class<?>> _loadedNMSClasses = Maps.newHashMap();
 
-    private static final Map<String, Class<?>> _loadedOBCClasses = new HashMap<String, Class<?>>();
+    private static final Map<String, Class<?>> _loadedOBCClasses = Maps.newHashMap();
     
 
     public synchronized static Class<?> getNMSClass(String className) {
@@ -204,12 +201,12 @@ public class ReflectionUtils {
         }
     }
 
-    private static final Map<Class<?>, Map<String, Field>> _loadedFields = new HashMap<Class<?>, Map<String, Field>>();
+    private static final Map<Class<?>, Map<String, Field>> _loadedFields = Maps.newHashMap();
     
     public synchronized static Field getFieldWrapper(Class<?> clazz, String name) {
         Map<String, Field> loaded;
         if(!_loadedFields.containsKey(clazz)){
-            loaded = new HashMap<String, Field>();
+            loaded = Maps.newHashMap();
             _loadedFields.put(clazz, loaded);
         }else{
             loaded = _loadedFields.get(clazz);
@@ -230,20 +227,20 @@ public class ReflectionUtils {
     }
 
 
-    private static final Map<Class<?>, Map<String, Map<ArrayWrapper<Class<?>>, Method>>> _loadedMethods = new HashMap<Class<?>, Map<String, Map<ArrayWrapper<Class<?>>, Method>>>();
+    private static final Map<Class<?>, Map<String, Map<ArrayWrapper<Class<?>>, Method>>> _loadedMethods = Maps.newHashMap();
 
     public synchronized static Method getMethodWrapper(Class<?> clazz, String name, Class<?>... args) {
         if(!_loadedMethods.containsKey(clazz)){
-            _loadedMethods.put(clazz, new HashMap<String, Map<ArrayWrapper<Class<?>>, Method>>());
+            _loadedMethods.put(clazz, Maps.newHashMap());
         }
         
         Map<String, Map<ArrayWrapper<Class<?>>, Method>> loadedMethodNames = _loadedMethods.get(clazz);
         if(!loadedMethodNames.containsKey(name)){
-            loadedMethodNames.put(name, new HashMap<ArrayWrapper<Class<?>>, Method>());
+            loadedMethodNames.put(name, Maps.newHashMap());
         }
         
         Map<ArrayWrapper<Class<?>>, Method> loadedSignatures = loadedMethodNames.get(name);
-        ArrayWrapper<Class<?>> wrappedArg = new ArrayWrapper<Class<?>>(args);
+        ArrayWrapper<Class<?>> wrappedArg = new ArrayWrapper<>(args);
         if(loadedSignatures.containsKey(wrappedArg)){
             return loadedSignatures.get(wrappedArg);
         }
