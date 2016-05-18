@@ -272,10 +272,10 @@ public class Main extends JavaPlugin {
         CacheFile.saveDefaultConfig();
        
         saveDefaultConfig();
-        File f = new File(getDataFolder(), "configg.yml");
+        File f = new File(getDataFolder(), "config.yml");
         try {
-           // if (!getDataFolder().exists()) getDataFolder().mkdir();
-            //if (!f.exists()) f.createNewFile();
+            if (!getDataFolder().exists()) getDataFolder().mkdir();
+            if (!f.exists()) f.createNewFile();
             Main.getInstance().getConfig().load(f);
         } catch (IOException | InvalidConfigurationException ex) {
             Main.log.send(ex);
