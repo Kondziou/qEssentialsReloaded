@@ -44,7 +44,7 @@ public class PlayerJoinListener implements Listener{
                         Util.sendMessage(p, ReplaceUtils.replaceVariables(p, s));
                     }
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    Main.log.send(ex);
                     return;
                 }       
             }

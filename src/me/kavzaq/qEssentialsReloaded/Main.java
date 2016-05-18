@@ -3,7 +3,6 @@ package me.kavzaq.qEssentialsReloaded;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
@@ -95,6 +94,8 @@ import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerDeathListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerInteractListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerRespawnListener;
+import me.kavzaq.qEssentialsReloaded.utils.LogUtils;
+import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -114,7 +115,8 @@ public class Main extends JavaPlugin {
     private static KitManagerImpl kitmanager;
     private static Random random;
     private static SQLite sqlite;
-    private static final Logger l = Bukkit.getLogger();
+    
+    public static final LogUtils log = new LogUtils(LogType.INFO);
 
     // FunnyGuilds
     public static boolean funnyguilds_support = false;
@@ -197,12 +199,12 @@ public class Main extends JavaPlugin {
     }
 
     public static void Debug(String string) {
-        l.info(string);
+        log.send(string);
     }
 
     @Override
     public void onLoad() {
-        l.info("[qEssentialsReloaded] [Preload] Instantiating java plugin...");
+        log.send("[qEssentialsReloaded] [Preload] Instantiating java plugin...");
         inst = this;
     }
 
@@ -220,10 +222,10 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         startTime = System.currentTimeMillis();
-        l.info("[qEssentialsReloaded] Loading resources...");
-        l.info("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
+        log.send("[qEssentialsReloaded] Loading resources...");
+        log.send("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
         sqlite = new SQLite();
-        l.info("[qEssentialsReloaded] Instantiating object implementations...");
+        log.send("[qEssentialsReloaded] Instantiating object implementations...");
         userManager = new UserManagerImpl();
         tabmanager = new TabManagerImpl();
         tabexecutor = new TabExecutorImpl();
@@ -231,29 +233,29 @@ public class Main extends JavaPlugin {
         teleportrequests = new TeleportRequestImpl();
         messagecontainer = new MessageContainerImpl();
         kitmanager = new KitManagerImpl();
-        l.info("[qEssentialsReloaded] Doing some miscellaneous work...");
-        l.info("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
+        log.send("[qEssentialsReloaded] Doing some miscellaneous work...");
+        log.send("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
         if (!Bukkit.getPluginManager().isPluginEnabled("FunnyGuilds")) {
-            l.info("[qEssentialsReloaded] [Misc] FunnyGuilds missing, disabling tab variables...");
+            log.send(LogType.WARN, "[qEssentialsReloaded] [Misc] FunnyGuilds missing, disabling tab variables...");
         } else {
-            l.info("[qEssentialsReloaded] [Misc] FunnyGuilds found, enabling tab variables...");
+            log.send("[qEssentialsReloaded] [Misc] FunnyGuilds found, enabling tab variables...");
             funnyguilds_support = true;
         }
-        l.info("[qEssentialsReloaded] [Misc] Loading Vault optionally...");
+        log.send("[qEssentialsReloaded] [Misc] Loading Vault optionally...");
         if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-            l.info("[qEssentialsReloaded] [Misc] Vault missing, disabling vault functions...");
+            log.send(LogType.WARN, "[qEssentialsReloaded] [Misc] Vault missing, disabling vault functions...");
         } else {
-            l.info("[qEssentialsReloaded] [Misc] Vault found, enabling vault functions...");
+            log.send("[qEssentialsReloaded] [Misc] Vault found, enabling vault functions...");
             setupChat();
             setupEconomy();
             economy_support = true;
             chat_support = true;
             if (!Bukkit.getPluginManager().isPluginEnabled("PermissionsEx")) {
-                l.info("[qEssentialsReloaded] [Misc] PermissionsEx missing, disabling vault chat functions...");
+                log.send(LogType.WARN, "[qEssentialsReloaded] [Misc] PermissionsEx missing, disabling vault chat functions...");
                 chat_support = false;
             }
         }
-        l.info("[qEssentialsReloaded] Generating config and message files...");
+        log.send("[qEssentialsReloaded] Generating config and message files...");
         MessageFile.loadFile();
         Messages.loadMessages();
         Messages.saveMessages();
@@ -270,15 +272,15 @@ public class Main extends JavaPlugin {
         CacheFile.saveDefaultConfig();
        
         saveDefaultConfig();
-        File f = new File(getDataFolder(), "config.yml");
+        File f = new File(getDataFolder(), "configg.yml");
         try {
-            if (!getDataFolder().exists()) getDataFolder().mkdir();
-            if (!f.exists()) f.createNewFile();
+           // if (!getDataFolder().exists()) getDataFolder().mkdir();
+            //if (!f.exists()) f.createNewFile();
             Main.getInstance().getConfig().load(f);
         } catch (IOException | InvalidConfigurationException ex) {
-            ex.printStackTrace();
+            Main.log.send(ex);
         }
-        l.info("[qEssentialsReloaded] Registering listeners...");
+        log.send("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerJoinListener(), this);
         pm.registerEvents(new PlayerQuitListener(), this);
@@ -290,8 +292,10 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new AsyncPlayerPreLoginListener(), this);
         pm.registerEvents(new PlayerInteractListener(), this);
         pm.registerEvents(new PlayerRespawnListener(), this);
-        pm.registerEvents(new PlayerDeathListener(), this);
-        l.info("[qEssentialsReloaded] Registering commands...");
+        if (Main.getInstance().getConfig().getBoolean("kill-messages-disabled")) {
+            pm.registerEvents(new PlayerDeathListener(), this);
+        }
+        log.send("[qEssentialsReloaded] Registering commands...");
         CommandManager.registerCommand(new GameModeCommand());
         CommandManager.registerCommand(new BroadcastCommand());
         CommandManager.registerCommand(new HealCommand());
@@ -341,47 +345,47 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new NightAlias());
         // admin
         CommandManager.registerCommand(new ReloadCommand());
-        l.info("[qEssentialsReloaded] Loading online users...");
+        log.send("[qEssentialsReloaded] Loading online users...");
         for (Player p : Bukkit.getOnlinePlayers()) {
             Main.getUserManager().implementUser(p);
         }
-        l.info("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
+        log.send("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
         try {
             metrics = new Metrics(this);
-            l.info("[qEssentialsReloaded] [Metrics] Successfully instantiated metrics!");
+            log.send("[qEssentialsReloaded] [Metrics] Successfully instantiated metrics!");
         } catch (IOException e) {
-            l.info("[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
+            log.send(LogType.WARN, "[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
         }
-        l.info("[qEssentialsReloaded] Configuring tablist messages...");
+        log.send("[qEssentialsReloaded] Configuring tablist messages...");
         TablistUtils.configureMessages();
-        l.info("[qEssentialsReloaded] Preloading tab...");
+        log.send("[qEssentialsReloaded] Preloading tab...");
         Main.getTabExecutor().loadTab();
-        l.info("[qEssentialsReloaded] Starting tasks...");
+        log.send("[qEssentialsReloaded] Starting tasks...");
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new AutoMessageTask(), 0L, getConfig().getLong("automessage-delay") * 20);
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TablistRefreshTask(), 0L, TabConfigurationImpl.tablistRefreshTime * 20);
         Bukkit.getScheduler().runTaskLaterAsynchronously(this, new MetricsCollector(), 20);
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TPSMonitor(), 100L, 1);
-        l.info("[qEssentialsReloaded] Configuring help paged map...");
+        log.send("[qEssentialsReloaded] Configuring help paged map...");
         PaginatorUtils.configureHelp();
-        l.info("[qEssentialsReloaded] Configuring enchantment aliases...");
+        log.send("[qEssentialsReloaded] Configuring enchantment aliases...");
         EnchantmentUtils.configureEnchantments();
-        l.info("[qEssentialsReloaded] Loading kits...");
+        log.send("[qEssentialsReloaded] Loading kits...");
         Main.getKitManager().load();
-        l.info("[qEssentialsReloaded] Loading groups...");
+        log.send("[qEssentialsReloaded] Loading groups...");
         GroupChatManager.loadGroups();
         loadTime = System.currentTimeMillis() - startTime;
-        l.info("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
+        log.send("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
 
         UpdaterImpl.checkUpdate();
         if (!UpdaterImpl.isUpdated()) {
-            l.info("[qEssentialsReloaded] [Updater] New version is available!");
-            l.info("[qEssentialsReloaded] [Updater]   Newest version: " + UpdaterImpl.getNewestVersion());
-            l.info("[qEssentialsReloaded] [Updater]   Current version: " + UpdaterImpl.getCurrentVersion());
-            l.info("[qEssentialsReloaded] [Updater] Please update it on github.com/xVacuum/qEssentialsReloaded/releases");
-            l.info("[qEssentialsReloaded] [Updater] It's important.");
+            log.send("[qEssentialsReloaded] [Updater] New version is available!");
+            log.send("[qEssentialsReloaded] [Updater]   Newest version: " + UpdaterImpl.getNewestVersion());
+            log.send("[qEssentialsReloaded] [Updater]   Current version: " + UpdaterImpl.getCurrentVersion());
+            log.send("[qEssentialsReloaded] [Updater] Please update it on github.com/xVacuum/qEssentialsReloaded/releases");
+            log.send("[qEssentialsReloaded] [Updater] It's important.");
         } else {
-            l.info("[qEssentialsReloaded] [Updater] You have a current version of qEssentialsReloaded!");
+            log.send("[qEssentialsReloaded] [Updater] You have a current version of qEssentialsReloaded!");
         }
     }
 }

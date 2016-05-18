@@ -30,8 +30,8 @@ public class SQLite {
         if (!file.exists()) {
             try {
                 file.createNewFile();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+            } catch (IOException e) {
+                Main.log.send(e);
             }
         }
         database_url = "jdbc:sqlite:" + file.getAbsolutePath();
@@ -39,14 +39,14 @@ public class SQLite {
         // searching for driver
         try {
             Class.forName(driver);
-        } catch (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            Main.log.send(e);
         }
         
         try {
             createTables();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
     }
     
@@ -56,7 +56,7 @@ public class SQLite {
             result = stat.executeQuery();
             stat.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         return result;
     }
@@ -70,7 +70,7 @@ public class SQLite {
                     stat.executeUpdate();
                     stat.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    Main.log.send(e);
                 }
             }
             
@@ -83,7 +83,7 @@ public class SQLite {
             try { 
                 connection = DriverManager.getConnection(database_url);
             } catch (SQLException sqle) {
-                sqle.printStackTrace();
+                Main.log.send(sqle);
             }
         }
         return connection;

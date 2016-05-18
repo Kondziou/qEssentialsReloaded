@@ -38,7 +38,7 @@ public class SetSpawnCommand extends CommandImpl {
                 try {
                     CacheManager.setSpawnLocation(loc);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Main.log.send(e);
                     return;
                 }
                 

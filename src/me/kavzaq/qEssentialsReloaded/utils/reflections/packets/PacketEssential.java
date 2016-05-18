@@ -1,6 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.utils.reflections.packets;
 
 import java.util.List;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
@@ -57,7 +58,7 @@ public class PacketEssential {
         try {
             getPlayerConnection(p).sendPacket((Packet<?>) packet);
         } catch (SecurityException | IllegalArgumentException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
     }
 

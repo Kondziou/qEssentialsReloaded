@@ -28,7 +28,7 @@ public class TabManagerImpl {
             a.setAccessible(true);
             a.set(cons, Enum.valueOf((Class<Enum>) PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO$ENUM_PLAYER_INFO_ACTION, mode));
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         
         List<Object> ppilist = new ArrayList<>();
@@ -38,7 +38,7 @@ public class TabManagerImpl {
             b.setAccessible(true);
             b.set(cons, ppilist);
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         
         PacketEssential.sendPacket(player, cons);
@@ -58,7 +58,7 @@ public class TabManagerImpl {
             headercontent = JSONPacketBuilder.build("{\"text\": \"" + Util.fixColors(header) + "\"}");
             footercontent = JSONPacketBuilder.build("{\"text\": \"" + Util.fixColors(footer) + "\"}");
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         
         
@@ -66,7 +66,7 @@ public class TabManagerImpl {
             a.set(cons, headercontent);
             b.set(cons, footercontent);
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         PacketEssential.sendPacket(player, cons);
     }

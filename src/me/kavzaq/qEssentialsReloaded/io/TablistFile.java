@@ -33,7 +33,7 @@ public class TablistFile {
                 tablistFile.createNewFile();
                 return;
             }catch(IOException ex) {
-                ex.printStackTrace();
+                Main.log.send(ex);
             }
         } 
         

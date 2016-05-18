@@ -1,6 +1,5 @@
 package me.kavzaq.qEssentialsReloaded.impl.managers;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.Lists;
 import me.kavzaq.qEssentialsReloaded.Main;
 
-import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 
@@ -46,7 +44,7 @@ public class UserManagerImpl {
                 return user;
             }
         } catch (SQLException sqle) {
-            sqle.printStackTrace();
+            Main.log.send(sqle);
         }
         return null;
     }
@@ -66,7 +64,7 @@ public class UserManagerImpl {
                 stat.setString(3, SerializeUtils.serializeList(user.getHomes()));
                 stat.setString(4, SerializeUtils.serializeList(user.getKits()));
             } catch (SQLException e) {
-               e.printStackTrace();
+               Main.log.send(e);
             }
         
             Main.getSQLite().executeUpdate(stat);

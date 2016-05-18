@@ -31,7 +31,7 @@ public class UpdaterImpl {
                 try {
                     newestVersion = Util.readUrl("http://kavz.za.pl/plugins/qessentials/update.txt");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Main.log.send(e);
                     return;
                 }
                 if (!currentVersion.equalsIgnoreCase(newestVersion)) {

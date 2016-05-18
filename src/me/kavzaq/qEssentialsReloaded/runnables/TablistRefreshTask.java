@@ -1,5 +1,6 @@
 package me.kavzaq.qEssentialsReloaded.runnables;
 
+import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -15,7 +16,7 @@ public class TablistRefreshTask implements Runnable {
                 for (Player p : Bukkit.getOnlinePlayers()) {
                     TablistUtils.updateTab(p);
                 }
-            } catch (Exception e) { e.printStackTrace(); }
+            } catch (Exception e) { Main.log.send(e); }
         }
     }
 

@@ -300,4 +300,16 @@ public class MessagesImpl {
     public static String TPHERE_DESC = "Teleportuje gracza do ciebie";
     public static String TPPOS_DESC = "Teleportuje w okreslone koordynaty";
     public static String RELOAD_DESC = "Przeladowywuje plugin";
+    
+    public static String TIMEPARSE_DAY = " dzien ";
+    public static String TIMEPARSE_DAYS = " dni ";
+    public static String TIMEPARSE_HOUR = " godzine ";
+    public static String TIMEPARSE_HOURS = " godziny ";
+    public static String TIMEPARSE_HOURS_2 = " godzin ";
+    public static String TIMEPARSE_MINUTE = " minute ";
+    public static String TIMEPARSE_MINUTES = " minuty ";
+    public static String TIMEPARSE_MINUTES_2 = " minut ";
+    public static String TIMEPARSE_SECOND = " sekunde ";
+    public static String TIMEPARSE_SECONDS = " sekundy ";
+    public static String TIMEPARSE_SECONDS_2 = " sekund ";
 }

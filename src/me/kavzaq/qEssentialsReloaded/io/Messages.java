@@ -2,6 +2,7 @@ package me.kavzaq.qEssentialsReloaded.io;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -19,7 +20,7 @@ public class Messages {
                 try {
                     data.set(fld.getName(), fld.get(fld.getName()));
                 } catch (IllegalArgumentException | IllegalAccessException ex) {
-                    ex.printStackTrace();
+                    Main.log.send(ex);
                 }
             }
         }
@@ -27,7 +28,7 @@ public class Messages {
         try {
             data.save(MessageFile.getFile());
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Main.log.send(ex);
         }
     }
     
@@ -46,7 +47,7 @@ public class Messages {
                 }
             }
         }catch(Exception ex) {
-            ex.printStackTrace();
+            Main.log.send(ex);
         }
     
     }

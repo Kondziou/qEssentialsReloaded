@@ -34,7 +34,7 @@ public class CacheFile {
             try{
                 cacheFile.createNewFile();
             } catch(IOException ex) {
-                ex.printStackTrace();
+                Main.log.send(ex);
             }
         } 
         
@@ -49,7 +49,7 @@ public class CacheFile {
     public static void save() {
         try {
             getFileConfiguration().save(cacheFile);
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) { Main.log.send(e); }
     }
     
     public static void reload() {

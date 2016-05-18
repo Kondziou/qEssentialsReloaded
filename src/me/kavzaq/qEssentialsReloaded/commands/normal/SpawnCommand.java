@@ -71,7 +71,7 @@ public class SpawnCommand extends CommandImpl {
                             .replace("%player%", s.getName()));
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Main.log.send(e);
                     return;
                 }
             }

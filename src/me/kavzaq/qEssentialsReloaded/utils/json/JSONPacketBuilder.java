@@ -2,11 +2,14 @@ package me.kavzaq.qEssentialsReloaded.utils.json;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
 import me.kavzaq.qEssentialsReloaded.utils.reflections.packets.PacketEssential;
 
 public class JSONPacketBuilder {
+    
+    private JSONPacketBuilder() { }
     
     public static Object build(String content) {
         Method method = ReflectionUtils.getTypedMethod(
@@ -16,7 +19,7 @@ public class JSONPacketBuilder {
         try {
             return method.invoke(null, content);
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         return null;
     }

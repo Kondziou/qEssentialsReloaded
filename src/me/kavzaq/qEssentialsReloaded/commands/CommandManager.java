@@ -1,6 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.commands;
 
 import java.lang.reflect.Field;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -16,13 +17,13 @@ public class CommandManager {
         try {
             field = SimplePluginManager.class.getDeclaredField("commandMap");
         } catch (NoSuchFieldException | SecurityException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         field.setAccessible(true);
         try {
             return (CommandMap)field.get(Bukkit.getServer().getPluginManager());
         } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         return null;
     }

@@ -3,6 +3,7 @@ package me.kavzaq.qEssentialsReloaded.impl.managers;
 import com.google.common.collect.Maps;
 import java.util.HashMap;
 import me.kavzaq.qEssentialsReloaded.Main;
+import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
 import org.bukkit.configuration.ConfigurationSection;
 
 public class GroupChatManager {
@@ -22,8 +23,8 @@ public class GroupChatManager {
             String groupContent = csGroups.getString(groupName);
             groups.put(groupName, groupContent);
         }
-        if (!preloaded) { // nadal nie potrafie naprawic tego bledu. chuj wie co jest.
-            Main.Debug("[qEssentialsReloaded] [Configuration] An error occured: groups did not loaded successfuly. Please /reload or restart server!");
+        if (!preloaded) { 
+            Main.log.send(LogType.WARN, "[qEssentialsReloaded] [Configuration] An error occured: groups did not loaded successfuly. Please /reload or restart server!");
         }
     }
     

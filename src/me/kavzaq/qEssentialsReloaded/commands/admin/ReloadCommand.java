@@ -47,7 +47,7 @@ public class ReloadCommand extends CommandImpl {
             if (!f.exists()) f.createNewFile();
             Main.getInstance().getConfig().load(f);
         } catch (IOException | InvalidConfigurationException ex) {
-            ex.printStackTrace();
+            Main.log.send(ex);
         }
         Main.getTabExecutor().loadTab();
         Main.getKitManager().load();

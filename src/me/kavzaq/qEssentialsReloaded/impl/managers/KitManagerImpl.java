@@ -6,6 +6,7 @@ import org.bukkit.configuration.ConfigurationSection;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
+import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
 
 public class KitManagerImpl {
     
@@ -27,7 +28,7 @@ public class KitManagerImpl {
             KitImpl.list.add(kit);
         }
         if (!preloaded) { // nadal nie potrafie naprawic tego bledu. chuj wie co jest.
-            Main.Debug("[qEssentialsReloaded] [Configuration] An error occured: kits did not loaded successfuly. Please /reload or restart server!");
+            Main.log.send(LogType.WARN, "[qEssentialsReloaded] [Configuration] An error occured: kits did not loaded successfuly. Please /reload or restart server!");
         }
     }
 

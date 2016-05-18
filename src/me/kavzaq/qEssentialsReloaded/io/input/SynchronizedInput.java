@@ -60,7 +60,7 @@ public class SynchronizedInput {
                 is.close();
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Main.log.send(ex);
         }
        
     }
@@ -76,7 +76,7 @@ public class SynchronizedInput {
                 file.createNewFile();
                 this.file = file;
             } catch (IOException ex) {
-                ex.printStackTrace();
+                Main.log.send(ex);
             }
         }
         boolean read = false;
@@ -113,7 +113,7 @@ public class SynchronizedInput {
                         buffer.close();
                     }   
                 } catch (UnsupportedEncodingException ex) {
-                    ex.printStackTrace();
+                    Main.log.send(ex);
                 }
             }
         } else {

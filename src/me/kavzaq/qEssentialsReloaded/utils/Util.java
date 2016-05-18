@@ -20,6 +20,7 @@ import org.bukkit.entity.Player;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 
 import com.google.common.collect.Lists;
+import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 
 public class Util {
     
@@ -101,29 +102,29 @@ public class Util {
         if (days > 0) {
             sb.append(days);
             long i = days % 10;
-            if (i == 1) sb.append(" dzien ");
-            else sb.append(" dni ");
+            if (i == 1) sb.append(MessagesImpl.TIMEPARSE_DAY);
+            else sb.append(MessagesImpl.TIMEPARSE_DAYS);
         }
         if (hours > 0) {
             sb.append(hours);
             long i = hours % 10;
-            if (i == 1) sb.append(" godzine ");
-            else if (i < 5) sb.append(" godziny ");
-            else sb.append(" godzin ");
+            if (i == 1) sb.append(MessagesImpl.TIMEPARSE_HOUR);
+            else if (i < 5) sb.append(MessagesImpl.TIMEPARSE_HOURS);
+            else sb.append(MessagesImpl.TIMEPARSE_HOURS_2);
         }
         if (minutes > 0) {
             sb.append(minutes);
             long i = minutes % 10;
-            if (i == 1) sb.append(" minute ");
-            else if (i < 5) sb.append(" minuty ");
-            else sb.append(" minut ");
+            if (i == 1) sb.append(MessagesImpl.TIMEPARSE_MINUTE);
+            else if (i < 5) sb.append(MessagesImpl.TIMEPARSE_MINUTES);
+            else sb.append(MessagesImpl.TIMEPARSE_MINUTES_2);
         }
         if (seconds > 0) {
             sb.append(seconds);
             long i = seconds % 10;
-            if (i == 1) sb.append(" sekunde ");
-            else if (i < 5) sb.append(" sekundy ");
-            else sb.append(" sekund ");
+            if (i == 1) sb.append(MessagesImpl.TIMEPARSE_SECOND);
+            else if (i < 5) sb.append(MessagesImpl.TIMEPARSE_SECONDS);
+            else sb.append(MessagesImpl.TIMEPARSE_SECONDS_2);
         }
         return (sb.toString());
     }

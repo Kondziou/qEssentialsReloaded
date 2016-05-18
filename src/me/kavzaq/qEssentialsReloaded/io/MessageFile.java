@@ -34,7 +34,7 @@ public class MessageFile {
                 messageFile.createNewFile();
                 return;
             }catch(IOException ex) {
-                ex.printStackTrace();
+                Main.log.send(ex);
             }
         }  
     }

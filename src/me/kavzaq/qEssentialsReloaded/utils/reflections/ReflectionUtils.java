@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.Bukkit;
 
@@ -23,7 +23,7 @@ public class ReflectionUtils {
         try {
             c = Class.forName(className);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         }
         return c;
     }
@@ -36,7 +36,7 @@ public class ReflectionUtils {
         } catch (IllegalArgumentException 
                 | IllegalAccessException 
                 | InvocationTargetException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         } 
         return nms_entity;
     }
@@ -46,7 +46,7 @@ public class ReflectionUtils {
             Field field = cl.getDeclaredField(field_name);
             return field;
         } catch (SecurityException | NoSuchFieldException e) {
-            e.printStackTrace();
+            Main.log.send(e);
         } 
         return null;
     }
@@ -100,7 +100,7 @@ public class ReflectionUtils {
                     return cons.newInstance(params);
                 } catch (InstantiationException | IllegalAccessException 
                         | IllegalArgumentException| InvocationTargetException e) {
-                    e.printStackTrace();
+                    Main.log.send(e);
                 }
             }
         }
@@ -164,7 +164,7 @@ public class ReflectionUtils {
         try {
             clazz = Class.forName(fullName);
         } catch (Exception e) {
-            e.printStackTrace();
+            Main.log.send(e);
             _loadedNMSClasses.put(className, null);
             return null;
         }
@@ -183,7 +183,7 @@ public class ReflectionUtils {
         try {
             clazz = Class.forName(fullName);
         } catch (Exception e) {
-            e.printStackTrace();
+            Main.log.send(e);
             _loadedOBCClasses.put(className, null);
             return null;
         }
@@ -196,7 +196,7 @@ public class ReflectionUtils {
         try {
             return getMethod(obj.getClass(), "getHandle").invoke(obj);
         } catch (Exception e) {
-            e.printStackTrace();
+            Main.log.send(e);
             return null;
         }
     }
@@ -220,7 +220,7 @@ public class ReflectionUtils {
             loaded.put(name, field);
             return field;
         } catch (Exception e) {
-            e.printStackTrace();
+            Main.log.send(e);
             loaded.put(name, null);
             return null;
         }

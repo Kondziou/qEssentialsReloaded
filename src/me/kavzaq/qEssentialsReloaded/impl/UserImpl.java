@@ -97,7 +97,7 @@ public class UserImpl {
             stat.setString(3, this.getUUID().toString());
             Main.getSQLite().executeUpdate(stat);
         } catch (SQLException sqle) {
-            sqle.printStackTrace();
+            Main.log.send(sqle);
         }
         changed = false;
     }
