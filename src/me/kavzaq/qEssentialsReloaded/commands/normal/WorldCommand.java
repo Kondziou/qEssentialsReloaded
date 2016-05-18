@@ -1,6 +1,8 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
 import java.util.Arrays;
+import java.util.List;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -39,6 +41,11 @@ public class WorldCommand extends CommandImpl {
             World world = Bukkit.getWorld(args[0]);
             if (world == null) {
                 Util.sendMessage(p, MessagesImpl.WORLD_NOT_EXISTS);
+                return;
+            }
+            List<String> blockedWorlds = Main.getInstance().getConfig().getStringList("blocked-worlds");
+            if (blockedWorlds.contains(world.getName())) {
+                Util.sendMessage(p, MessagesImpl.WORLD_BLOCKED);
                 return;
             }
             TeleportUtils tpu = new TeleportUtils(p);

@@ -14,6 +14,12 @@ quit-format: '&c{PLAYER} left the game.'
 join-format: '&a{PLAYER} joined the game.'
 # Kick temporary ban in seconds
 kick-temporary-ban: 20
+# Disabled worlds
+disabled-worlds:
+  - 'blockedworld'
+  - 'blockedworld2'
+# Kill messages
+kill-messages-disabled: false
 ####################################################
 ##                    Helpop                      ##
 ####################################################

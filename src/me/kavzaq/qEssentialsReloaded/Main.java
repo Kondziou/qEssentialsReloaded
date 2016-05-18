@@ -1,5 +1,6 @@
 package me.kavzaq.qEssentialsReloaded;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Logger;
@@ -11,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 import me.kavzaq.qEssentialsReloaded.commands.CommandManager;
+import me.kavzaq.qEssentialsReloaded.commands.admin.ReloadCommand;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.DayAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
@@ -90,10 +92,12 @@ import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.GroupChatManager;
 import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
+import me.kavzaq.qEssentialsReloaded.listeners.PlayerDeathListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerInteractListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerRespawnListener;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 public class Main extends JavaPlugin {
@@ -258,12 +262,22 @@ public class Main extends JavaPlugin {
         Tablist.loadTablist();
         Tablist.saveTablist();
         
-        CacheFile.loadFile();
-        CacheFile.getFileConfiguration().set("SPAWN_LOCATION", "world 0 100 0 0.0 0.0");
+        if (!CacheFile.getFile().exists()) {
+            CacheFile.loadFile();
+            CacheFile.getFileConfiguration().set("SPAWN_LOCATION", "world 0 100 0 0.0 0.0");
+        }
         CacheFile.save();
         CacheFile.saveDefaultConfig();
-
+       
         saveDefaultConfig();
+        File f = new File(getDataFolder(), "config.yml");
+        try {
+            if (!getDataFolder().exists()) getDataFolder().mkdir();
+            if (!f.exists()) f.createNewFile();
+            Main.getInstance().getConfig().load(f);
+        } catch (IOException | InvalidConfigurationException ex) {
+            ex.printStackTrace();
+        }
         l.info("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerJoinListener(), this);
@@ -276,6 +290,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new AsyncPlayerPreLoginListener(), this);
         pm.registerEvents(new PlayerInteractListener(), this);
         pm.registerEvents(new PlayerRespawnListener(), this);
+        pm.registerEvents(new PlayerDeathListener(), this);
         l.info("[qEssentialsReloaded] Registering commands...");
         CommandManager.registerCommand(new GameModeCommand());
         CommandManager.registerCommand(new BroadcastCommand());
@@ -324,6 +339,8 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new ThunderAlias());
         CommandManager.registerCommand(new DayAlias());
         CommandManager.registerCommand(new NightAlias());
+        // admin
+        CommandManager.registerCommand(new ReloadCommand());
         l.info("[qEssentialsReloaded] Loading online users...");
         for (Player p : Bukkit.getOnlinePlayers()) {
             Main.getUserManager().implementUser(p);

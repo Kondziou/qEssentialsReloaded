@@ -135,6 +135,7 @@ public class MessagesImpl {
             "&7Wszystkie dostepne swiaty:");
     public static String WORLD_INDEX = "&7  * &c%world%";
     public static String WORLD_NOT_EXISTS = "&4Blad: &cWybrany swiat nie istnieje!";
+    public static String WORLD_BLOCKED = "&4Blad: &cWybrany swiat jest zablokowany na tym serwerze!";
     
     // WhoIs command
     public static List<String> WHOIS_INFO = Arrays.asList(
@@ -152,6 +153,9 @@ public class MessagesImpl {
             "%homes%");
     
     public static String WHOIS_HOMES_INDEX = "&7  * &c%home% &7: &c%location%";
+    
+    // Reload command
+    public static String RELOAD_SUCCESS = "&aPomyslnie przeladowano plugin qEssentialsReloaded v%version%";
     
     // SetHome command
     public static String SETHOME_MAX = "&4Blad: &cOsiagnieto maksymalna ilosc domow!";
@@ -295,4 +299,5 @@ public class MessagesImpl {
     public static String POWERTOOL_DESC = "Przydziela komende do przedmiotu";
     public static String TPHERE_DESC = "Teleportuje gracza do ciebie";
     public static String TPPOS_DESC = "Teleportuje w okreslone koordynaty";
+    public static String RELOAD_DESC = "Przeladowywuje plugin";
 }
