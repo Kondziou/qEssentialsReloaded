@@ -29,6 +29,10 @@ public class MessageCommand extends CommandImpl {
             Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
             return;
         }
+        if (s.equals(other)) {
+            Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+            return;
+        }
         String message = Util.fixColors(StringUtils.join(args, " ", 1, args.length));
         Main.getMessageData().getMessageContainer().put(s.getName(), other.getName());
         Main.getMessageData().getMessageContainer().put(other.getName(), s.getName());

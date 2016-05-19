@@ -80,8 +80,8 @@ public class PaginatorUtils {
         map.put(39, MessagesImpl.HELP_INDEX.replace("%command%", "powertool").replace("%description%", MessagesImpl.POWERTOOL_DESC));
         map.put(40, MessagesImpl.HELP_INDEX.replace("%command%", "tphere").replace("%description%", MessagesImpl.TPHERE_DESC));
         map.put(41, MessagesImpl.HELP_INDEX.replace("%command%", "tppos").replace("%description%", MessagesImpl.TPPOS_DESC));
-        
         map.put(42, MessagesImpl.HELP_INDEX.replace("%command%", "qreload").replace("%description%", MessagesImpl.RELOAD_DESC));
+        map.put(43, MessagesImpl.HELP_INDEX.replace("%command%", "kill").replace("%description%", MessagesImpl.KILL_DESC));
     }
 
 }

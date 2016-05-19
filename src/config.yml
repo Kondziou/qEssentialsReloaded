@@ -4,8 +4,9 @@
 ##                 Configuration                  ##
 ##                                                ##
 ####################################################
-# Messages language. 
-# Available: pl, en, de
+# Messages language. More languages you can find on github
+# http://github.com/xVacuum/qEssentialsReloaded
+# Available: pl
 language: pl
 # Help page length (commands per page)
 help-page-length: 10

@@ -35,6 +35,10 @@ public class TpaCommand extends CommandImpl {
             return;
         }
         Player receiver = Bukkit.getPlayer(args[0]);
+        if (s.equals(receiver)) {
+            Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+            return;
+        }
         if (Main.getTeleportRequests().alreadyRequested(p, receiver)) {
             Util.sendMessage(p, MessagesImpl.TPA_ALREADY_REQUESTED);
             return;

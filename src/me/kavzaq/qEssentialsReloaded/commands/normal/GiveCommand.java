@@ -34,6 +34,10 @@ public class GiveCommand extends CommandImpl {
             Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
             return;
         }
+        if (s.equals(other)) {
+            Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+            return;
+        }
         String syntax = StringUtils.join(args, " ", 1, args.length);
         ItemStack item;
         try {

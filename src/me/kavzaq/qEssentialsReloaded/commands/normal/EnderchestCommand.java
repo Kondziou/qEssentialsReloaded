@@ -38,6 +38,10 @@ public class EnderchestCommand extends CommandImpl {
                 return;
             }
             Player other = Bukkit.getPlayer(args[0]);
+            if (s.equals(other)) {
+                Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+                return;
+            }
             p.openInventory(other.getEnderChest());
             return;
         }

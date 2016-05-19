@@ -57,6 +57,10 @@ public class WhoIsCommand extends CommandImpl {
                 return;
             }
             Player other = Bukkit.getPlayer(args[0]);
+            if (s.equals(other)) {
+                Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+                return;
+            }
             UserImpl otheru = Main.getUserManager().getUser(other);
             for (String str : MessagesImpl.WHOIS_INFO) {
                 Util.sendMessage(s, str

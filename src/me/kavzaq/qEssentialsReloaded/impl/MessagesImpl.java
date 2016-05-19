@@ -256,6 +256,11 @@ public class MessagesImpl {
     public static String TPPOS_OTHER_SUCCESS = "&7Gracz &c%player%&7 zostal przeteleportowany na koordynaty &c%coords%";
     public static String TPPOS_OTHER_TELEPORTED = "&7Zostales przeteleportowany na koordynaty &c%coords%&7 przez &c%player%";
     
+    // Kill command
+    public static String KILL_SUCCESS = "&7Zabito!";
+    public static String KILL_OTHER_SUCCESS = "&7Pomyslnie zabiles gracza &c%player%&7!";
+    public static String KILL_OTHER_KILLED = "&7Zostales zabity przez &c%player%&7!";
+    
     // Commands desc
     public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
     public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -300,6 +305,7 @@ public class MessagesImpl {
     public static String TPHERE_DESC = "Teleportuje gracza do ciebie";
     public static String TPPOS_DESC = "Teleportuje w okreslone koordynaty";
     public static String RELOAD_DESC = "Przeladowywuje plugin";
+    public static String KILL_DESC = "Pozwala na zabicie gracza";
     
     public static String TIMEPARSE_DAY = " dzien ";
     public static String TIMEPARSE_DAYS = " dni ";

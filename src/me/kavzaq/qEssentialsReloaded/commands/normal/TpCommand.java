@@ -43,6 +43,10 @@ public class TpCommand extends CommandImpl {
                 return;
             }else{
                 Player tpTo = Bukkit.getPlayerExact(args[0]);
+                if (s.equals(tpTo)) {
+                    Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+                    return;
+                }
                 if(!(tpTo == null)){
                     if (s.equals(tpTo)) {
                         Util.sendMessage(s, MessagesImpl.TELEPORT_SAME_PERSON);

@@ -39,6 +39,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.HomeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.InvseeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ItemCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.KickCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.KillCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.KitCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ListCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.MessageCommand;
@@ -338,6 +339,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new PowerToolCommand());
         CommandManager.registerCommand(new TpHereCommand());
         CommandManager.registerCommand(new TpPosCommand());
+        CommandManager.registerCommand(new KillCommand());
         //aliases
         CommandManager.registerCommand(new SunAlias());
         CommandManager.registerCommand(new ThunderAlias());
@@ -376,16 +378,5 @@ public class Main extends JavaPlugin {
         GroupChatManager.loadGroups();
         loadTime = System.currentTimeMillis() - startTime;
         log.send("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
-
-        UpdaterImpl.checkUpdate();
-        if (!UpdaterImpl.isUpdated()) {
-            log.send("[qEssentialsReloaded] [Updater] New version is available!");
-            log.send("[qEssentialsReloaded] [Updater]   Newest version: " + UpdaterImpl.getNewestVersion());
-            log.send("[qEssentialsReloaded] [Updater]   Current version: " + UpdaterImpl.getCurrentVersion());
-            log.send("[qEssentialsReloaded] [Updater] Please update it on github.com/xVacuum/qEssentialsReloaded/releases");
-            log.send("[qEssentialsReloaded] [Updater] It's important.");
-        } else {
-            log.send("[qEssentialsReloaded] [Updater] You have a current version of qEssentialsReloaded!");
-        }
     }
 }

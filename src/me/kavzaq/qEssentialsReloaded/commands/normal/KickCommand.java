@@ -30,6 +30,10 @@ public class KickCommand extends CommandImpl {
                 return;
             }
             Player other = Bukkit.getPlayer(args[0]);
+            if (s.equals(other)) {
+                Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+                return;
+            }
             TemporaryBanTimed.setLastTempBan(other.getUniqueId(), System.currentTimeMillis() + 
                     Main.getInstance().getConfig().getLong("kick-temporary-ban") * 1000);
 
@@ -46,6 +50,10 @@ public class KickCommand extends CommandImpl {
                 return;
             }
             Player other = Bukkit.getPlayer(args[0]);
+            if (s.equals(other)) {
+                Util.sendMessage(s, MessagesImpl.SAME_PERSON);
+                return;
+            }
             TemporaryBanTimed.setLastTempBan(other.getUniqueId(), System.currentTimeMillis() + 
                     Main.getInstance().getConfig().getLong("kick-temporary-ban") * 1000);
             other.kickPlayer(Util.fixColors(MessagesImpl.KICK_FORMAT
