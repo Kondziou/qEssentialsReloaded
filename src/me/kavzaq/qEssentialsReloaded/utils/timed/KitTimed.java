@@ -3,9 +3,8 @@ package me.kavzaq.qEssentialsReloaded.utils.timed;
 import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.KitDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
 
@@ -17,22 +16,19 @@ public class KitTimed {
         UserImpl u = Main.getUserManager().getUser(p);
         if (getKitData(kit, p) != null) {
             u.delKit(getKitData(kit, p));
-            u.save();
         }
-
         u.addKit(new KitDataImpl(kit.getName(), System.currentTimeMillis() + kit.getCooldown()));
-        u.save();
+        
     }
     
     public static KitDataImpl getKitData(KitImpl kit, Player p) {
         UserImpl u = Main.getUserManager().getUser(p);
-        String _kit = null;
-        for (String kitStr : u.getKits()) {
-            if (kitStr.contains(kit.getName())) _kit = kitStr;
+        KitDataImpl _kit = null;
+        if (u.getKits() == null) return null;
+        for (KitDataImpl kitData : u.getKits()) {
+            if (kitData.getName().equals(kit.getName())) _kit = kitData;
         }
-        if (_kit == null) return null;
-        KitDataImpl _kitData = SerializeUtils.deserializeKit(_kit);
-        return _kitData;
+        return _kit;
     }
     
     public static boolean canTake(KitImpl kit, Player p) {
@@ -43,10 +39,7 @@ public class KitTimed {
         long timeTake = getKitData(kit, p).getCooldown() == null ? 0 : getKitData(kit, p).getCooldown();
         if(timeTake == 0) return true; 
         long timeCurrent = System.currentTimeMillis();
-        if(timeTake > timeCurrent) {
-            return false;
-        }
-        return true;
+        return timeTake < timeCurrent;
     }
     
     public static String timeRemain(KitImpl kit, Player p) {

@@ -90,17 +90,28 @@ public class SQLite {
     }
     
     private void createTables() throws SQLException {
-        String queryUsers = 
-                "CREATE TABLE IF NOT EXISTS users ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "name VARCHAR(20) NOT NULL, "
-                + "uuid VARCHAR(36) NOT NULL, "
-                + "homes VARCHAR(320),"
-                + "kits VARCHAR(320))";
+        String queryKits = 
+                "CREATE TABLE IF NOT EXISTS kits (" +
+                "uuid VARCHAR(36) NOT NULL," +
+                "name VARCHAR(255) NOT NULL," +
+                "cooldown SIGNED BIGINT)";
         
-        PreparedStatement stat = getConnection().prepareStatement(queryUsers);        
-        stat.executeUpdate();
-        stat.close();
+        PreparedStatement statKits = getConnection().prepareStatement(queryKits);        
+        executeUpdate(statKits);
+
+        String queryHomes = 
+                "CREATE TABLE IF NOT EXISTS homes (" +
+                "uuid VARCHAR(36)," +
+                "name VARCHAR(255)," +
+                "world VARCHAR(32)," +
+                "x FLOAT(255)," +
+                "y FLOAT(255)," +
+                "z FLOAT(255)," +
+                "pitch FLOAT(255)," +
+                "yaw FLOAT(255))";
+        
+        PreparedStatement statHomes = getConnection().prepareStatement(queryHomes);        
+        executeUpdate(statHomes);
     }
 
 }

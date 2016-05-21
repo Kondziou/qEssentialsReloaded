@@ -6,7 +6,7 @@ import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class Tablist {

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import com.google.common.collect.Lists;
 
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class ThunderAlias extends CommandImpl {

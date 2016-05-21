@@ -8,8 +8,8 @@ import org.bukkit.World;
 
 import com.google.common.collect.Lists;
 
-import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.KitDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
 
 public class SerializeUtils {
     

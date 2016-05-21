@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.impl.managers.GroupChatManager;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.managers.ChatManagerImpl;
 import me.kavzaq.qEssentialsReloaded.io.MessageFile;
 import me.kavzaq.qEssentialsReloaded.io.Messages;
 import me.kavzaq.qEssentialsReloaded.io.Tablist;
@@ -51,7 +51,7 @@ public class ReloadCommand extends CommandImpl {
         }
         Main.getTabExecutor().loadTab();
         Main.getKitManager().load();
-        GroupChatManager.loadGroups();
+        ChatManagerImpl.loadGroups();
         Util.sendMessage(s, MessagesImpl.RELOAD_SUCCESS.replace("%version%", Main.getInstance().getDescription().getVersion()));
     }
     

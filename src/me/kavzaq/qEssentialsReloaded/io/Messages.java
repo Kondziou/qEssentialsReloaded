@@ -6,7 +6,7 @@ import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class Messages {

@@ -6,7 +6,7 @@ import java.util.Arrays;
 import org.bukkit.command.CommandSender;
 
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
 import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;

@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
@@ -38,19 +38,18 @@ public class HomeCommand extends CommandImpl {
         
         else if (args.length == 1) {
             String homeName = args[0];
-            String _home = null;
-            for (String home : u.getHomes()) {
-                if (SerializeUtils.deserializeHomeName(home).equals(homeName)) _home = home;
+            HomeDataImpl _home = null;
+            for (HomeDataImpl home : u.getHomes()) {
+                if (home.getName().equals(homeName)) _home = home;
             }
             if ((_home == null) || (u.getHomes().size() == 0)) {
                 Util.sendMessage(p, MessagesImpl.HOME_UNKNOWN);
                 return;
             }
-            HomeDataImpl homeData = SerializeUtils.deserializeHome(_home);
             TeleportUtils tpu = new TeleportUtils(p);
-            tpu.teleport(homeData.getLocation());
+            tpu.teleport(_home.getLocation());
             Util.sendMessage(p, MessagesImpl.HOME_SUCCESS
-                    .replace("%home%", homeData.getName()));
+                    .replace("%home%", _home.getName()));
             return;
         }
     }

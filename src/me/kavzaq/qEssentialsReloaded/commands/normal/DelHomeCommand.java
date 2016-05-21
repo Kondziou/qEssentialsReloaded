@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
@@ -29,18 +29,16 @@ public class DelHomeCommand extends CommandImpl {
         UserImpl u = Main.getUserManager().getUser(p);
         
         String homeName = args[0];
-        String _home = null;
-        for (String home : u.getHomes()) {
-            if (home.contains(homeName)) _home = home;
+        HomeDataImpl _home = null;
+        for (HomeDataImpl home : u.getHomes()) {
+            if (home.getName().contains(homeName)) _home = home;
         }
         if ((_home == null) || (u.getHomes().size() == 0)) {
             Util.sendMessage(p, MessagesImpl.DELHOME_UNKNOWN);
             return;
         }
-        HomeDataImpl homeData = SerializeUtils.deserializeHome(_home);
         
-        u.delHome(homeData);
-        u.save();
+        u.delHome(_home);
         
         Util.sendMessage(p, MessagesImpl.DELHOME_SUCCESS
                 .replace("%home%", args[0]));

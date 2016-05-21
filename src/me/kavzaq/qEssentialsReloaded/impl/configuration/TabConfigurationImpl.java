@@ -1,4 +1,4 @@
-package me.kavzaq.qEssentialsReloaded.impl;
+package me.kavzaq.qEssentialsReloaded.impl.configuration;
 
 public class TabConfigurationImpl {
     

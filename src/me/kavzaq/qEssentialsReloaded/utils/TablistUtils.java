@@ -8,7 +8,7 @@ import com.google.common.collect.Lists;
 import java.util.Map.Entry;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.io.TablistFile;
 
 public class TablistUtils {

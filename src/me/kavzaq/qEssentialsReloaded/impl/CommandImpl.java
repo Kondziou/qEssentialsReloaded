@@ -1,5 +1,6 @@
 package me.kavzaq.qEssentialsReloaded.impl;
 
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import java.util.List;
 
 import org.bukkit.command.Command;

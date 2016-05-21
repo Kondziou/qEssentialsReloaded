@@ -8,8 +8,8 @@ import org.bukkit.entity.Player;
 import com.mysql.jdbc.StringUtils;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 
 public class ListingUtils {
@@ -20,15 +20,14 @@ public class ListingUtils {
     public static String getHomeList(Player player) {
         localsb.setLength(0);
         UserImpl user = Main.getUserManager().getUser(player);
-        for (String home : user.getHomes()) { 
-            if (!StringUtils.isNullOrEmpty(home)) {
-                HomeDataImpl _home = SerializeUtils.deserializeHome(home);
+        for (HomeDataImpl home : user.getHomes()) { 
+            if (!StringUtils.isNullOrEmpty(home.getName())) {
                 localsb.append(MessagesImpl.WHOIS_HOMES_INDEX
-                        .replace("%home%", _home.getName())
+                        .replace("%home%", home.getName())
                         .replace("%location%", 
-                                "x" + _home.getLocation().getX() +
-                                ", y" + _home.getLocation().getY() +
-                                ", z" + _home.getLocation().getZ())
+                                "x" + home.getLocation().getX() +
+                                ", y" + home.getLocation().getY() +
+                                ", z" + home.getLocation().getZ())
                         + "\n");
             }
         }

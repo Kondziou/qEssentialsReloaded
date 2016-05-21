@@ -1,7 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.runnables;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

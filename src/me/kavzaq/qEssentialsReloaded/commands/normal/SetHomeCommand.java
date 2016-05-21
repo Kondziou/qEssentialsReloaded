@@ -7,8 +7,8 @@ import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
@@ -35,8 +35,8 @@ public class SetHomeCommand extends CommandImpl {
             return;
         }
         
-        for (String home : u.getHomes()) {
-            if (SerializeUtils.deserializeHomeName(home).equals(args[0])){
+        for (HomeDataImpl home : u.getHomes()) {
+            if (home.getName().equals(args[0])){
                 Util.sendMessage(p, MessagesImpl.SETHOME_HAS_THIS_NAME);
                 return;
             }
@@ -48,7 +48,6 @@ public class SetHomeCommand extends CommandImpl {
         }
         
         u.addHome(new HomeDataImpl(args[0], p.getLocation()));
-        u.save();
         
         Util.sendMessage(p, MessagesImpl.SETHOME_SUCCESS
                 .replace("%home%", args[0]));

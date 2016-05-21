@@ -6,7 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import com.mojang.authlib.GameProfile;
 import me.kavzaq.qEssentialsReloaded.Main;
 
-import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.json.JSONPacketBuilder;

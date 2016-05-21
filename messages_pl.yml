@@ -93,6 +93,7 @@ WORLD_LIST_HEADER:
 - '&7Wszystkie dostepne swiaty:'
 WORLD_INDEX: '&7  * &c%world%'
 WORLD_NOT_EXISTS: '&4Blad: &cWybrany swiat nie istnieje!'
+WORLD_BLOCKED: '&4Blad: &cWybrany swiat jest zablokowany na tym serwerze!'
 WHOIS_INFO:
 - '&7Informacje na temat gracza &c%player%&7:'
 - '&7  UUID: &c%uuid%'
@@ -107,9 +108,12 @@ WHOIS_INFO:
 - '&7  Domy:'
 - '%homes%'
 WHOIS_HOMES_INDEX: '&7  * &c%home% &7: &c%location%'
+RELOAD_SUCCESS: '&aPomyslnie przeladowano plugin qEssentialsReloaded v%version%'
 SETHOME_MAX: '&4Blad: &cOsiagnieto maksymalna ilosc domow!'
 SETHOME_HAS_THIS_NAME: '&4Blad: &cJuz masz dom o tej nazwie!'
 SETHOME_SUCCESS: '&7Pomyslnie dodales nowy dom o nazwie &c%home%&7!'
+SETHOME_INVALID: '&4Blad: &cNazwa domu jest niepoprawna! (Jest za krotka, lub posiada
+  niedozwolone znaki)'
 HOME_UNKNOWN: '&4Blad: &cNie znaleziono domu o takiej nazwie!'
 HOME_LIST_HEADER: '&7Lista twoich domow: '
 HOME_SUCCESS: '&7Przeteleportowano do domu o nazwie &c%home%&7!'
@@ -176,6 +180,15 @@ POWERTOOL_UNKNOWN: '&4Blad: &cPrzedmiot ktory trzymasz w rece nie moze byc power
 POWERTOOL_SUCCESS_ASSIGNED: '&7Pomyslnie przypisano komende &c%command% &7do tego
   przedmiotu.'
 POWERTOOL_SUCCESS: '&7Pomyslnie zresetowales komendy na tym przedmiocie.'
+TPPOS_SUCCESS: '&7Zostales przeteleportowany w nastepujace koordynaty: &c%coords%'
+TPPOS_COORDS_INVALID: '&4Blad: &cKoordynaty nie sa prawidlowe!'
+TPPOS_OTHER_SUCCESS: '&7Gracz &c%player%&7 zostal przeteleportowany na koordynaty
+  &c%coords%'
+TPPOS_OTHER_TELEPORTED: '&7Zostales przeteleportowany na koordynaty &c%coords%&7 przez
+  &c%player%'
+KILL_SUCCESS: '&7Zabito!'
+KILL_OTHER_SUCCESS: '&7Pomyslnie zabiles gracza &c%player%&7!'
+KILL_OTHER_KILLED: '&7Zostales zabity przez &c%player%&7!'
 BACK_DESC: Teleportacja do ostatniej lokacji
 BROADCAST_DESC: Globalne ogloszenie
 CHAT_DESC: Zarzadzanie czatem
@@ -217,3 +230,17 @@ HAT_DESC: Ustawia nowa czapke
 DISPLAYNAME_DESC: Zarzadza wyswietlana nazwa
 POWERTOOL_DESC: Przydziela komende do przedmiotu
 TPHERE_DESC: Teleportuje gracza do ciebie
+TPPOS_DESC: Teleportuje w okreslone koordynaty
+RELOAD_DESC: Przeladowywuje plugin
+KILL_DESC: Pozwala na zabicie gracza
+TIMEPARSE_DAY: ' dzien '
+TIMEPARSE_DAYS: ' dni '
+TIMEPARSE_HOUR: ' godzine '
+TIMEPARSE_HOURS: ' godziny '
+TIMEPARSE_HOURS_2: ' godzin '
+TIMEPARSE_MINUTE: ' minute '
+TIMEPARSE_MINUTES: ' minuty '
+TIMEPARSE_MINUTES_2: ' minut '
+TIMEPARSE_SECOND: ' sekunde '
+TIMEPARSE_SECONDS: ' sekundy '
+TIMEPARSE_SECONDS_2: ' sekund '

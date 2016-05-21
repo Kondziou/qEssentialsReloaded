@@ -61,13 +61,13 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WorldCommand;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.KitManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.UserManagerImpl;
-import me.kavzaq.qEssentialsReloaded.impl.message.MessageContainerImpl;
-import me.kavzaq.qEssentialsReloaded.impl.tab.TabExecutorImpl;
-import me.kavzaq.qEssentialsReloaded.impl.tab.TabManagerImpl;
+import me.kavzaq.qEssentialsReloaded.impl.containers.MessageContainerImpl;
+import me.kavzaq.qEssentialsReloaded.impl.packet.TabExecutorImpl;
+import me.kavzaq.qEssentialsReloaded.impl.packet.TabManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.teleport.TeleportRequestImpl;
 import me.kavzaq.qEssentialsReloaded.impl.teleport.TeleportUpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.io.MessageFile;
@@ -90,7 +90,7 @@ import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.impl.managers.GroupChatManager;
+import me.kavzaq.qEssentialsReloaded.impl.managers.ChatManagerImpl;
 import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerDeathListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerInteractListener;
@@ -209,16 +209,6 @@ public class Main extends JavaPlugin {
         inst = this;
     }
 
-    @Override
-    public void onDisable() {
-        try {
-            for (UserImpl user : getUserManager().getUsers()) {
-                user.save();
-            }
-        } catch (Exception e) {
-            // null
-        }
-    }
 
     @Override
     public void onEnable() {
@@ -349,7 +339,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new ReloadCommand());
         log.send("[qEssentialsReloaded] Loading online users...");
         for (Player p : Bukkit.getOnlinePlayers()) {
-            Main.getUserManager().implementUser(p);
+            Main.getUserManager().loadUser(p);
         }
         log.send("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
         try {
@@ -375,7 +365,7 @@ public class Main extends JavaPlugin {
         log.send("[qEssentialsReloaded] Loading kits...");
         Main.getKitManager().load();
         log.send("[qEssentialsReloaded] Loading groups...");
-        GroupChatManager.loadGroups();
+        ChatManagerImpl.loadGroups();
         loadTime = System.currentTimeMillis() - startTime;
         log.send("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
     }

@@ -1,4 +1,4 @@
-package me.kavzaq.qEssentialsReloaded.impl.tab;
+package me.kavzaq.qEssentialsReloaded.impl.packet;
 
 import java.util.UUID;
 

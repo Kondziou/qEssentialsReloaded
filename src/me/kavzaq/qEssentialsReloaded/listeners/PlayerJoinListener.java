@@ -13,8 +13,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.io.input.SynchronizedInput;
@@ -86,7 +86,7 @@ public class PlayerJoinListener implements Listener{
         joinMessage = StringUtils.replace(joinMessage, "{DISPLAYNAME}", e.getPlayer().getDisplayName());
         e.setJoinMessage(Util.fixColors(joinMessage));
         if (u == null) {
-            u = Main.getUserManager().implementUser(p);
+            u = Main.getUserManager().loadUser(p);
         }
            
         UpdaterImpl.checkUpdate();

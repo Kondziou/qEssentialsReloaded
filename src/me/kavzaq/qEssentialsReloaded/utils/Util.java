@@ -20,7 +20,7 @@ import org.bukkit.entity.Player;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 
 import com.google.common.collect.Lists;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 
 public class Util {
     

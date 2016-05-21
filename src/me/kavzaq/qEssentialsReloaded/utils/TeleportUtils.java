@@ -10,7 +10,7 @@ import org.bukkit.scheduler.BukkitTask;
 import com.google.common.collect.Lists;
 
 import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 
 public class TeleportUtils {
     

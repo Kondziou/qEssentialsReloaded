@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.io.caches.CacheManager;
 import me.kavzaq.qEssentialsReloaded.io.input.SynchronizedInput;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;

@@ -2,7 +2,7 @@ package me.kavzaq.qEssentialsReloaded.commands.normal;
 
 import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;

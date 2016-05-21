@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import java.util.Arrays;
 import java.util.List;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;

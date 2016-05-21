@@ -1,4 +1,4 @@
-package me.kavzaq.qEssentialsReloaded.impl;
+package me.kavzaq.qEssentialsReloaded.impl.configuration;
 
 import java.util.Arrays;
 import java.util.List;

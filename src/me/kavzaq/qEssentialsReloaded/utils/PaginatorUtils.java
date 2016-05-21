@@ -5,7 +5,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.bukkit.command.CommandSender;
-import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 
 public class PaginatorUtils {
     

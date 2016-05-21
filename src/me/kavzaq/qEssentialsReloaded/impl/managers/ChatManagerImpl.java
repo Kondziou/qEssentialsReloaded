@@ -6,9 +6,9 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
 import org.bukkit.configuration.ConfigurationSection;
 
-public class GroupChatManager {
+public class ChatManagerImpl {
     
-    private GroupChatManager() { }
+    private ChatManagerImpl() { }
     private static final HashMap<String, String> groups = Maps.newHashMap();
     
     public static HashMap<String, String> getGroups() {

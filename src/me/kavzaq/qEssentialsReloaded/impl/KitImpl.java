@@ -24,7 +24,6 @@ public class KitImpl {
     public String getName() {
         return name;
     }
-
     
     public long getCooldown() {
         return cooldown;
