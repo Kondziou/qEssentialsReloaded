@@ -50,13 +50,13 @@ public class KitCommand extends CommandImpl {
                         .replace("%permission%", "qessentials.kit." + kit.getName()));
                 return;
             }
-            //if (!p.hasPermission("qessentials.kit.bypass")) {
+            if (!p.hasPermission("qessentials.kit.bypass")) {
                 if (!KitTimed.canTake(kit, p)) {
                     Util.sendMessage(p, MessagesImpl.KIT_COOLDOWN
                             .replace("%cooldown%", KitTimed.timeRemain(kit, p)));
                     return;
                 }
-            //}
+            }
             HashMap<Integer, ItemStack> itemsNotStored = Maps.newHashMap();
             for (String item : kit.getItems()) {
                 ItemStack is = null;

@@ -1,6 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
 import java.util.Arrays;
+import me.kavzaq.qEssentialsReloaded.Main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;

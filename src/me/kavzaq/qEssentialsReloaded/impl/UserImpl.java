@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.utils.SQLUtils;
+import org.bukkit.GameMode;
 
 import org.bukkit.entity.Player;
 
@@ -57,7 +58,7 @@ public class UserImpl {
     public void delKit(KitDataImpl kitData) {
         this.kits.remove(kitData);
         changed = true;
-        save();
+        deleteKit(kitData);
     }
 
     public void setKits(List<KitDataImpl> kits) {
@@ -90,7 +91,7 @@ public class UserImpl {
     public void delHome(HomeDataImpl homeData) {
         this.homes.remove(homeData);
         changed = true;
-        save();
+        deleteHome(homeData); 
     }
     
     public void save() {
@@ -173,6 +174,32 @@ public class UserImpl {
                 stat.close();
             }
         } catch (Exception e) {
+            Main.log.send(e);
+        }
+    }
+    
+    public void deleteHome(HomeDataImpl homeData) {
+        try {
+            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+                "DELETE FROM `homes` WHERE `uuid`=? AND `name`=?");
+            stat.setString(1, this.uuid.toString());
+            stat.setString(2, homeData.getName());
+            stat.executeUpdate();
+            stat.close();
+        } catch (SQLException e) {
+            Main.log.send(e);
+        }
+    }
+    
+    public void deleteKit(KitDataImpl kitData) {
+        try {
+            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+                "DELETE FROM `kits` WHERE `uuid`=? AND `name`=?");
+            stat.setString(1, this.uuid.toString());
+            stat.setString(2, kitData.getName());
+            stat.executeUpdate();
+            stat.close();
+        } catch (SQLException e) {
             Main.log.send(e);
         }
     }

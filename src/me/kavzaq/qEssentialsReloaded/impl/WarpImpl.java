@@ -4,8 +4,19 @@ import org.bukkit.Location;
 
 public class WarpImpl {
     
-    // preparation
-    private String name;
-    private Location location;
+    private final String name;
+    private final Location location;
     
+    public WarpImpl(String name, Location location) {
+        this.name = name;
+        this.location = location;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public Location getLocation() {
+        return location;
+    }
 }

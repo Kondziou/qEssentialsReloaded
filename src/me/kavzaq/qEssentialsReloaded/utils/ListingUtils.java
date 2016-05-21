@@ -11,6 +11,8 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.impl.WarpImpl;
+import me.kavzaq.qEssentialsReloaded.impl.managers.WarpManagerImpl;
 
 public class ListingUtils {
     
@@ -50,6 +52,17 @@ public class ListingUtils {
                     + "\n");
         }
         return localsb.toString();
+    }
+    
+    public static String getWarpList() {
+        localsb.setLength(0);
+        for (WarpImpl warp : WarpManagerImpl.getWarps()){
+            localsb.append(", " + warp.getName());
+        }
+        if (localsb.length() == 0) {
+            localsb.append("*none*");
+        }
+        return localsb.toString().replaceFirst(", ", "");
     }
 
 }

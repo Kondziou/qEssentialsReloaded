@@ -112,6 +112,20 @@ public class SQLite {
         
         PreparedStatement statHomes = getConnection().prepareStatement(queryHomes);        
         executeUpdate(statHomes);
+        
+        String queryWarps = 
+                "CREATE TABLE IF NOT EXISTS warps (" +
+                "name VARCHAR(255)," +
+                "world VARCHAR(32)," +
+                "x FLOAT(255)," +
+                "y FLOAT(255)," +
+                "z FLOAT(255)," +
+                "pitch FLOAT(255)," +
+                "yaw FLOAT(255))";
+        
+        PreparedStatement statWarps = getConnection().prepareStatement(queryWarps);        
+        statWarps.executeUpdate();
+        statWarps.close();
     }
 
 }

@@ -261,6 +261,20 @@ public class MessagesImpl {
     public static String KILL_OTHER_SUCCESS = "&7Pomyslnie zabiles gracza &c%player%&7!";
     public static String KILL_OTHER_KILLED = "&7Zostales zabity przez &c%player%&7!";
     
+    // Warp command
+    public static String WARP_LIST = "&7Dostepne warpy: &c";
+    public static String WARP_SUCCESS = "&7Zostales przeteleportowany do &c%warp%";
+    public static String WARP_UNKNOWN = "&4Blad: &cWybrany warp nie istnieje!";
+    
+    // Setwarp command
+    public static String SETWARP_EXISTS = "&4Blad: &cTaki warp juz istnieje!";
+    public static String SETWARP_SUCCESS = "&7Pomyslnie ustawiono warp o nazwie &c%warp%&7!";
+    public static String SETWARP_INVALID = "&4Blad: &cNazwa warpu jest niepoprawna! (Jest za krotka, lub posiada niedozwolone znaki)";
+    
+    // Delwarp command
+    public static String DELWARP_UNKNOWN = "&4Blad: &cTaki warp nie istnieje!";
+    public static String DELWARP_SUCCESS = "&7Pomyslnie usunieto warp o nazwie &c%warp%&7!";
+    
     // Commands desc
     public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
     public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -306,6 +320,9 @@ public class MessagesImpl {
     public static String TPPOS_DESC = "Teleportuje w okreslone koordynaty";
     public static String RELOAD_DESC = "Przeladowywuje plugin";
     public static String KILL_DESC = "Pozwala na zabicie gracza";
+    public static String WARP_DESC = "Teleportuje na warp";
+    public static String SETWARP_DESC = "Dodaje nowy warp";
+    public static String DELWARP_DESC = "Usuwa istniejacy warp";
     
     public static String TIMEPARSE_DAY = " dzien ";
     public static String TIMEPARSE_DAYS = " dni ";

@@ -29,7 +29,7 @@ public class UserManagerImpl {
     }
     
     public UserImpl loadUser(Player player) {
-        UserImpl user = new UserImpl(player.getName(), player.getUniqueId());
+        UserImpl user = getUser(player);
         PreparedStatement stat = null;
         try {
             PreparedStatement kitStat = Main.getSQLite().getConnection().prepareStatement("SELECT * FROM kits WHERE uuid=?");
@@ -54,7 +54,9 @@ public class UserManagerImpl {
                             homeRs.getFloat("yaw"),
                             homeRs.getFloat("pitch"))));
             }
-            if (!users.contains(user)) users.add(user);
+            if (!users.contains(user)) {
+                users.add(user);
+            }
             return user;
         } catch (SQLException sqle) {
             Main.log.send(sqle);
@@ -66,7 +68,7 @@ public class UserManagerImpl {
         for (UserImpl user : users) {
             if (user.getUUID().equals(player.getUniqueId())) return user;
         }
-        return loadUser(player);
+        return new UserImpl(player.getName(), player.getUniqueId());
     }
 
 
