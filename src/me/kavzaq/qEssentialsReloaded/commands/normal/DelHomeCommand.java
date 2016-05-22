@@ -31,7 +31,7 @@ public class DelHomeCommand extends CommandImpl {
         String homeName = args[0];
         HomeDataImpl _home = null;
         for (HomeDataImpl home : u.getHomes()) {
-            if (home.getName().contains(homeName)) _home = home;
+            if (home.getName().equals(homeName)) _home = home;
         }
         if ((_home == null) || (u.getHomes().size() == 0)) {
             Util.sendMessage(p, MessagesImpl.DELHOME_UNKNOWN);

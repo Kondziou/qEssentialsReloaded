@@ -32,7 +32,7 @@ public class SetSpawnCommand extends CommandImpl {
         World w = p.getWorld();
         w.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
         
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+        Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
             @Override
             public void run() {
                 try {

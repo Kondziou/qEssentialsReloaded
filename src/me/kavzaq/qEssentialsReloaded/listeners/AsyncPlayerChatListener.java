@@ -33,7 +33,7 @@ public class AsyncPlayerChatListener implements Listener {
         if (!Main.chat_support) {
             format = defaultFormat;
         }
-        else if ((Main.chat.getPrimaryGroup(p) == null) || (ChatManagerImpl.getGroups().get(Main.chat.getPrimaryGroup(p)).isEmpty())) {
+        else if ((Main.chat.getPrimaryGroup(p) == null) || (ChatManagerImpl.getGroups().get(Main.chat.getPrimaryGroup(p)) == null)) {
             format = defaultFormat;
             format = StringUtils.replace(format, "{SUFFIX}", Main.chat.getPlayerSuffix(p));
             format = StringUtils.replace(format, "{PREFIX}", Main.chat.getPlayerPrefix(p));

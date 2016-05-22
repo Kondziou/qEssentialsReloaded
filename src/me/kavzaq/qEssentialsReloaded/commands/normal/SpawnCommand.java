@@ -29,7 +29,7 @@ public class SpawnCommand extends CommandImpl {
             Util.sendMessage(s, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+        Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
             @Override
             public void run() {
                 try {

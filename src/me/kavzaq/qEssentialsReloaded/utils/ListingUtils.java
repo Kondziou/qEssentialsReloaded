@@ -27,9 +27,9 @@ public class ListingUtils {
                 localsb.append(MessagesImpl.WHOIS_HOMES_INDEX
                         .replace("%home%", home.getName())
                         .replace("%location%", 
-                                "x" + home.getLocation().getX() +
-                                ", y" + home.getLocation().getY() +
-                                ", z" + home.getLocation().getZ())
+                                "x" + Util.round(home.getLocation().getX(), 3) +
+                                ", y" + Util.round(home.getLocation().getY(), 3) +
+                                ", z" + Util.round(home.getLocation().getZ(), 3))
                         + "\n");
             }
         }

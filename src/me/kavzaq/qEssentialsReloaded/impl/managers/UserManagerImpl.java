@@ -4,21 +4,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.UUID;
-
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.google.common.collect.Lists;
-import java.util.Collections;
 import me.kavzaq.qEssentialsReloaded.Main;
 
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
-import me.kavzaq.qEssentialsReloaded.utils.SQLUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 
 public class UserManagerImpl {
 
@@ -70,6 +66,20 @@ public class UserManagerImpl {
         }
         return new UserImpl(player.getName(), player.getUniqueId());
     }
-
+     
+    public int availableHomes(Player player) {
+        String homePerm = null;
+        if ((player.hasPermission("'*'")) || (player.isOp())) return -1;
+        for (PermissionAttachmentInfo pai : player.getEffectivePermissions()) {
+            String perm = pai.getPermission();
+            if (perm.contains("qessentials.home.limit.")) homePerm = perm;
+        }
+        if (homePerm == null) {
+            return Main.getInstance().getConfig().getInt("max-homes");
+        }
+        String[] split = homePerm.split("\\.");
+        int availableHomes = Integer.valueOf(split[3]);
+        return availableHomes;
+    }
 
 }

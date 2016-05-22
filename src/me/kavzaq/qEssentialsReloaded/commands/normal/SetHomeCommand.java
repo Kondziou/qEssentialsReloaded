@@ -29,8 +29,9 @@ public class SetHomeCommand extends CommandImpl {
         }
         UserImpl u = Main.getUserManager().getUser(p);
         
-        int maxhomes = Main.getInstance().getConfig().getInt("max-homes");
-        if (u.getHomes().size() > maxhomes) {
+        int maxhomes = Main.getUserManager().availableHomes(p);
+
+        if ((u.getHomes().size() >= maxhomes) && (maxhomes != -1)) {
             Util.sendMessage(p, MessagesImpl.SETHOME_MAX);
             return;
         }

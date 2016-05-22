@@ -37,7 +37,7 @@ teleport-spawn-effects: true
 ####################################################
 ##                     Homes                      ##
 ####################################################
-# Maximum amount of homes
+# Default maximum amount of homes
 max-homes: 3
 
 ####################################################
