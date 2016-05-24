@@ -1,5 +1,5 @@
 LANGUAGE: pl
-TRANSLATION_AUTHOR: AdamGrzegorz aka KaVzaQ/KHaliT
+TRANSLATION_AUTHOR: KaVzaQ
 NO_PERMISSION: '&4Blad: &cNie masz uprawnien do tej komendy! &7(%permission%)'
 BYPASS_PERMISSION: '&4Blad: &cNie mozesz zrobic tego na tym graczu!'
 ONLY_PLAYER: '&rNie mozesz wykonac tej komendy jako konsola!'
@@ -189,6 +189,15 @@ TPPOS_OTHER_TELEPORTED: '&7Zostales przeteleportowany na koordynaty &c%coords%&7
 KILL_SUCCESS: '&7Zabito!'
 KILL_OTHER_SUCCESS: '&7Pomyslnie zabiles gracza &c%player%&7!'
 KILL_OTHER_KILLED: '&7Zostales zabity przez &c%player%&7!'
+WARP_LIST: '&7Dostepne warpy: &c'
+WARP_SUCCESS: '&7Zostales przeteleportowany do &c%warp%'
+WARP_UNKNOWN: '&4Blad: &cWybrany warp nie istnieje!'
+SETWARP_EXISTS: '&4Blad: &cTaki warp juz istnieje!'
+SETWARP_SUCCESS: '&7Pomyslnie ustawiono warp o nazwie &c%warp%&7!'
+SETWARP_INVALID: '&4Blad: &cNazwa warpu jest niepoprawna! (Jest za krotka, lub posiada
+  niedozwolone znaki)'
+DELWARP_UNKNOWN: '&4Blad: &cTaki warp nie istnieje!'
+DELWARP_SUCCESS: '&7Pomyslnie usunieto warp o nazwie &c%warp%&7!'
 BACK_DESC: Teleportacja do ostatniej lokacji
 BROADCAST_DESC: Globalne ogloszenie
 CHAT_DESC: Zarzadzanie czatem
@@ -233,6 +242,9 @@ TPHERE_DESC: Teleportuje gracza do ciebie
 TPPOS_DESC: Teleportuje w okreslone koordynaty
 RELOAD_DESC: Przeladowywuje plugin
 KILL_DESC: Pozwala na zabicie gracza
+WARP_DESC: Teleportuje na warp
+SETWARP_DESC: Dodaje nowy warp
+DELWARP_DESC: Usuwa istniejacy warp
 TIMEPARSE_DAY: ' dzien '
 TIMEPARSE_DAYS: ' dni '
 TIMEPARSE_HOUR: ' godzine '

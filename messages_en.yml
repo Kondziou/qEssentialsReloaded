@@ -1,0 +1,244 @@
+LANGUAGE: en
+TRANSLATION_AUTHOR: KaVzaQ
+NO_PERMISSION: '&4Error: &cYou don''t have permission to this command! &7(%permission%)'
+BYPASS_PERMISSION: '&4Error: &cYou can''t do this on this player.'
+ONLY_PLAYER: '&rYou can''t do this by console.'
+BAD_ARGS: '&4Error: &cCorrect usage: '
+OFFLINE_PLAYER: '&4Error: &cThis player is offline!'
+OFFLINE_PLAYERS: '&4Error: &cOne of these players are offline!'
+BOOLEAN_ON: enabled
+BOOLEAN_OFF: disabled
+BOOLEAN_YES: 'yes'
+BOOLEAN_NO: 'no'
+SAME_PERSON: '&4Error: &cYou can''t do this on yourself!'
+SAME_PERSONS: '&4Error: &cYou can''t do this on same players!'
+MUST_BE_INT: '&4Error: &cTime must be an integer!'
+CHAT_IS_DISABLED: '&4Error: &cChat is currently disabled!'
+CHAT_SLOWDOWN: '&4Error: &cYou must wait &7%remain%&c to chat!'
+HELP_HEADER: '&7#--------------- &cHelp &7[&c%page% &7/&c %pages%&7] ---------------#'
+HELP_INDEX: '&c/%command% &8- &7%description%'
+HELP_UNKNOWN_PAGE: '&4Error: &cUnknown page!'
+GAMEMODE_UNKNOWN: '&4Error: &cUnknown gamemode!'
+GAMEMODE_SUCCESS: '&7Successfully changed gamemode to: &c%mode%&7!'
+GAMEMODE_OTHER_CHANGED: '&7Player &c%player%&7 changed your gamemode to &c%mode%&7!'
+GAMEMODE_OTHER_SUCCESS: '&7Successfuly changed gamemode to &c%mode%&7 for &c%player%&7!'
+BROADCAST_STYLE: '&8[&cqEssentials&8] &7%message% &8[&cReloaded&8]'
+HEAL_SUCCESS: '&7Healed!'
+HEAL_OTHER_HEALED: '&7You''ve been healed by &c%player%&7!'
+HEAL_OTHER_SUCCESS: '&7You healed &c%player%&7!'
+CLEAR_SUCCESS: '&7Cleared!'
+CLEAR_OTHER_CLEARED: '&7Your inventory has been cleared by &c%player%&7!'
+CLEAR_OTHER_SUCCESS: '&7Cleared inventory for &c%player%&7!'
+ITEM_SUCCESS: '&7You''ve got: &c%amount% x %item%'
+ITEM_UNKNOWN: '&4Error: &cItem syntax is invalid!'
+ITEM_OTHER_GIVE: '&7You''ve got: &c%amount% x %item% &7from &c%player%&7!'
+ITEM_OTHER_SUCCESS: '&7Successfully gave &c%player%&7 item &c%item% &7in amount of
+  &c%amount%&7!'
+TELEPORT_PROCESS: '&7Teleport occurs in &c%delay% &7seconds...'
+TELEPORT_SUCCESS: '&7Successfully teleported!'
+TELEPORT_DENY: '&cTeleport denied.'
+TELEPORT_SAME_PERSON: '&4Error: &cYou cant teleport to yourself!'
+TPA_REQUEST_SENDED: '&7Successfully sended a teleport request to &c%player%&7!'
+TPA_REQUEST_GOT:
+- '&7Player &c%player% &7want to teleport to you!'
+- '&7Use &c/tpaccept &7to accept.'
+- '&7Use &c/tpdeny &7to deny.'
+- '&7You have &c60 seconds &7to confirm!'
+TPACCEPT_ACCEPTED: '&7Successfully accepted teleport request to &c%player%&7!'
+TPACCEPT_OTHER_ACCEPTED: '&7Your request has been accepted by &c%player%&7!'
+TELEPORT_NO_REQUEST: '&4Error: &cYou havent got any requests!'
+TPDENY_DENIED: '&7Successfully denied teleport request to &c%player%&7!'
+TPDENY_OTHER_DENIED: '&7Your request has been denied by &c%player%&7!'
+TPA_ALREADY_REQUESTED: '&4Error: &cYou requested this player already!'
+TPA_HAS_REQUEST_PENDING: '&4Error: &cThis person has a pending request. Be patient.'
+TP_ALL_SUCCESS: '&7Teleported every person on server to you.'
+TP_FROM_TO_SUCCESS: '&7Successfully teleported a &c%player_from%&7 to &c%player_to%'
+TP_TELEPORTED: '&7You''ve been teleported by &c%player%&7!'
+BACK_SUCCESS: '&7Successfully teleported to last location.'
+BACK_OTHER: '&7Successfully teleported to &c%player%&7 last location!'
+FEED_SUCCESS: '&7Yummy!'
+FEED_OTHER_FEEDED: '&7You''ve been feed by &c%player%&7!'
+FEED_OTHER_SUCCESS: '&7Successfully feed &c%player%&7!'
+FLY_SWITCHED: '&7Successfully switched &cflying&7 to &c%mode%'
+FLY_OTHER_SWITCHED: '&7Player &c%player%&7 changed your &cnflying&7 to &c%mode%'
+FLY_OTHER_SUCCESS: '&7Successfully switched &cflying&7 for &c%player%&7 to &c%mode%'
+GOD_SWITCHED: '&7Successfully switched &cgodmode&7 to &c%mode%'
+GOD_OTHER_ACTIVATED: '&7Player &c%player%&7 changed your &cngodmode&7 to &c%mode%'
+GOD_OTHER_SUCCESS: '&7Successfully switched &cgodmode&7 for &c%player%&7 to &c%mode%'
+SETSPAWN_SUCCESS: '&7Successfully set a spawnpoint! &7World: &c%world%, &7Coords:
+  &c%coords%'
+SPAWN_OTHER_SUCCESS: '&7Successfully teleported player &c%player%&7 to spawnpoint!'
+SPAWN_OTHER_TELEPORTED: '&7You''ve been teleported to spawnpoint by &c%player%&7!'
+CHAT_DISABLED: '&cChat has been disabled by &7%player%&c!'
+CHAT_ENABLED: '&aChat has been enabled by &7%player%&a!'
+CHAT_CLEARED: '&eChat has been cleared by &7%player%&e!'
+CHANGENAME_BAD_ITEM: '&4Error: &cInvalid item!'
+CHANGENAME_SUCCESS: '&7Successfully changed item name to &c%name%&7!'
+WEATHER_SUNNY_SUCCESS: '&7Successfully switched weather to &csunny&7! (&c%world%&7)'
+WEATHER_THUNDER_SUCCESS: '&7Successfully switched weather to &crainy&7! (&c%world%&7)'
+TIME_DAY_SUCCESS: '&Successfully switched time to &cday&7! (&c%world%&7)'
+TIME_NIGHT_SUCCESS: '&7Successfully swtiched time to &cnight&7! (&c%world%&7)'
+TIME_OWN_SUCCESS: '&7Successfully switched time to &c%time%&7! (&c%world%&7)'
+LIST_HEADER: '&7Online players: &c%players%&7/&c%maxplayers%&7!'
+LIST_INDEX: '&7Players: &c%players%'
+WORLD_LIST_HEADER:
+- '&7Use &c/world <world>&7 to select world.'
+- '&7Avaiable worlds:'
+WORLD_INDEX: '&7  * &c%world%'
+WORLD_NOT_EXISTS: '&4Error: &cUnknown world!'
+WORLD_BLOCKED: '&4Error: &cThis world is blocked on this server!'
+WHOIS_INFO:
+- '&7Information about &c%player%&7:'
+- '&7  UUID: &c%uuid%'
+- '&7  IP Address: &c%addressIp%'
+- '&7  Global perm.: &c%isGlobalAdmin%'
+- '&7  Gamemode: &c%mode%'
+- '&7  Flyies: &c%flying%'
+- '&7  Food: &c%food%/10'
+- '&7  Health: &c%health%/10'
+- '&7  Location: &c%location%'
+- '&7  Godmode: &c%isGod%'
+- '&7  Homes:'
+- '%homes%'
+WHOIS_HOMES_INDEX: '&7  * &c%home% &7: &c%location%'
+RELOAD_SUCCESS: '&aSuccessfully reloaded qEssentialsReloaded v%version%'
+SETHOME_MAX: '&4Error: &cYou have maximum amount of homes!'
+SETHOME_HAS_THIS_NAME: '&4Error: &cYou already have that home!'
+SETHOME_SUCCESS: '&7Successfully added new home &c%home%&7!'
+SETHOME_INVALID: '&4Error: &cInvalid home name! (Its too short, or contains invalid
+  chars)'
+HOME_UNKNOWN: '&4Error: &cUnknown home!'
+HOME_LIST_HEADER: '&7Home list: '
+HOME_SUCCESS: '&7Teleported to home &c%home%&7!'
+DELHOME_UNKNOWN: '&4Error: &cUnknown home!'
+DELHOME_SUCCESS: '&7Successfully removed home &c%home%&7!'
+TPHERE_SUCCESS: '&7Successfully teleported player &c%player%&7 to you!'
+MESSAGE_TO_FORMAT: '&7[&cJa&7 -> &c%player%&7] &c%message%'
+MESSAGE_FROM_FORMAT: '&7[&c%player% &7-> &cJa&7] &c%message%'
+REPLY_OFFLINE_OR_NO_CONV: '&4Error: &cPlayer is offline or last conversation didnt
+  exist!'
+KIT_SUCCESS: '&7You''ve got kit &c%name%&7!'
+KIT_COOLDOWN: '&4Error: &cYou must wait &7%cooldown%&c before taking this kit again!'
+KIT_LIST: '&7Available kits: &c'
+KIT_UNKNOWN: '&4Error: &cInvalid kit!'
+ENCHANT_UNKNOWN: '&4Error: &cUnknown enchantment!'
+ENCHANT_SUCCESS: '&7Successfully enchanted an item on &c%enchantment%:%power%&7!'
+ENCHANT_NULL_ITEM: '&4Error: &cInvalid item in main hand!'
+HELPOP_COOLDOWN: '&4Error: &cYou must wait &7%cooldown%&c before sending next helpop
+  message!'
+HELPOP_FORMAT: '&8[&4HELPOP&8] &8<&c%player%&8> &c%message%'
+HEAD_SUCCESS: '&7You''ve got a head of &c%player%&7!'
+HEAD_NAME: '&7Player head: &c%player%'
+KICK_BROADCAST: '&cKick &8-> &7Player &c%player% &7has been kicked for &c%reason%&7!'
+KICK_DEFAULT_REASON: '&cYou''ve just got kicked from the server!'
+KICK_FORMAT: '&cYou''ve been kicked for: %reason%'
+KICK_TEMPBAN: '&cYou must wait &7%cooldown% &cbefore joining again!'
+HAT_UNKNOWN: '&4Error: &cInvalid item!'
+HAT_SUCCESS: '&7Successfully set a new hat!'
+GARBAGECOLLECTOR_INFO:
+- '&7Server informations:'
+- '  &7Performance: '
+- '     &7Current TPS: &c%tps% &7(&c%percentage% overload&7)'
+- '     &7Average TPS: '
+- '        &7last 1 minute: &c%1mAvgTPS% &7(&c%1mAvgPercentage% overload&7)'
+- '        &7last 5 minutes: &c%5mAvgTPS% &7(&c%5mAvgPercentage% overload&7)'
+- '        &7last 15 minutes: &c%15mAvgTPS% &7(&c%15mAvgPercentage% overload&7)'
+- '  &7Uptime: &c%uptime%'
+- '  &7Avaiable cores: &c%cores%'
+- '  &7System: &c%os%'
+- '  &7Java: &c%java%'
+- '  &7Max memory: &c%maxMemory%'
+- '  &7Total memory: &c%totalMemory%'
+- '  &7Free memory: &c%freeMemory%'
+- '  &7Worlds:'
+- '%worlds%'
+GARBAGECOLLECTOR_WORLD_FORMAT: '&c    %world%&7 -> &c%chunks% &7chunks, &c%objects%
+  &7objects, &c%tiles% &7tiles.'
+REPAIR_UNKNOWN: '&4Error: &cInvalid item!'
+REPAIR_SUCCESS: '&7Successfully repaired an item!'
+REPAIR_ALL_SUCCESS: '&7Successfully repaired whole inventory!'
+REPAIR_ARMOR_SUCCESS: '&7Successfully repaired your armor!'
+DISPLAYNAME_SUCCESS: '&7Successfully changed displayname to &c%displayname%'
+DISPLAYNAME_RESET: '&7Successfully reseted your displayname.'
+DISPLAYNAME_OTHER_RESET_RESETED: '&7Your displayname has been reseted by &c%player%&7!'
+DISPLAYNAME_OTHER_RESET_SUCCESS: '&7Successfully reseted a displayname of &c%player%&7!'
+DISPLAYNAME_OTHER_SUCCESS: '&7Successfully set a displayname of &c%player%&7 to &c%displayname%&7!'
+DISPLAYNAME_OTHER_CHANGED: '&7Your displayname has been set to &c%displayname% &7by
+  &c%player%&7!'
+POWERTOOL_UNKNOWN: '&4Error: &cInvalid item.'
+POWERTOOL_SUCCESS_ASSIGNED: '&7Successfully added command &c%command% &7to this item.'
+POWERTOOL_SUCCESS: '&7Successfully reseted commands on this item.'
+TPPOS_SUCCESS: '&7Successfully teleported to specific coords: &c%coords%'
+TPPOS_COORDS_INVALID: '&4Error: &cInvalid coords!'
+TPPOS_OTHER_SUCCESS: '&7Player &c%player%&7 has been teleported to  &c%coords%'
+TPPOS_OTHER_TELEPORTED: '&7You''ve been teleported to &c%coords%&7 by &c%player%'
+KILL_SUCCESS: '&7Killed!'
+KILL_OTHER_SUCCESS: '&7Successfully killed a &c%player%&7!'
+KILL_OTHER_KILLED: '&7You''ve been killed by &c%player%&7!'
+WARP_LIST: '&7Avaiable warps: &c'
+WARP_SUCCESS: '&7You''ve been teleported to warp &c%warp%'
+WARP_UNKNOWN: '&4Error: &cThat warp doesnt exist!'
+SETWARP_EXISTS: '&4Error: &cThat warp already exists!'
+SETWARP_SUCCESS: '&7Successfully added a warp &c%warp%&7!'
+SETWARP_INVALID: '&4Error: &cWarp name is invalid! (Its too short, or contains invalid
+  chars)'
+DELWARP_UNKNOWN: '&4Error: &cThat warp doesnt exist!'
+DELWARP_SUCCESS: '&7Sucessfully removed a warp &c%warp%&7!'
+BACK_DESC: Teleports to last location
+BROADCAST_DESC: Global broadcast
+CHAT_DESC: Chat management
+CLEARINV_DESC: Equipment clears
+DELHOME_DESC: Removes existing home
+FEED_DESC: Feeds someone
+FLY_DESC: Switches fly mode
+GAMEMODE_DESC: Game mode management
+GOD_DESC: Switches god mode
+HEAL_DESC: Heals someone
+HELP_DESC: Available commands
+HOME_DESC: Teleports to an existing home
+ITEM_DESC: Gives an item
+LIST_DESC: Shows online player list
+MESSAGE_DESC: Sends a message to player
+REPLY_DESC: Replies to a message
+SETHOME_DESC: Adds new home
+SETSPAWN_DESC: Sets spawnpoint
+SPAWN_DESC: Teleports to an spawnpoint
+TIME_DESC: Time manipulation
+TP_ACC_DESC: Accepts a teleport request
+TPA_DESC: Sends a teleport request
+TP_DESC: Teleport management
+TP_DENY_DESC: Denies a teleport request
+WEATHER_DESC: Weather manipulation
+WHOIS_DESC: Player informations
+WORLD_DESC: Teleporting between worlds
+KIT_DESC: Kit management
+GIVE_DESC: Gives an item to someone
+ENCHANT_DESC: Enchants an item
+INVSEE_DESC: Opens an equipments of other players
+HELPOP_DESC: Message to admins
+HEAD_DESC: Gives a player head
+ENDERCHEST_DESC: Enderchest management
+GARBAGECOLLECTOR_DESC: Server informations
+REPAIR_DESC: Repairing management
+KICK_DESC: Kicks a player
+HAT_DESC: Sets a new head-item
+DISPLAYNAME_DESC: Displayname management
+POWERTOOL_DESC: Sets a command to item
+TPHERE_DESC: Teleports player to you
+TPPOS_DESC: Teleports to specific coords
+RELOAD_DESC: Reloads plugin
+KILL_DESC: Kills a player
+WARP_DESC: Teleports to a warp
+SETWARP_DESC: Adds new warp
+DELWARP_DESC: Removes existing warp
+TIMEPARSE_DAY: ' day '
+TIMEPARSE_DAYS: ' days '
+TIMEPARSE_HOUR: ' hour '
+TIMEPARSE_HOURS: ' hours '
+TIMEPARSE_HOURS_2: ' hours '
+TIMEPARSE_MINUTE: ' minute '
+TIMEPARSE_MINUTES: ' minutes '
+TIMEPARSE_MINUTES_2: ' minutes '
+TIMEPARSE_SECOND: ' second '
+TIMEPARSE_SECONDS: ' seconds '
+TIMEPARSE_SECONDS_2: ' seconds '
