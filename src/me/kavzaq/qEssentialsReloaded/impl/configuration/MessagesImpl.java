@@ -8,331 +8,330 @@ public class MessagesImpl {
     private MessagesImpl() { }
     
     // General
-    public static String LANGUAGE = "pl";
-    public static String TRANSLATION_AUTHOR = "AdamGrzegorz aka KaVzaQ/KHaliT";
-    public static String NO_PERMISSION = "&4Blad: &cNie masz uprawnien do tej komendy! &7(%permission%)";
-    public static String BYPASS_PERMISSION = "&4Blad: &cNie mozesz zrobic tego na tym graczu!";
-    public static String ONLY_PLAYER = "&rNie mozesz wykonac tej komendy jako konsola!";
-    public static String BAD_ARGS = "&4Blad: &cPoprawne uzycie: ";
-    public static String OFFLINE_PLAYER = "&4Blad: &cWyglada na to, ze wybrany gracz jest offline!";
-    public static String OFFLINE_PLAYERS = "&4Blad: &cWyglada na to, ze ktorys z wybranych graczy jest offline!";
-    public static String BOOLEAN_ON = "wlaczony";
-    public static String BOOLEAN_OFF = "wylaczony";
-    public static String BOOLEAN_YES = "tak";
-    public static String BOOLEAN_NO = "nie";
-    public static String SAME_PERSON = "&4Blad: &cNie mozesz wykonac tej operacji na sobie!";
-    public static String SAME_PERSONS = "&4Blad: &cNie mozna wykonac tej operacji na tych samych osobach!";
-    public static String MUST_BE_INT = "&4Blad: &cJednostka czasu musi byc liczba!";
+    public static String LANGUAGE = "en";
+    public static String TRANSLATION_AUTHOR = "KaVzaQ";
+    public static String NO_PERMISSION = "&4Error: &cYou don't have permission to this command! &7(%permission%)";
+    public static String BYPASS_PERMISSION = "&4Error: &cYou can't do this on this player.";
+    public static String ONLY_PLAYER = "&rYou can't do this by console.";
+    public static String BAD_ARGS = "&4Error: &cCorrect usage: ";
+    public static String OFFLINE_PLAYER = "&4Error: &cThis player is offline!";
+    public static String OFFLINE_PLAYERS = "&4Error: &cOne of these players are offline!";
+    public static String BOOLEAN_ON = "enabled";
+    public static String BOOLEAN_OFF = "disabled";
+    public static String BOOLEAN_YES = "yes";
+    public static String BOOLEAN_NO = "no";
+    public static String SAME_PERSON = "&4Error: &cYou can't do this on yourself!";
+    public static String SAME_PERSONS = "&4Error: &cYou can't do this on same players!";
+    public static String MUST_BE_INT = "&4Error: &cTime must be an integer!";
     
     // Listeners
-    public static String CHAT_IS_DISABLED = "&4Blad: &cCzat jest aktualnie wylaczony!";
-    public static String CHAT_SLOWDOWN = "&4Blad: &cMusisz poczekac jeszcze &7%remain%&caby cos napisac!";
+    public static String CHAT_IS_DISABLED = "&4Error: &cChat is currently disabled!";
+    public static String CHAT_SLOWDOWN = "&4Error: &cYou must wait &7%remain%&c to chat!";
     
     // Help command
-    public static String HELP_HEADER = "&7#--------------- &cPomoc &7[&c%page% &7/&c %pages%&7] ---------------#";
+    public static String HELP_HEADER = "&7#--------------- &cHelp &7[&c%page% &7/&c %pages%&7] ---------------#";
     public static String HELP_INDEX = "&c/%command% &8- &7%description%";
-    public static String HELP_UNKNOWN_PAGE = "&4Blad: &cNie znaleziono takiej strony!";
+    public static String HELP_UNKNOWN_PAGE = "&4Error: &cUnknown page!";
     
     // GameMode command
-    public static String GAMEMODE_UNKNOWN = "&4Blad: &cNie znaleziono takiego trybu!";
-    public static String GAMEMODE_SUCCESS = "&7Pomyslnie zmieniono tryb gry na: &c%mode%&7!";
-    public static String GAMEMODE_OTHER_CHANGED = "&7Gracz &c%player%&7 wlasnie zmienil twoj tryb gry na &c%mode%&7!";
-    public static String GAMEMODE_OTHER_SUCCESS = "&7Pomyslnie zmieniono tryb gry na &c%mode%&7 dla gracza &c%player%&7!";
+    public static String GAMEMODE_UNKNOWN = "&4Error: &cUnknown gamemode!";
+    public static String GAMEMODE_SUCCESS = "&7Successfully changed gamemode to: &c%mode%&7!";
+    public static String GAMEMODE_OTHER_CHANGED = "&7Player &c%player%&7 changed your gamemode to &c%mode%&7!";
+    public static String GAMEMODE_OTHER_SUCCESS = "&7Successfuly changed gamemode to &c%mode%&7 for &c%player%&7!";
     
     // Broadcast command
     public static String BROADCAST_STYLE = "&8[&cqEssentials&8] &7%message% &8[&cReloaded&8]";
     
     // Heal command
-    public static String HEAL_SUCCESS = "&7Uleczono!";
-    public static String HEAL_OTHER_HEALED = "&7Zostales uleczony przez &c%player%&7!";
-    public static String HEAL_OTHER_SUCCESS = "&7Uleczono gracza &c%player%&7!";
+    public static String HEAL_SUCCESS = "&7Healed!";
+    public static String HEAL_OTHER_HEALED = "&7You've been healed by &c%player%&7!";
+    public static String HEAL_OTHER_SUCCESS = "&7You healed &c%player%&7!";
 
     // Clear command
-    public static String CLEAR_SUCCESS = "&7Wyczyszczono!";
-    public static String CLEAR_OTHER_CLEARED = "&7Twoj ekwipunek zostal wyczyszczony przez &c%player%&7!";
-    public static String CLEAR_OTHER_SUCCESS = "&7Wyczyszczono ekwipunek graczowi &c%player%&7!";
+    public static String CLEAR_SUCCESS = "&7Cleared!";
+    public static String CLEAR_OTHER_CLEARED = "&7Your inventory has been cleared by &c%player%&7!";
+    public static String CLEAR_OTHER_SUCCESS = "&7Cleared inventory for &c%player%&7!";
     
     // Item command
-    public static String ITEM_SUCCESS = "&7Otrzymales: &c%amount% x %item%";
-    public static String ITEM_UNKNOWN = "&4Blad: &cSyntax twojego przedmiotu jest nieprawidlowy! Sprawdz czy syntax jest zgodny, lub popraw bledy!";
-    public static String ITEM_OTHER_GIVE = "&7Otrzymales: &c%amount% x %item% &7od &c%player%&7!";
-    public static String ITEM_OTHER_SUCCESS = "&7Pomyslnie dales graczowi &c%player%&7 przedmiot &c%item% &7w ilosci &c%amount%&7!";
+    public static String ITEM_SUCCESS = "&7You've got: &c%amount% x %item%";
+    public static String ITEM_UNKNOWN = "&4Error: &cItem syntax is invalid!";
+    public static String ITEM_OTHER_GIVE = "&7You've got: &c%amount% x %item% &7from &c%player%&7!";
+    public static String ITEM_OTHER_SUCCESS = "&7Successfully gave &c%player%&7 item &c%item% &7in amount of &c%amount%&7!";
     
     // Teleporting
-    public static String TELEPORT_PROCESS = "&7Teleport nastapi za &c%delay% &7sekund...";
-    public static String TELEPORT_SUCCESS = "&7Pomyslnie przeteleportowano!";
-    public static String TELEPORT_DENY = "&cZe wzgledu na ruch, teleport jest anulowany.";
-    public static String TELEPORT_SAME_PERSON = "&4Blad: &cNie mozesz wykonac operacji teleportu na sobie!";
-    public static String TPA_REQUEST_SENDED = "&7Pomyslnie wyslano prosbe o teleportacje do gracza &c%player%&7!";
+    public static String TELEPORT_PROCESS = "&7Teleport occurs in &c%delay% &7seconds...";
+    public static String TELEPORT_SUCCESS = "&7Successfully teleported!";
+    public static String TELEPORT_DENY = "&cTeleport denied.";
+    public static String TELEPORT_SAME_PERSON = "&4Error: &cYou cant teleport to yourself!";
+    public static String TPA_REQUEST_SENDED = "&7Successfully sended a teleport request to &c%player%&7!";
     public static List<String> TPA_REQUEST_GOT = Arrays.asList(
-            "&7Gracz &c%player% &7chce sie do ciebie przeteleportowac!",
-            "&7Wpisz &c/tpaccept &7aby zaakceptowac teleport.",
-            "&7Wpisz &c/tpdeny &7aby odrzucic teleport.",
-            "&7Pozostalo ci &c60 sekund &7aby potwierdzic teleport!");
-    public static String TPACCEPT_ACCEPTED = "&7Pomyslnie akceptowales prosbe o teleportacje gracza &c%player%&7!";
-    public static String TPACCEPT_OTHER_ACCEPTED = "&7Twoja prosba o teleportacja zostala przyjeta przez gracza &c%player%&7!";
-    public static String TELEPORT_NO_REQUEST = "&4Blad: &cNie masz aktualnie oczekujacej prosby o teleportacje!";
-    public static String TPDENY_DENIED = "&7Pomyslnie odmowiles na prosbe o teleportacje gracza &c%player%&7!";
-    public static String TPDENY_OTHER_DENIED = "&7Twoja prosba o teleportacje zostala odrzucona przez gracza &c%player%&7!";
-    public static String TPA_ALREADY_REQUESTED = "&4Blad: &cJuz wyslales zaproszenie do tej osoby!";
-    public static String TPA_HAS_REQUEST_PENDING = "&4Blad: &cWyglada na to, ze osoba do ktorej chcesz wyslac zaproszenie, juz jedno ma w kolejce! Odczekaj chwile!";
-    public static String TP_ALL_SUCCESS = "&7Przeteleportowano do ciebie wszystkich na serwerze";
-    public static String TP_FROM_TO_SUCCESS = "&7Przeteleportowano gracza &c%player_from%&7 do gracza &c%player_to%";
-    public static String TP_TELEPORTED = "&7Zostales przeteleportowanny do gracza &c%player%&7!";
+            "&7Player &c%player% &7want to teleport to you!",
+            "&7Use &c/tpaccept &7to accept.",
+            "&7Use &c/tpdeny &7to deny.",
+            "&7You have &c60 seconds &7to confirm!");
+    public static String TPACCEPT_ACCEPTED = "&7Successfully accepted teleport request to &c%player%&7!";
+    public static String TPACCEPT_OTHER_ACCEPTED = "&7Your request has been accepted by &c%player%&7!";
+    public static String TELEPORT_NO_REQUEST = "&4Error: &cYou havent got any requests!";
+    public static String TPDENY_DENIED = "&7Successfully denied teleport request to &c%player%&7!";
+    public static String TPDENY_OTHER_DENIED = "&7Your request has been denied by &c%player%&7!";
+    public static String TPA_ALREADY_REQUESTED = "&4Error: &cYou requested this player already!";
+    public static String TPA_HAS_REQUEST_PENDING = "&4Error: &cThis person has a pending request. Be patient.";
+    public static String TP_ALL_SUCCESS = "&7Teleported every person on server to you.";
+    public static String TP_FROM_TO_SUCCESS = "&7Successfully teleported a &c%player_from%&7 to &c%player_to%";
+    public static String TP_TELEPORTED = "&7You've been teleported by &c%player%&7!";
     
     // Back command
-    public static String BACK_SUCCESS = "&7Zostales przeteleportowany do twojego ostatniego polozenia.";
-    public static String BACK_OTHER = "&7Zostales przeteleportowany do ostatniego polozenia gracza &c%player%&7!";
+    public static String BACK_SUCCESS = "&7Successfully teleported to last location.";
+    public static String BACK_OTHER = "&7Successfully teleported to &c%player%&7 last location!";
     
     // Feed command
-    public static String FEED_SUCCESS = "&7Najedzono!";
-    public static String FEED_OTHER_FEEDED = "&7Zostales najedzony przez &c%player%&7!";
-    public static String FEED_OTHER_SUCCESS = "&7Najedzono gracza &c%player%&7!";
+    public static String FEED_SUCCESS = "&7Yummy!";
+    public static String FEED_OTHER_FEEDED = "&7You've been feed by &c%player%&7!";
+    public static String FEED_OTHER_SUCCESS = "&7Successfully feed &c%player%&7!";
     
     // Fly command
-    public static String FLY_SWITCHED = "&7Pomyslnie ustawiono tryb latania na &c%mode%";
-    public static String FLY_OTHER_SWITCHED = "&7Gracz &c%player%&7 zmienil ci tryb latania na &c%mode%";
-    public static String FLY_OTHER_SUCCESS = "&7Pomyslnie zmieniles graczowi &c%player%&7 tryb latania na &c%mode%";
+    public static String FLY_SWITCHED = "&7Successfully switched &cflying&7 to &c%mode%";
+    public static String FLY_OTHER_SWITCHED = "&7Player &c%player%&7 changed your &cnflying&7 to &c%mode%";
+    public static String FLY_OTHER_SUCCESS = "&7Successfully switched &cflying&7 for &c%player%&7 to &c%mode%";
     
     // God command
-    public static String GOD_SWITCHED = "&7Pomyslnie ustawiono tryb &cniesmiertelnosci&7 na &c%mode%";
-    public static String GOD_OTHER_ACTIVATED = "&7Gracz &c%player%&7 zmienil ci tryb &cniesmiertelnosci&7 na &c%mode%";
-    public static String GOD_OTHER_SUCCESS = "&7Pomyslnie zmieniles graczowi &c%player%&7 tryb &cniesmiertelnosci&7 na &c%mode%";
-    
+    public static String GOD_SWITCHED = "&7Successfully switched &cgodmode&7 to &c%mode%";
+    public static String GOD_OTHER_ACTIVATED = "&7Player &c%player%&7 changed your &cngodmode&7 to &c%mode%";
+    public static String GOD_OTHER_SUCCESS = "&7Successfully switched &cgodmode&7 for &c%player%&7 to &c%mode%";
     
     // Setspawn command
-    public static String SETSPAWN_SUCCESS = "&7Pomyslnie ustawiono spawn! &7Swiat: &c%world%, &7Koordynaty: &c%coords%";
+    public static String SETSPAWN_SUCCESS = "&7Successfully set a spawnpoint! &7World: &c%world%, &7Coords: &c%coords%";
 
     // Spawn command
-    public static String SPAWN_OTHER_SUCCESS = "&7Przeteleportowano gracza &c%player%&7 na spawn!";
-    public static String SPAWN_OTHER_TELEPORTED = "&7Zostales przeteleportowany na spawn przez gracza &c%player%&7!";
+    public static String SPAWN_OTHER_SUCCESS = "&7Successfully teleported player &c%player%&7 to spawnpoint!";
+    public static String SPAWN_OTHER_TELEPORTED = "&7You've been teleported to spawnpoint by &c%player%&7!";
     
     // Chat command
-    public static String CHAT_DISABLED = "&cCzat zostal wylaczony przez &7%player%&c!";
-    public static String CHAT_ENABLED = "&aCzat zostal wlaczony przez &7%player%&a!";
-    public static String CHAT_CLEARED = "&eCzat zostal wyczyszczony przez &7%player%&e!";
+    public static String CHAT_DISABLED = "&cChat has been disabled by &7%player%&c!";
+    public static String CHAT_ENABLED = "&aChat has been enabled by &7%player%&a!";
+    public static String CHAT_CLEARED = "&eChat has been cleared by &7%player%&e!";
     
     // Changename command
-    public static String CHANGENAME_BAD_ITEM = "&4Blad: &cNie mozesz zmienic nazwy powietrza!";
-    public static String CHANGENAME_SUCCESS = "&7Pomyslnie zmieniles nazwe przedmiotu na &c%name%&7!";
+    public static String CHANGENAME_BAD_ITEM = "&4Error: &cInvalid item!";
+    public static String CHANGENAME_SUCCESS = "&7Successfully changed item name to &c%name%&7!";
     
     // Weather command
-    public static String WEATHER_SUNNY_SUCCESS = "&7Pomyslnie ustawiono pogode na &csloneczna&7! (&c%world%&7)";
-    public static String WEATHER_THUNDER_SUCCESS = "&7Pomyslnie ustawiono pogode na &cdeszczowa&7! (&c%world%&7)";
+    public static String WEATHER_SUNNY_SUCCESS = "&7Successfully switched weather to &csunny&7! (&c%world%&7)";
+    public static String WEATHER_THUNDER_SUCCESS = "&7Successfully switched weather to &crainy&7! (&c%world%&7)";
     
     // Time command
-    public static String TIME_DAY_SUCCESS = "&7Pomyslnie ustawiono &cdzien [2500]&7! (&c%world%&7)";
-    public static String TIME_NIGHT_SUCCESS = "&7Pomyslnie ustawiono &cnoc [14500]&7! (&c%world%&7)";
-    public static String TIME_OWN_SUCCESS = "&7Pomyslnie ustawiono czas na &c%time%&7! (&c%world%&7)";
+    public static String TIME_DAY_SUCCESS = "&Successfully switched time to &cday&7! (&c%world%&7)";
+    public static String TIME_NIGHT_SUCCESS = "&7Successfully swtiched time to &cnight&7! (&c%world%&7)";
+    public static String TIME_OWN_SUCCESS = "&7Successfully switched time to &c%time%&7! (&c%world%&7)";
     
     // List command
-    public static String LIST_HEADER = "&7Na serwerze jest &c%players%&7 na maksimum &c%maxplayers%&7 graczy online!";
-    public static String LIST_INDEX = "&7Gracze: &c%players%";
+    public static String LIST_HEADER = "&7Online players: &c%players%&7/&c%maxplayers%&7!";
+    public static String LIST_INDEX = "&7Players: &c%players%";
     
     // World command
     public static List<String> WORLD_LIST_HEADER = Arrays.asList(
-            "&7Wpisz &c/world <world>&7 aby wybrac swiat.",
-            "&7Wszystkie dostepne swiaty:");
+            "&7Use &c/world <world>&7 to select world.",
+            "&7Avaiable worlds:");
     public static String WORLD_INDEX = "&7  * &c%world%";
-    public static String WORLD_NOT_EXISTS = "&4Blad: &cWybrany swiat nie istnieje!";
-    public static String WORLD_BLOCKED = "&4Blad: &cWybrany swiat jest zablokowany na tym serwerze!";
+    public static String WORLD_NOT_EXISTS = "&4Error: &cUnknown world!";
+    public static String WORLD_BLOCKED = "&4Error: &cThis world is blocked on this server!";
     
     // WhoIs command
     public static List<String> WHOIS_INFO = Arrays.asList(
-            "&7Informacje na temat gracza &c%player%&7:",
+            "&7Information about &c%player%&7:",
             "&7  UUID: &c%uuid%",
-            "&7  Adres IP: &c%addressIp%",
-            "&7  Globalne upraw.: &c%isGlobalAdmin%",
-            "&7  Tryb gry: &c%mode%",
-            "&7  Lata: &c%flying%", 
-            "&7  Zywnosc: &c%food%/10",
-            "&7  Zycie: &c%health%/10",
-            "&7  Lokacja: &c%location%", 
-            "&7  Niesmiertelnosc: &c%isGod%", 
-            "&7  Domy:",
+            "&7  IP Address: &c%addressIp%",
+            "&7  Global perm.: &c%isGlobalAdmin%",
+            "&7  Gamemode: &c%mode%",
+            "&7  Flyies: &c%flying%", 
+            "&7  Food: &c%food%/10",
+            "&7  Health: &c%health%/10",
+            "&7  Location: &c%location%", 
+            "&7  Godmode: &c%isGod%", 
+            "&7  Homes:",
             "%homes%");
     
     public static String WHOIS_HOMES_INDEX = "&7  * &c%home% &7: &c%location%";
     
     // Reload command
-    public static String RELOAD_SUCCESS = "&aPomyslnie przeladowano plugin qEssentialsReloaded v%version%";
+    public static String RELOAD_SUCCESS = "&aSuccessfully reloaded qEssentialsReloaded v%version%";
     
     // SetHome command
-    public static String SETHOME_MAX = "&4Blad: &cOsiagnieto maksymalna ilosc domow!";
-    public static String SETHOME_HAS_THIS_NAME = "&4Blad: &cJuz masz dom o tej nazwie!";
-    public static String SETHOME_SUCCESS = "&7Pomyslnie dodales nowy dom o nazwie &c%home%&7!";
-    public static String SETHOME_INVALID = "&4Blad: &cNazwa domu jest niepoprawna! (Jest za krotka, lub posiada niedozwolone znaki)";
+    public static String SETHOME_MAX = "&4Error: &cYou have maximum amount of homes!";
+    public static String SETHOME_HAS_THIS_NAME = "&4Error: &cYou already have that home!";
+    public static String SETHOME_SUCCESS = "&7Successfully added new home &c%home%&7!";
+    public static String SETHOME_INVALID = "&4Error: &cInvalid home name! (Its too short, or contains invalid chars)";
     
     // Home command
-    public static String HOME_UNKNOWN = "&4Blad: &cNie znaleziono domu o takiej nazwie!";
-    public static String HOME_LIST_HEADER = "&7Lista twoich domow: ";
-    public static String HOME_SUCCESS = "&7Przeteleportowano do domu o nazwie &c%home%&7!";
+    public static String HOME_UNKNOWN = "&4Error: &cUnknown home!";
+    public static String HOME_LIST_HEADER = "&7Home list: ";
+    public static String HOME_SUCCESS = "&7Teleported to home &c%home%&7!";
     
     // Delhome command
-    public static String DELHOME_UNKNOWN = "&4Blad: &cNie znaleziono domu o takiej nazwie!";
-    public static String DELHOME_SUCCESS = "&7Pomyslnie usunales dom o nazwie &c%home%&7!";
+    public static String DELHOME_UNKNOWN = "&4Error: &cUnknown home!";
+    public static String DELHOME_SUCCESS = "&7Successfully removed home &c%home%&7!";
     
     // Tphere command
-    public static String TPHERE_SUCCESS = "&7Pomyslnie przeteleportowano gracza &c%player%&7 do ciebie!";
+    public static String TPHERE_SUCCESS = "&7Successfully teleported player &c%player%&7 to you!";
     
     // Message command
     public static String MESSAGE_TO_FORMAT = "&7[&cJa&7 -> &c%player%&7] &c%message%";
     public static String MESSAGE_FROM_FORMAT = "&7[&c%player% &7-> &cJa&7] &c%message%";
     
     // Reply command
-    public static String REPLY_OFFLINE_OR_NO_CONV = "&4Blad: &cGracz jest offline lub nie masz ostatniej konwersacji!";
+    public static String REPLY_OFFLINE_OR_NO_CONV = "&4Error: &cPlayer is offline or last conversation didnt exist!";
     
     // Kit command
-    public static String KIT_SUCCESS = "&7Otrzymales zestaw o nazwie &c%name%&7!";
-    public static String KIT_COOLDOWN = "&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim wezmiesz kolejny zestaw!";
-    public static String KIT_LIST = "&7Dostepne zestawy: &c";
-    public static String KIT_UNKNOWN = "&4Blad: &cTaki zestaw nie istnieje!";
+    public static String KIT_SUCCESS = "&7You've got kit &c%name%&7!";
+    public static String KIT_COOLDOWN = "&4Error: &cYou must wait &7%cooldown%&c before taking this kit again!";
+    public static String KIT_LIST = "&7Available kits: &c";
+    public static String KIT_UNKNOWN = "&4Error: &cInvalid kit!";
     
     // Enchant command
-    public static String ENCHANT_UNKNOWN = "&4Blad: &cNie znaleziono takiego zaklecia!";
-    public static String ENCHANT_SUCCESS = "&7Pomyslnie zaklnales swoj przedmiot na &c%enchantment%:%power%&7!";
-    public static String ENCHANT_NULL_ITEM = "&4Blad: &cNie trzymasz zadnego przedmiotu w glownej rece!";
+    public static String ENCHANT_UNKNOWN = "&4Error: &cUnknown enchantment!";
+    public static String ENCHANT_SUCCESS = "&7Successfully enchanted an item on &c%enchantment%:%power%&7!";
+    public static String ENCHANT_NULL_ITEM = "&4Error: &cInvalid item in main hand!";
     
     // Helpop command
-    public static String HELPOP_COOLDOWN = "&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim napiszesz kolejna wiadomosc!";
+    public static String HELPOP_COOLDOWN = "&4Error: &cYou must wait &7%cooldown%&c before sending next helpop message!";
     public static String HELPOP_FORMAT = "&8[&4HELPOP&8] &8<&c%player%&8> &c%message%";
     
     // Head command
-    public static String HEAD_SUCCESS = "&7Pomyslnie otrzymales glowe gracza &c%player%&7!";
-    public static String HEAD_NAME = "&7Glowa gracza: &c%player%";
+    public static String HEAD_SUCCESS = "&7You've got a head of &c%player%&7!";
+    public static String HEAD_NAME = "&7Player head: &c%player%";
     
     // Kick command
-    public static String KICK_BROADCAST = "&cKick &8-> &7Gracz &c%player% &7zostal wyrzucony z serwera za &c%reason%&7!";
-    public static String KICK_DEFAULT_REASON = "&cZostales wyrzucony bez powodu!";
-    public static String KICK_FORMAT = "&cZostales wyrzucony za: %reason%";
-    public static String KICK_TEMPBAN = "&cMusisz zaczekac jeszcze &7%cooldown% &czanim wejdziesz na serwer ponownie!";
+    public static String KICK_BROADCAST = "&cKick &8-> &7Player &c%player% &7has been kicked for &c%reason%&7!";
+    public static String KICK_DEFAULT_REASON = "&cYou've just got kicked from the server!";
+    public static String KICK_FORMAT = "&cYou've been kicked for: %reason%";
+    public static String KICK_TEMPBAN = "&cYou must wait &7%cooldown% &cbefore joining again!";
     
     // Hat command
-    public static String HAT_UNKNOWN = "&4Blad: &cTego przedmiotu nie mozna ustawic jako czapka!";
-    public static String HAT_SUCCESS = "&7Pomyslnie ustawiono przedmiot jako czapka!";
+    public static String HAT_UNKNOWN = "&4Error: &cInvalid item!";
+    public static String HAT_SUCCESS = "&7Successfully set a new hat!";
     
     // Gc command
     public static List<String> GARBAGECOLLECTOR_INFO = Arrays.asList(
-            "&7Informacje na temat serwera:",
-            "  &7Wydajnosc: ",
-            "     &7Aktualny TPS: &c%tps% &7(&c%percentage% overload&7)",
-            "     &7Srednie TPS: ",
-            "        &7ostatnia 1 minuta: &c%1mAvgTPS% &7(&c%1mAvgPercentage% overload&7)",
-            "        &7ostatnie 5 minut: &c%5mAvgTPS% &7(&c%5mAvgPercentage% overload&7)", 
-            "        &7ostatnie 15 minut: &c%15mAvgTPS% &7(&c%15mAvgPercentage% overload&7)",
+            "&7Server informations:",
+            "  &7Performance: ",
+            "     &7Current TPS: &c%tps% &7(&c%percentage% overload&7)",
+            "     &7Average TPS: ",
+            "        &7last 1 minute: &c%1mAvgTPS% &7(&c%1mAvgPercentage% overload&7)",
+            "        &7last 5 minutes: &c%5mAvgTPS% &7(&c%5mAvgPercentage% overload&7)", 
+            "        &7last 15 minutes: &c%15mAvgTPS% &7(&c%15mAvgPercentage% overload&7)",
             "  &7Uptime: &c%uptime%",
-            "  &7Dostepne rdzenie: &c%cores%",
+            "  &7Avaiable cores: &c%cores%",
             "  &7System: &c%os%",
             "  &7Java: &c%java%",
-            "  &7Maksymalna pamiec: &c%maxMemory%",
-            "  &7Alokowana pamiec: &c%totalMemory%", 
-            "  &7Wolna pamiec: &c%freeMemory%", 
-            "  &7Swiaty:", 
+            "  &7Max memory: &c%maxMemory%",
+            "  &7Total memory: &c%totalMemory%", 
+            "  &7Free memory: &c%freeMemory%", 
+            "  &7Worlds:", 
             "%worlds%");
-    public static String GARBAGECOLLECTOR_WORLD_FORMAT = "&c    %world%&7 -> &c%chunks% &7chunkow, &c%objects% &7obiektow, &c%tiles% &7tilesow.";
+    public static String GARBAGECOLLECTOR_WORLD_FORMAT = "&c    %world%&7 -> &c%chunks% &7chunks, &c%objects% &7objects, &c%tiles% &7tiles.";
     
     // Repair command
-    public static String REPAIR_UNKNOWN = "&4Blad: &cPrzedmiotu ktory trzymasz w glownej rece nie da sie naprawic!";
-    public static String REPAIR_SUCCESS = "&7Pomyslnie naprawiles przedmiot w twojej glownej rece!";
-    public static String REPAIR_ALL_SUCCESS = "&7Pomyslnie naprawiles caly ekwipunek!";
-    public static String REPAIR_ARMOR_SUCCESS = "&7Pomyslnie naprawiles swoja zbroje!";
+    public static String REPAIR_UNKNOWN = "&4Error: &cInvalid item!";
+    public static String REPAIR_SUCCESS = "&7Successfully repaired an item!";
+    public static String REPAIR_ALL_SUCCESS = "&7Successfully repaired whole inventory!";
+    public static String REPAIR_ARMOR_SUCCESS = "&7Successfully repaired your armor!";
     
     // Displayname command
-    public static String DISPLAYNAME_SUCCESS = "&7Pomyslnie ustawiono wyswietlana nazwe na &c%displayname%";
-    public static String DISPLAYNAME_RESET = "&7Pomyslnie zresetowano wyswietlana nazwe.";
-    public static String DISPLAYNAME_OTHER_RESET_RESETED = "&7Twoja wyswietlana nazwa zostala zresetowana przez &c%player%&7!";
-    public static String DISPLAYNAME_OTHER_RESET_SUCCESS = "&7Pomyslnie zresetowano wyswietlana nazwe graczu &c%player%&7!";
-    public static String DISPLAYNAME_OTHER_SUCCESS = "&7Pomyslnie ustawiono wyswietlana nazwe gracza &c%player%&7 na &c%displayname%&7!";
-    public static String DISPLAYNAME_OTHER_CHANGED = "&7Twoja wyswietlana nazwa zostala ustawiona na &c%displayname% &7przez &c%player%&7!";
+    public static String DISPLAYNAME_SUCCESS = "&7Successfully changed displayname to &c%displayname%";
+    public static String DISPLAYNAME_RESET = "&7Successfully reseted your displayname.";
+    public static String DISPLAYNAME_OTHER_RESET_RESETED = "&7Your displayname has been reseted by &c%player%&7!";
+    public static String DISPLAYNAME_OTHER_RESET_SUCCESS = "&7Successfully reseted a displayname of &c%player%&7!";
+    public static String DISPLAYNAME_OTHER_SUCCESS = "&7Successfully set a displayname of &c%player%&7 to &c%displayname%&7!";
+    public static String DISPLAYNAME_OTHER_CHANGED = "&7Your displayname has been set to &c%displayname% &7by &c%player%&7!";
     
     // Powertool command
-    public static String POWERTOOL_UNKNOWN = "&4Blad: &cPrzedmiot ktory trzymasz w rece nie moze byc powertoolem.";
-    public static String POWERTOOL_SUCCESS_ASSIGNED = "&7Pomyslnie przypisano komende &c%command% &7do tego przedmiotu.";
-    public static String POWERTOOL_SUCCESS = "&7Pomyslnie zresetowales komendy na tym przedmiocie.";
+    public static String POWERTOOL_UNKNOWN = "&4Error: &cInvalid item.";
+    public static String POWERTOOL_SUCCESS_ASSIGNED = "&7Successfully added command &c%command% &7to this item.";
+    public static String POWERTOOL_SUCCESS = "&7Successfully reseted commands on this item.";
     
     // TpPos command
-    public static String TPPOS_SUCCESS = "&7Zostales przeteleportowany w nastepujace koordynaty: &c%coords%";
-    public static String TPPOS_COORDS_INVALID = "&4Blad: &cKoordynaty nie sa prawidlowe!";
-    public static String TPPOS_OTHER_SUCCESS = "&7Gracz &c%player%&7 zostal przeteleportowany na koordynaty &c%coords%";
-    public static String TPPOS_OTHER_TELEPORTED = "&7Zostales przeteleportowany na koordynaty &c%coords%&7 przez &c%player%";
+    public static String TPPOS_SUCCESS = "&7Successfully teleported to specific coords: &c%coords%";
+    public static String TPPOS_COORDS_INVALID = "&4Error: &cInvalid coords!";
+    public static String TPPOS_OTHER_SUCCESS = "&7Player &c%player%&7 has been teleported to  &c%coords%";
+    public static String TPPOS_OTHER_TELEPORTED = "&7You've been teleported to &c%coords%&7 by &c%player%";
     
     // Kill command
-    public static String KILL_SUCCESS = "&7Zabito!";
-    public static String KILL_OTHER_SUCCESS = "&7Pomyslnie zabiles gracza &c%player%&7!";
-    public static String KILL_OTHER_KILLED = "&7Zostales zabity przez &c%player%&7!";
+    public static String KILL_SUCCESS = "&7Killed!";
+    public static String KILL_OTHER_SUCCESS = "&7Successfully killed a &c%player%&7!";
+    public static String KILL_OTHER_KILLED = "&7You've been killed by &c%player%&7!";
     
     // Warp command
-    public static String WARP_LIST = "&7Dostepne warpy: &c";
-    public static String WARP_SUCCESS = "&7Zostales przeteleportowany do &c%warp%";
-    public static String WARP_UNKNOWN = "&4Blad: &cWybrany warp nie istnieje!";
+    public static String WARP_LIST = "&7Avaiable warps: &c";
+    public static String WARP_SUCCESS = "&7You've been teleported to warp &c%warp%";
+    public static String WARP_UNKNOWN = "&4Error: &cThat warp doesnt exist!";
     
     // Setwarp command
-    public static String SETWARP_EXISTS = "&4Blad: &cTaki warp juz istnieje!";
-    public static String SETWARP_SUCCESS = "&7Pomyslnie ustawiono warp o nazwie &c%warp%&7!";
-    public static String SETWARP_INVALID = "&4Blad: &cNazwa warpu jest niepoprawna! (Jest za krotka, lub posiada niedozwolone znaki)";
+    public static String SETWARP_EXISTS = "&4Error: &cThat warp already exists!";
+    public static String SETWARP_SUCCESS = "&7Successfully added a warp &c%warp%&7!";
+    public static String SETWARP_INVALID = "&4Error: &cWarp name is invalid! (Its too short, or contains invalid chars)";
     
     // Delwarp command
-    public static String DELWARP_UNKNOWN = "&4Blad: &cTaki warp nie istnieje!";
-    public static String DELWARP_SUCCESS = "&7Pomyslnie usunieto warp o nazwie &c%warp%&7!";
+    public static String DELWARP_UNKNOWN = "&4Error: &cThat warp doesnt exist!";
+    public static String DELWARP_SUCCESS = "&7Sucessfully removed a warp &c%warp%&7!";
     
     // Commands desc
-    public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
-    public static String BROADCAST_DESC = "Globalne ogloszenie";
-    public static String CHAT_DESC = "Zarzadzanie czatem";
-    public static String CLEARINV_DESC = "Czyszczenie ekwipunku";
-    public static String DELHOME_DESC = "Usuniecie istniejacego domu";
-    public static String FEED_DESC = "Nakarmienie siebie lub kogos innego";
-    public static String FLY_DESC = "Przelacza tryb latania";
-    public static String GAMEMODE_DESC = "Zarzadzanie trybem gry";
-    public static String GOD_DESC = "Przelacza tryb niesmiertelnosci";
-    public static String HEAL_DESC = "Uleczenie siebie lub kogos innego";
-    public static String HELP_DESC = "Zbior dostepnych komend";
-    public static String HOME_DESC = "Teleportacja do istniejacego domu";
-    public static String ITEM_DESC = "Pobieranie dowolnej ilosci przedmiotu";
-    public static String LIST_DESC = "Wyswietla liste graczy online";
-    public static String MESSAGE_DESC = "Prywatne wiadomosci miedzy graczami";
-    public static String REPLY_DESC = "Odpowiada na wiadomosc gracza";
-    public static String SETHOME_DESC = "Dodaje nowy dom";
-    public static String SETSPAWN_DESC = "Ustawia pozycje spawnu";
-    public static String SPAWN_DESC = "Teleportuje na spawn";
-    public static String TIME_DESC = "Manipulacja czasem";
-    public static String TP_ACC_DESC = "Akceptuje prosbe o teleportacje";
-    public static String TPA_DESC = "Wysyla zaproszenie do teleportacji";
-    public static String TP_DESC = "Zarzadzanie teleportem";
-    public static String TP_DENY_DESC = "Odrzuca prosbe o teleportacje";
-    public static String WEATHER_DESC = "Manipulacja pogoda";
-    public static String WHOIS_DESC = "Informacje na temat gracza";
-    public static String WORLD_DESC = "Teleportacja miedzy swiatami";
-    public static String KIT_DESC = "Zarzadzanie zestawami";
-    public static String GIVE_DESC = "Daje przedmiot pewnej osobie";
-    public static String ENCHANT_DESC = "Zaklina przedmiot w twojej glownej rece";
-    public static String INVSEE_DESC = "Otwiera ekwipunek wybranej osoby";
-    public static String HELPOP_DESC = "Wiadomosc do administratorow";
-    public static String HEAD_DESC = "Daje glowe gracza";
-    public static String ENDERCHEST_DESC = "Zarzadzanie enderchestem";
-    public static String GARBAGECOLLECTOR_DESC = "Wyswietla informacje na temat serwera";
-    public static String REPAIR_DESC = "Zarzadzanie naprawiem ekwipunku";
-    public static String KICK_DESC = "Wyrzuca gracza z powodem";
-    public static String HAT_DESC = "Ustawia nowa czapke";
-    public static String DISPLAYNAME_DESC = "Zarzadza wyswietlana nazwa";
-    public static String POWERTOOL_DESC = "Przydziela komende do przedmiotu";
-    public static String TPHERE_DESC = "Teleportuje gracza do ciebie";
-    public static String TPPOS_DESC = "Teleportuje w okreslone koordynaty";
-    public static String RELOAD_DESC = "Przeladowywuje plugin";
-    public static String KILL_DESC = "Pozwala na zabicie gracza";
-    public static String WARP_DESC = "Teleportuje na warp";
-    public static String SETWARP_DESC = "Dodaje nowy warp";
-    public static String DELWARP_DESC = "Usuwa istniejacy warp";
+    public static String BACK_DESC = "Teleports to last location";
+    public static String BROADCAST_DESC = "Global broadcast";
+    public static String CHAT_DESC = "Chat management";
+    public static String CLEARINV_DESC = "Equipment clears";
+    public static String DELHOME_DESC = "Removes existing home";
+    public static String FEED_DESC = "Feeds someone";
+    public static String FLY_DESC = "Switches fly mode";
+    public static String GAMEMODE_DESC = "Game mode management";
+    public static String GOD_DESC = "Switches god mode";
+    public static String HEAL_DESC = "Heals someone";
+    public static String HELP_DESC = "Available commands";
+    public static String HOME_DESC = "Teleports to an existing home";
+    public static String ITEM_DESC = "Gives an item";
+    public static String LIST_DESC = "Shows online player list";
+    public static String MESSAGE_DESC = "Sends a message to player";
+    public static String REPLY_DESC = "Replies to a message";
+    public static String SETHOME_DESC = "Adds new home";
+    public static String SETSPAWN_DESC = "Sets spawnpoint";
+    public static String SPAWN_DESC = "Teleports to an spawnpoint";
+    public static String TIME_DESC = "Time manipulation";
+    public static String TP_ACC_DESC = "Accepts a teleport request";
+    public static String TPA_DESC = "Sends a teleport request";
+    public static String TP_DESC = "Teleport management";
+    public static String TP_DENY_DESC = "Denies a teleport request";
+    public static String WEATHER_DESC = "Weather manipulation";
+    public static String WHOIS_DESC = "Player informations";
+    public static String WORLD_DESC = "Teleporting between worlds";
+    public static String KIT_DESC = "Kit management";
+    public static String GIVE_DESC = "Gives an item to someone";
+    public static String ENCHANT_DESC = "Enchants an item";
+    public static String INVSEE_DESC = "Opens an equipments of other players";
+    public static String HELPOP_DESC = "Message to admins";
+    public static String HEAD_DESC = "Gives a player head";
+    public static String ENDERCHEST_DESC = "Enderchest management";
+    public static String GARBAGECOLLECTOR_DESC = "Server informations";
+    public static String REPAIR_DESC = "Repairing management";
+    public static String KICK_DESC = "Kicks a player";
+    public static String HAT_DESC = "Sets a new head-item";
+    public static String DISPLAYNAME_DESC = "Displayname management";
+    public static String POWERTOOL_DESC = "Sets a command to item";
+    public static String TPHERE_DESC = "Teleports player to you";
+    public static String TPPOS_DESC = "Teleports to specific coords";
+    public static String RELOAD_DESC = "Reloads plugin";
+    public static String KILL_DESC = "Kills a player";
+    public static String WARP_DESC = "Teleports to a warp";
+    public static String SETWARP_DESC = "Adds new warp";
+    public static String DELWARP_DESC = "Removes existing warp";
     
-    public static String TIMEPARSE_DAY = " dzien ";
-    public static String TIMEPARSE_DAYS = " dni ";
-    public static String TIMEPARSE_HOUR = " godzine ";
-    public static String TIMEPARSE_HOURS = " godziny ";
-    public static String TIMEPARSE_HOURS_2 = " godzin ";
+    public static String TIMEPARSE_DAY = " day ";
+    public static String TIMEPARSE_DAYS = " days ";
+    public static String TIMEPARSE_HOUR = " hour ";
+    public static String TIMEPARSE_HOURS = " hours ";
+    public static String TIMEPARSE_HOURS_2 = " hours ";
     public static String TIMEPARSE_MINUTE = " minute ";
-    public static String TIMEPARSE_MINUTES = " minuty ";
-    public static String TIMEPARSE_MINUTES_2 = " minut ";
-    public static String TIMEPARSE_SECOND = " sekunde ";
-    public static String TIMEPARSE_SECONDS = " sekundy ";
-    public static String TIMEPARSE_SECONDS_2 = " sekund ";
+    public static String TIMEPARSE_MINUTES = " minutes ";
+    public static String TIMEPARSE_MINUTES_2 = " minutes ";
+    public static String TIMEPARSE_SECOND = " second ";
+    public static String TIMEPARSE_SECONDS = " seconds ";
+    public static String TIMEPARSE_SECONDS_2 = " seconds ";
 }

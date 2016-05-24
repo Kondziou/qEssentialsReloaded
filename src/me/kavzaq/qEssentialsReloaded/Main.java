@@ -64,6 +64,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WorldCommand;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.KitManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.UserManagerImpl;
@@ -273,6 +274,7 @@ public class Main extends JavaPlugin {
         } catch (IOException | InvalidConfigurationException ex) {
             Main.log.send(ex);
         }
+        log.send("[qEssentialsReloaded] [Translation] Loaded " + MessagesImpl.LANGUAGE + " translation created by " + MessagesImpl.TRANSLATION_AUTHOR);
         log.send("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerJoinListener(), this);

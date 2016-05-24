@@ -6,8 +6,8 @@
 ####################################################
 # Messages language. More languages you can find on github
 # http://github.com/xVacuum/qEssentialsReloaded
-# Available: pl
-language: pl
+# Available: pl, en
+language: en
 # Help page length (commands per page)
 help-page-length: 10
 # Quit/Join formats
