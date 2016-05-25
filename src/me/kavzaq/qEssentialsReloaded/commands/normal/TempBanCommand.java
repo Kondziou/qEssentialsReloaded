@@ -35,7 +35,10 @@ public class TempBanCommand extends CommandImpl {
             reason = Util.fixColors(StringUtils.join(args, " ", 2, args.length));
         }
         String format = Util.listToString(MessagesImpl.BAN_FORMAT);
-        long till = TimeUnit.parseUnit(args[1]);
+        long till = 0;
+        try {
+            till = TimeUnit.parseUnit(args[1]);
+        } catch (Exception e) { }
         OfflinePlayer other = Bukkit.getOfflinePlayer(args[0]);
         
         // unbanning if banned previously
@@ -46,7 +49,7 @@ public class TempBanCommand extends CommandImpl {
         
         BanImpl ban = new BanImpl(other, s.getName());
         ban.setReason(reason);
-        ban.setTill(System.currentTimeMillis() + till);
+        ban.setTill(till != 0 ? System.currentTimeMillis() + till : 0);
         BanManagerImpl.addBan(ban);
         
         if (other.isOnline()) {
@@ -54,12 +57,12 @@ public class TempBanCommand extends CommandImpl {
             onlineOther.kickPlayer(format
                 .replace("%player%", s.getName())
                 .replace("%reason%", reason)
-                .replace("%till%", Util.parseTime(till)));
+                .replace("%till%", till != 0 ? Util.parseTime(till) : MessagesImpl.BAN_PERMAMENT));
         }
         Bukkit.broadcastMessage(Util.fixColors(MessagesImpl.TEMPBAN_BROADCAST
                 .replace("%player%", other.getName())
                 .replace("%reason%", reason))
-                .replace("%till%", Util.parseTime(till)));
+                .replace("%till%", till != 0 ? Util.parseTime(till) : MessagesImpl.BAN_PERMAMENT));
         Util.sendMessage(s, MessagesImpl.TEMPBAN_SUCCESS
                 .replace("%player%", other.getName()));
     }
