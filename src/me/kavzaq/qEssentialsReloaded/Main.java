@@ -17,6 +17,7 @@ import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.ThunderAlias;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BackCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.BanCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BroadcastCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ChatCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ClearInventoryCommand;
@@ -58,6 +59,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.TpDenyCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpHereCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpPosCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpaCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.UnbanCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WarpCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WeatherCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
@@ -69,6 +71,7 @@ import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.KitManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.UserManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.containers.MessageContainerImpl;
+import me.kavzaq.qEssentialsReloaded.impl.managers.BanManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.packet.TabExecutorImpl;
 import me.kavzaq.qEssentialsReloaded.impl.packet.TabManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.teleport.TeleportRequestImpl;
@@ -78,7 +81,7 @@ import me.kavzaq.qEssentialsReloaded.io.Messages;
 import me.kavzaq.qEssentialsReloaded.io.Tablist;
 import me.kavzaq.qEssentialsReloaded.io.TablistFile;
 import me.kavzaq.qEssentialsReloaded.listeners.AsyncPlayerChatListener;
-import me.kavzaq.qEssentialsReloaded.listeners.AsyncPlayerPreLoginListener;
+import me.kavzaq.qEssentialsReloaded.listeners.PlayerLoginListener;
 import me.kavzaq.qEssentialsReloaded.listeners.EntityDamageListener;
 import me.kavzaq.qEssentialsReloaded.listeners.FoodLevelChangeListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerJoinListener;
@@ -284,7 +287,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new EntityDamageListener(), this);
         pm.registerEvents(new FoodLevelChangeListener(), this);
         pm.registerEvents(new SignChangeListener(), this);
-        pm.registerEvents(new AsyncPlayerPreLoginListener(), this);
+        pm.registerEvents(new PlayerLoginListener(), this);
         pm.registerEvents(new PlayerInteractListener(), this);
         pm.registerEvents(new PlayerRespawnListener(), this);
         if (Main.getInstance().getConfig().getBoolean("kill-messages-disabled")) {
@@ -337,6 +340,8 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new WarpCommand());
         CommandManager.registerCommand(new SetWarpCommand());
         CommandManager.registerCommand(new DelWarpCommand());
+        CommandManager.registerCommand(new BanCommand());
+        CommandManager.registerCommand(new UnbanCommand());
         //aliases
         CommandManager.registerCommand(new SunAlias());
         CommandManager.registerCommand(new ThunderAlias());
@@ -375,6 +380,8 @@ public class Main extends JavaPlugin {
         ChatManagerImpl.loadGroups();
         log.send("[qEssentialsReloaded] Loading warps...");
         WarpManagerImpl.loadWarps();
+        log.send("[qEssentialsReloaded] Loading bans...");
+        BanManagerImpl.loadBans();
         loadTime = System.currentTimeMillis() - startTime;
         log.send("[qEssentialsReloaded] Completed successfuly! (" + loadTime + "ms)");
     }

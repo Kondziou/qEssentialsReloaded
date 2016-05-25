@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.UUID;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.utils.SQLUtils;
-import org.bukkit.GameMode;
 
 import org.bukkit.entity.Player;
 
@@ -144,7 +143,7 @@ public class UserImpl {
     public void saveKit(KitDataImpl kitData) {
         try {
             try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
-                "UPDATE `kits` SET `name`=?,`cooldown`=? WHERE `uuid`=? AND `name`=?")) {;
+                "UPDATE `kits` SET `name`=?,`cooldown`=? WHERE `uuid`=? AND `name`=?")) {
                 stat.setString(1, kitData.getName());
                 stat.setLong(2, kitData.getCooldown());
                 stat.setString(3, this.uuid.toString());
@@ -160,7 +159,7 @@ public class UserImpl {
     public void saveHome(HomeDataImpl homeData) {
         try {
             try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
-                "UPDATE `homes` SET `name`=?,`world`=?,`x`=?,`y`=?,`z`=?,`pitch`=?,`yaw`=? WHERE `uuid`=? AND `name`=?")) {;
+                "UPDATE `homes` SET `name`=?,`world`=?,`x`=?,`y`=?,`z`=?,`pitch`=?,`yaw`=? WHERE `uuid`=? AND `name`=?")) {
                 stat.setString(1, homeData.getName());
                 stat.setString(2, homeData.getLocation().getWorld().getName());
                 stat.setFloat(3, (float)homeData.getLocation().getX());

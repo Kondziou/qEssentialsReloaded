@@ -126,6 +126,17 @@ public class SQLite {
         PreparedStatement statWarps = getConnection().prepareStatement(queryWarps);        
         statWarps.executeUpdate();
         statWarps.close();
+        
+        String queryBans = 
+                "CREATE TABLE IF NOT EXISTS bans (" +
+                "punisher VARCHAR(36)," +
+                "punished VARCHAR(36)," +
+                "reason SIGNED BIGINT," +
+                "till SIGNED BIGINT)";
+        
+        PreparedStatement statBans = getConnection().prepareStatement(queryBans);        
+        statBans.executeUpdate();
+        statBans.close();
     }
 
 }

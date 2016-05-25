@@ -184,6 +184,17 @@ SETWARP_INVALID: '&4Error: &cWarp name is invalid! (Its too short, or contains i
   chars)'
 DELWARP_UNKNOWN: '&4Error: &cThat warp doesnt exist!'
 DELWARP_SUCCESS: '&7Sucessfully removed a warp &c%warp%&7!'
+BAN_BROADCAST: '&cBan &8-> &7Player &c%player% &7has been banned permamently for &c%reason%&7!'
+BAN_SUCCESS: '&7Successfully banned player &c%player%&7!'
+BAN_NO_REASON: No reason
+BAN_FORMAT:
+- '&cYou''re banned from this server!'
+- '&cReason: %reason%'
+- '&cPunisher: %player%'
+- '&cTill: %till%'
+UNBAN_BROADCAST: '&cUnban &8-> &7Player &c%player% &7has been unbanned!'
+UNBAN_SUCCESS: '&7Successfully unbaned player &c%player%&7!'
+UNBAN_UNKNOWN: '&4Error: &cPlayer is already unbanned!'
 BACK_DESC: Teleports to last location
 BROADCAST_DESC: Global broadcast
 CHAT_DESC: Chat management
@@ -231,6 +242,8 @@ KILL_DESC: Kills a player
 WARP_DESC: Teleports to a warp
 SETWARP_DESC: Adds new warp
 DELWARP_DESC: Removes existing warp
+BAN_DESC: Bans a player
+UNBAN_DESC: Pardons a player
 TIMEPARSE_DAY: ' day '
 TIMEPARSE_DAYS: ' days '
 TIMEPARSE_HOUR: ' hour '
@@ -242,3 +255,4 @@ TIMEPARSE_MINUTES_2: ' minutes '
 TIMEPARSE_SECOND: ' second '
 TIMEPARSE_SECONDS: ' seconds '
 TIMEPARSE_SECONDS_2: ' seconds '
+BAN_PERMAMENT: Permament

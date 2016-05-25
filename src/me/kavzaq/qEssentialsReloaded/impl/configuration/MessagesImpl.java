@@ -274,6 +274,21 @@ public class MessagesImpl {
     public static String DELWARP_UNKNOWN = "&4Error: &cThat warp doesnt exist!";
     public static String DELWARP_SUCCESS = "&7Sucessfully removed a warp &c%warp%&7!";
     
+    // Ban command
+    public static String BAN_BROADCAST = "&cBan &8-> &7Player &c%player% &7has been banned permamently for &c%reason%&7!";
+    public static String BAN_SUCCESS = "&7Successfully banned player &c%player%&7!";
+    public static String BAN_NO_REASON = "No reason";
+    public static List<String> BAN_FORMAT = Arrays.asList(
+            "&cYou're banned from this server!",
+            "&cReason: %reason%",
+            "&cPunisher: %player%",
+            "&cTill: %till%");
+    
+    // Unban command
+    public static String UNBAN_BROADCAST = "&cUnban &8-> &7Player &c%player% &7has been unbanned!";
+    public static String UNBAN_SUCCESS = "&7Successfully unbaned player &c%player%&7!";
+    public static String UNBAN_UNKNOWN = "&4Error: &cPlayer is already unbanned!";
+    
     // Commands desc
     public static String BACK_DESC = "Teleports to last location";
     public static String BROADCAST_DESC = "Global broadcast";
@@ -322,6 +337,8 @@ public class MessagesImpl {
     public static String WARP_DESC = "Teleports to a warp";
     public static String SETWARP_DESC = "Adds new warp";
     public static String DELWARP_DESC = "Removes existing warp";
+    public static String BAN_DESC = "Bans a player";
+    public static String UNBAN_DESC = "Pardons a player";
     
     public static String TIMEPARSE_DAY = " day ";
     public static String TIMEPARSE_DAYS = " days ";
@@ -334,4 +351,6 @@ public class MessagesImpl {
     public static String TIMEPARSE_SECOND = " second ";
     public static String TIMEPARSE_SECONDS = " seconds ";
     public static String TIMEPARSE_SECONDS_2 = " seconds ";
+    
+    public static String BAN_PERMAMENT = "Permament";
 }

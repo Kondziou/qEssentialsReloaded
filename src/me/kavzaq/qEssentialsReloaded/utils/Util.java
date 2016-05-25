@@ -79,6 +79,15 @@ public class Util {
         return bdec.doubleValue();
     }
     
+    public static String listToString(List<String> list) {
+        sb.setLength(0);
+        String result = null;
+        for (String s : list) {
+            sb.append(s + "\n");
+        }
+        return Util.fixColors(sb.toString());
+    }
+    
     
     /*
      * @AUTHOR Dzikoysk

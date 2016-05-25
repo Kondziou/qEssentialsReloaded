@@ -198,6 +198,17 @@ SETWARP_INVALID: '&4Blad: &cNazwa warpu jest niepoprawna! (Jest za krotka, lub p
   niedozwolone znaki)'
 DELWARP_UNKNOWN: '&4Blad: &cTaki warp nie istnieje!'
 DELWARP_SUCCESS: '&7Pomyslnie usunieto warp o nazwie &c%warp%&7!'
+BAN_BROADCAST: '&cBan &8-> &7Gracz &c%player% &7zostal zbanowany na zawsze za &c%reason%&7!'
+BAN_SUCCESS: '&7Pomyslnie zbanowano &c%player%&7!'
+BAN_NO_REASON: Brak powodu
+BAN_FORMAT:
+- '&cJestes zbanowany na tym serwerze!'
+- '&cPowod: %reason%'
+- '&cBanujacy: %player%'
+- '&cDo: %till%'
+UNBAN_BROADCAST: '&cUnban &8-> &7Gracz &c%player% &7zostal odbanowany!'
+UNBAN_SUCCESS: '&7Pomyslnie odbanowano &c%player%&7!'
+UNBAN_UNKNOWN: '&4Blad: &cGracz nie jest zbanowany!'
 BACK_DESC: Teleportacja do ostatniej lokacji
 BROADCAST_DESC: Globalne ogloszenie
 CHAT_DESC: Zarzadzanie czatem
@@ -256,3 +267,4 @@ TIMEPARSE_MINUTES_2: ' minut '
 TIMEPARSE_SECOND: ' sekunde '
 TIMEPARSE_SECONDS: ' sekundy '
 TIMEPARSE_SECONDS_2: ' sekund '
+BAN_PERMAMENT: Na zawsze

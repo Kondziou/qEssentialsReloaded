@@ -25,10 +25,7 @@ public class TemporaryBanTimed {
         long timeSended = lastTempBan.get(p) == null ? 0 : lastTempBan.get(p);
         if(timeSended == 0) return false; 
         long timeCurrent = System.currentTimeMillis();
-        if(timeSended > timeCurrent) {
-            return true;
-        }
-        return false;
+        return timeSended > timeCurrent;
     }
     
     public static String timeRemain(UUID p) {
