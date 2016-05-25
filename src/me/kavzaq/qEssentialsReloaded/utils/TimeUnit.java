@@ -1,27 +1,41 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
+import me.kavzaq.qEssentialsReloaded.Main;
+import org.apache.commons.lang.StringUtils;
+
+
 public class TimeUnit {
     
+    private static final StringBuilder localsb = new StringBuilder();
     private TimeUnit() { }
     public static long parseUnit(String unit) {
+        localsb.setLength(0);
         String[] split = unit.split("");
-        long _default = Integer.valueOf(split[0]) * 60;
+        boolean done = false;
+        int index = 0;
+        while (!done) {
+            if (!StringUtils.isNumeric(split[index])) {
+                done = true;
+                break;
+            } 
+            localsb.append(split[index]);
+            Main.log.send(split[index]);
+            index++;
+        }
+        long _default = Integer.valueOf(localsb.toString()) * 60;
         if (_default == 0) return 0;
-        switch (split[1]) {
-            case "sec":
+        Main.log.send(split[index]);
+        switch (split[index]) {
+            case "s":
                 return (_default *= 1 / 60) * 1000;
-            case "min":
+            case "m":
                 return (_default *= 1) * 1000;
-            case "hour":
+            case "h":
                 return (_default *= 60) * 1000;
-            case "day":
+            case "d":
                 return (_default *= 60 * 24) * 1000;
-            case "week":
+            case "w":
                 return (_default *= 60 * 24 * 7) * 1000;
-            case "month":
-                return (_default *= 60 * 30 * 24) * 1000;
-            case "year":
-                return (_default *= 60 * 30 * 24 * 12) * 1000;
         }
         return 0;
     }
