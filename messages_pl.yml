@@ -200,6 +200,7 @@ DELWARP_UNKNOWN: '&4Blad: &cTaki warp nie istnieje!'
 DELWARP_SUCCESS: '&7Pomyslnie usunieto warp o nazwie &c%warp%&7!'
 BAN_BROADCAST: '&cBan &8-> &7Gracz &c%player% &7zostal zbanowany na zawsze za &c%reason%&7!'
 BAN_SUCCESS: '&7Pomyslnie zbanowano &c%player%&7!'
+BAN_PERMAMENT: Permament
 BAN_NO_REASON: Brak powodu
 BAN_FORMAT:
 - '&cJestes zbanowany na tym serwerze!'
@@ -209,6 +210,9 @@ BAN_FORMAT:
 UNBAN_BROADCAST: '&cUnban &8-> &7Gracz &c%player% &7zostal odbanowany!'
 UNBAN_SUCCESS: '&7Pomyslnie odbanowano &c%player%&7!'
 UNBAN_UNKNOWN: '&4Blad: &cGracz nie jest zbanowany!'
+TEMPBAN_BROADCAST: '&cTempban &8-> &7Gracz &c%player%&7 zostal zbanowany na czas &c%till%&7
+  za &c%reason%&7!'
+TEMPBAN_SUCCESS: '&7Pomyslnie zbanowano na czas gracza &c%player%&7!'
 BACK_DESC: Teleportacja do ostatniej lokacji
 BROADCAST_DESC: Globalne ogloszenie
 CHAT_DESC: Zarzadzanie czatem
@@ -256,6 +260,8 @@ KILL_DESC: Pozwala na zabicie gracza
 WARP_DESC: Teleportuje na warp
 SETWARP_DESC: Dodaje nowy warp
 DELWARP_DESC: Usuwa istniejacy warp
+BAN_DESC: Banuje gracza
+UNBAN_DESC: Odbanowywuje gracza
 TIMEPARSE_DAY: ' dzien '
 TIMEPARSE_DAYS: ' dni '
 TIMEPARSE_HOUR: ' godzine '
@@ -267,4 +273,3 @@ TIMEPARSE_MINUTES_2: ' minut '
 TIMEPARSE_SECOND: ' sekunde '
 TIMEPARSE_SECONDS: ' sekundy '
 TIMEPARSE_SECONDS_2: ' sekund '
-BAN_PERMAMENT: Na zawsze

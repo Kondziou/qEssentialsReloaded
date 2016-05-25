@@ -52,6 +52,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.SetHomeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.SetSpawnCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.SetWarpCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.SpawnCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.TempBanCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TimeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpAcceptCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.TpCommand;
@@ -341,6 +342,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new SetWarpCommand());
         CommandManager.registerCommand(new DelWarpCommand());
         CommandManager.registerCommand(new BanCommand());
+        CommandManager.registerCommand(new TempBanCommand());
         CommandManager.registerCommand(new UnbanCommand());
         //aliases
         CommandManager.registerCommand(new SunAlias());

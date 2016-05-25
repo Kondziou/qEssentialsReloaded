@@ -85,6 +85,9 @@ public class PaginatorUtils {
         map.put(44, MessagesImpl.HELP_INDEX.replace("%command%", "warp").replace("%description%", MessagesImpl.WARP_DESC));
         map.put(45, MessagesImpl.HELP_INDEX.replace("%command%", "setwarp").replace("%description%", MessagesImpl.SETWARP_DESC));
         map.put(46, MessagesImpl.HELP_INDEX.replace("%command%", "delwarp").replace("%description%", MessagesImpl.DELWARP_DESC));
+        map.put(47, MessagesImpl.HELP_INDEX.replace("%command%", "ban").replace("%description%", MessagesImpl.BAN_DESC));
+        map.put(48, MessagesImpl.HELP_INDEX.replace("%command%", "tempban").replace("%description%", MessagesImpl.TEMPBAN_DESC));
+        map.put(49, MessagesImpl.HELP_INDEX.replace("%command%", "unban").replace("%description%", MessagesImpl.UNBAN_DESC));
     }
 
 }
