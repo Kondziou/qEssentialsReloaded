@@ -19,12 +19,10 @@ public class TimeUnit {
                 break;
             } 
             localsb.append(split[index]);
-            Main.log.send(split[index]);
             index++;
         }
         long _default = Integer.valueOf(localsb.toString()) * 60;
         if (_default == 0) return 0;
-        Main.log.send(split[index]);
         switch (split[index]) {
             case "s":
                 return (_default *= 1 / 60) * 1000;
