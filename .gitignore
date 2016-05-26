@@ -3,7 +3,7 @@ bin
 .settings\*
 *.project
 *.classpath
-/nbproject/
-/nbproject/private/
-/build/
-/dist/
+nbproject\*
+build\*
+dist\*
+*.xml
