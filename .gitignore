@@ -1,1 +1,14 @@
+<<<<<<< HEAD
 target\*
+=======
+bin\*
+bin
+.settings\*
+*.project
+*.classpath
+nbproject\*
+\build\
+\dist\
+*.xml
+/nbproject/private/
+>>>>>>> bc4a4a1a619d00d978aa1d2d4e9a567b652d368d
