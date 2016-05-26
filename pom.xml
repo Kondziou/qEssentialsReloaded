@@ -53,7 +53,7 @@
         <dependency>
             <groupId>ru.tehkode</groupId>
             <artifactId>PermissionsEx</artifactId>
-            <version>1.23.4</version>
+            <version>1.23.2-SNAPSHOT</version>
             <optional>true</optional>
             <type>jar</type>
         </dependency>
