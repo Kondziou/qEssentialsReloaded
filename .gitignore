@@ -4,6 +4,7 @@ bin
 *.project
 *.classpath
 nbproject\*
-build\*
-dist\*
+\build\
+\dist\
 *.xml
+/nbproject/private/
