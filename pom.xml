@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- Model version -->
     <modelVersion>4.0.0</modelVersion>
     
+    <!-- Maven project informations -->
     <groupId>me.kavzaq.qessentials</groupId>
     <artifactId>qEssentialsReloaded</artifactId>
     <version>1.3</version>
@@ -9,10 +11,12 @@
     
     <repositories>
         <repository>
+            <!-- Vault repository -->
             <id>vault-repo</id>
             <url>http://nexus.theyeticave.net/content/repositories/pub_releases</url>
         </repository>
         <repository>
+            <!-- PermissionsEx repository -->
             <id>pex-repo</id>
             <url>http://pex-repo.aoeu.xyz</url>
         </repository>
@@ -21,6 +25,7 @@
     <build>
         <resources>
             <resource>
+                <!-- Resources -->
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
@@ -28,40 +33,45 @@
     </build>
     
     <dependencies>
+        <!-- Newest Apache Commons Lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
         </dependency>
+        <!-- "Illegal" spigotmc generated from BuildTools -->
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.9.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+            <scope>provided</scope> 
+            <optional>true</optional> <!-- because of travis errors. Travis can not 
+                                            resolve the local dependencies  -->
         </dependency>
+        <!-- Vault -->
         <dependency>
             <groupId>net.milkbowl.vault</groupId>
             <artifactId>VaultAPI</artifactId>
             <version>1.6</version>
             <optional>true</optional>
-            <type>jar</type>
         </dependency>
+        <!-- PermissionsEx -->
         <dependency>
             <groupId>ru.tehkode</groupId>
             <artifactId>PermissionsEx</artifactId>
             <version>1.23.2-SNAPSHOT</version>
             <optional>true</optional>
-            <type>jar</type>
         </dependency>
+        <!-- FunnyGuilds -->
         <dependency>
             <groupId>net.dzikoysk</groupId>
             <artifactId>funnyguilds</artifactId>
             <version>3.9.9.1</version>
             <optional>true</optional>
-            <type>jar</type>
         </dependency>
     </dependencies>
     
+    <!-- Compiling properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
