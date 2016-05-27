@@ -44,7 +44,6 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.9.2-R0.1-SNAPSHOT</version>
-            <scope>provided</scope> 
             <optional>true</optional> <!-- because of travis errors. Travis can not 
                                             resolve the local dependencies  -->
         </dependency>
