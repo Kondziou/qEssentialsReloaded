@@ -1,1 +1,10 @@
 language: java
+jdk:
+  - oraclejdk8
+before_install:
+  - ./paper patch
+after_success:
+  - ./scripts/paperclip.sh "."
+cache:
+  directories:
+    - '$HOME/.m2/repository'
