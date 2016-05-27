@@ -1,8 +1,4 @@
 language: java
-jdk:
-  - oraclejdk8
-before_install:
-  - ./paper patch
 cache:
   directories:
     - '$HOME/.m2/repository'
