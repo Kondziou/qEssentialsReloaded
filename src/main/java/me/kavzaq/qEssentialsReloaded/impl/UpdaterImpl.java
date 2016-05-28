@@ -30,7 +30,7 @@ public class UpdaterImpl {
             @Override
             public void run() {
                 try {
-                    newestVersion = Util.readUrl("http://kavz.za.pl/plugins/qessentials/update.txt");
+                    newestVersion = Util.readUrl("http://kavzaq.cba.pl/plugins/qessentials/update.txt");
                 } catch (Exception e) {
                     Main.log.send(e);
                     return;
