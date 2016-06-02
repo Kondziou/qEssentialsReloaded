@@ -21,7 +21,7 @@ public class WarpManagerImpl {
     
     public static void loadWarps() {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                     "SELECT * FROM warps");
             ResultSet rs = stat.executeQuery();
             while (rs.next()) {
@@ -43,7 +43,7 @@ public class WarpManagerImpl {
     
     public static void delWarp(String name) {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "DELETE FROM `warps` WHERE `name`=?");
             stat.setString(1, name);
             stat.executeUpdate();
@@ -58,7 +58,7 @@ public class WarpManagerImpl {
     public static void addWarp(String name, Location location) {
         WarpImpl warp = new WarpImpl(name, location);
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "INSERT INTO `warps` (`name`, `world`, `x`, `y`, `z`, `pitch`, `yaw`) VALUES (?, ?, ?, ?, ?, ?, ?)");
             stat.setString(1, warp.getName());
             stat.setString(2, warp.getLocation().getWorld().getName());
