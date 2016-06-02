@@ -12,7 +12,7 @@ import org.bukkit.Bukkit;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 
-public class SQLite {
+public class SQLite implements Database {
 
     private File file = new File(Main.getInstance().getDataFolder(), "sqlite.db");
     
