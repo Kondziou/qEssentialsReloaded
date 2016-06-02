@@ -23,7 +23,7 @@ public class BanManagerImpl {
     
     public static void loadBans() {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                     "SELECT * FROM bans");
             ResultSet rs = stat.executeQuery();
             while (rs.next()) {
@@ -40,7 +40,7 @@ public class BanManagerImpl {
     
     public static void addBan(BanImpl ban) {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "INSERT INTO `bans` (`punisher`, `punished`, `till`, `reason`) VALUES (?, ?, ?, ?)");
             stat.setString(1, ban.getPunisher());
             stat.setString(2, ban.getPunished().toString());
@@ -55,7 +55,7 @@ public class BanManagerImpl {
     
     public static void deleteBan(BanImpl ban) {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "DELETE FROM bans WHERE `punished`=?");
             stat.setString(1, ban.getPunished().toString());
             stat.executeUpdate();
