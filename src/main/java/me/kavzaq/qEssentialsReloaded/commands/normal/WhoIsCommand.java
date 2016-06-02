@@ -13,6 +13,7 @@ import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
 import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.OfflinePlayer;
 
 public class WhoIsCommand extends CommandImpl {
 
@@ -33,6 +34,10 @@ public class WhoIsCommand extends CommandImpl {
             }
             Player p = (Player)s;
             UserImpl u = Main.getUserManager().getUser(p);
+            OfflinePlayer offp = Bukkit.getOfflinePlayer(p.getUniqueId());
+            
+            String state = offp.isOnline() ? " (online)" : " (offline)";
+            
             for (String str : MessagesImpl.WHOIS_INFO) {
                 Util.sendMessage(p, str
                         .replace("%player%", p.getName())
@@ -44,16 +49,25 @@ public class WhoIsCommand extends CommandImpl {
                         .replace("%food%", String.valueOf((p.getFoodLevel() / 2)))
                         .replace("%health%", String.valueOf((p.getHealth() / 2)))
                         .replace("%location%", 
-                                "x" + p.getLocation().getX() +
-                                ", y" + p.getLocation().getY() +
-                                ", z" + p.getLocation().getZ())
+                                "x" + Util.round(p.getLocation().getX(), 3) +
+                                ", y" + Util.round(p.getLocation().getY(), 3) +
+                                ", z" + Util.round(p.getLocation().getZ(), 3))
                         .replace("%isGod%", BooleanUtils.getParsedBooleanYesNo(u.isGod()))
-                        .replace("%homes%", ListingUtils.getHomeList(p)));
+                        .replace("%homes%", ListingUtils.getHomeList(p))
+                        .replace("%lastSeen%", Util.parseTime(System.currentTimeMillis() - offp.getLastPlayed()).replace(Util.parseTime(System.currentTimeMillis()), MessagesImpl.WHOIS_NO_INFORMATION) + state)
+                        .replace("%firstSeen%", Util.parseTime(System.currentTimeMillis() - offp.getFirstPlayed())));
             }
         }
         else if (args.length == 1) {
             if (Bukkit.getPlayer(args[0]) == null) {
-                Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
+                OfflinePlayer otheroffp = Bukkit.getOfflinePlayer(args[0]);
+                for (String str : MessagesImpl.OFFLINE_WHOIS_INFO) {
+                    Util.sendMessage(s, str
+                        .replace("%player%", otheroffp.getName())
+                        .replace("%uuid%", otheroffp.getUniqueId().toString())
+                        .replace("%lastSeen%", Util.parseTime(System.currentTimeMillis() - otheroffp.getLastPlayed()).replace(Util.parseTime(System.currentTimeMillis()), MessagesImpl.WHOIS_NO_INFORMATION))
+                        .replace("%firstSeen%", Util.parseTime(System.currentTimeMillis() - otheroffp.getFirstPlayed()).replace(Util.parseTime(System.currentTimeMillis()), MessagesImpl.WHOIS_NO_INFORMATION)));
+                }
                 return;
             }
             Player other = Bukkit.getPlayer(args[0]);
@@ -62,6 +76,10 @@ public class WhoIsCommand extends CommandImpl {
                 return;
             }
             UserImpl otheru = Main.getUserManager().getUser(other);
+            OfflinePlayer otheroffp = Bukkit.getPlayer(other.getUniqueId());
+            
+            String state = otheroffp.isOnline() ? " (online)" : " (offline)";
+            
             for (String str : MessagesImpl.WHOIS_INFO) {
                 Util.sendMessage(s, str
                         .replace("%player%", other.getName())
@@ -73,11 +91,13 @@ public class WhoIsCommand extends CommandImpl {
                         .replace("%food%", String.valueOf((other.getFoodLevel() / 2)))
                         .replace("%health%", String.valueOf((other.getHealth() / 2)))
                         .replace("%location%", 
-                                "x" + other.getLocation().getX() +
-                                ", y" + other.getLocation().getY() +
-                                ", z" + other.getLocation().getZ())
+                                "x" + Util.round(other.getLocation().getX(), 3) +
+                                ", y" + Util.round(other.getLocation().getY(), 3) +
+                                ", z" + Util.round(other.getLocation().getZ(), 3))
                         .replace("%isGod%", BooleanUtils.getParsedBooleanYesNo(otheru.isGod()))
-                        .replace("%homes%", ListingUtils.getHomeList(other)));
+                        .replace("%homes%", ListingUtils.getHomeList(other))
+                        .replace("%lastSeen%", Util.parseTime(System.currentTimeMillis() - otheroffp.getLastPlayed()).replace(Util.parseTime(System.currentTimeMillis()), MessagesImpl.WHOIS_NO_INFORMATION) + state)
+                        .replace("%firstSeen%", Util.parseTime(System.currentTimeMillis() - otheroffp.getFirstPlayed())));
                 
             }
         }

@@ -105,9 +105,17 @@ WHOIS_INFO:
 - '&7  Zycie: &c%health%/10'
 - '&7  Lokacja: &c%location%'
 - '&7  Niesmiertelnosc: &c%isGod%'
+- '&7  Ostatnio widziany: &c%lastSeen% temu'
+- '&7  Pierwsze zauwazenie: &c%firstSeen% temu'
 - '&7  Domy:'
 - '%homes%'
+OFFLINE_WHOIS_INFO:
+- '&7Informacje na temat &c%player%&7 (offline):'
+- '&7  UUID: &c%uuid%'
+- '&7  Ostatnio widziany: &c%lastSeen% temu'
+- '&7  Pierwsze zauwazenie: &c%firstSeen% temu'
 WHOIS_HOMES_INDEX: '&7  * &c%home% &7: &c%location%'
+WHOIS_NO_INFORMATION: Brak informacji
 RELOAD_SUCCESS: '&aPomyslnie przeladowano plugin qEssentialsReloaded v%version%'
 SETHOME_MAX: '&4Blad: &cOsiagnieto maksymalna ilosc domow!'
 SETHOME_HAS_THIS_NAME: '&4Blad: &cJuz masz dom o tej nazwie!'

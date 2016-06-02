@@ -23,6 +23,17 @@
     </repositories>
     
     <build>
+        <!-- Maven Jar Plugin -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <outputDirectory>C:/Users/poczt/Desktop/Serwer/plugins</outputDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <!-- Resources -->

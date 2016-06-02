@@ -98,9 +98,17 @@ WHOIS_INFO:
 - '&7  Health: &c%health%/10'
 - '&7  Location: &c%location%'
 - '&7  Godmode: &c%isGod%'
+- '&7  Last seen: &c%lastSeen%'
+- '&7  First seen: &c%firstSeen%'
 - '&7  Homes:'
 - '%homes%'
+OFFLINE_WHOIS_INFO:
+- '&7Information about &c%player%&7 (offline):'
+- '&7  UUID: &c%uuid%'
+- '&7  Last seen: &c%lastSeen%'
+- '&7  First seen: &c%firstSeen%'
 WHOIS_HOMES_INDEX: '&7  * &c%home% &7: &c%location%'
+WHOIS_NO_INFORMATION: No information
 RELOAD_SUCCESS: '&aSuccessfully reloaded qEssentialsReloaded v%version%'
 SETHOME_MAX: '&4Error: &cYou have maximum amount of homes!'
 SETHOME_HAS_THIS_NAME: '&4Error: &cYou already have that home!'

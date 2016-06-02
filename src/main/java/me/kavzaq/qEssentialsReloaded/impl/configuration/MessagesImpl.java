@@ -147,11 +147,20 @@ public class MessagesImpl {
             "&7  Food: &c%food%/10",
             "&7  Health: &c%health%/10",
             "&7  Location: &c%location%", 
-            "&7  Godmode: &c%isGod%", 
+            "&7  Godmode: &c%isGod%",
+            "&7  Last seen: &c%lastSeen%",
+            "&7  First seen: &c%firstSeen%",
             "&7  Homes:",
             "%homes%");
     
+    public static List<String> OFFLINE_WHOIS_INFO = Arrays.asList(
+            "&7Information about &c%player%&7 (offline):",
+            "&7  UUID: &c%uuid%",
+            "&7  Last seen: &c%lastSeen%",
+            "&7  First seen: &c%firstSeen%");
+
     public static String WHOIS_HOMES_INDEX = "&7  * &c%home% &7: &c%location%";
+    public static String WHOIS_NO_INFORMATION = "No information";
     
     // Reload command
     public static String RELOAD_SUCCESS = "&aSuccessfully reloaded qEssentialsReloaded v%version%";
