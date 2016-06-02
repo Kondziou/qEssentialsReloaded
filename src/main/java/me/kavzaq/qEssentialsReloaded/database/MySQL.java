@@ -12,7 +12,7 @@ import org.bukkit.Bukkit;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 
-public class MySQL {
+public class MySQL implements Database {
 
     private final String user, pass;
     
