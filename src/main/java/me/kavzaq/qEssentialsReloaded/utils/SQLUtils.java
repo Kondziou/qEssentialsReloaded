@@ -12,7 +12,7 @@ public class SQLUtils {
     private SQLUtils() { }
     
     public static boolean isKitNull(KitDataImpl kitData) {
-        try (PreparedStatement stat = Main.getSQLite().getConnection()
+        try (PreparedStatement stat = Main.getDb().getConnection()
                 .prepareStatement("SELECT * FROM kits WHERE `name`=?")) {
             stat.setString(1, kitData.getName());
             
@@ -27,7 +27,7 @@ public class SQLUtils {
     }
     
     public static boolean isHomeNull(HomeDataImpl homeData) {
-        try (PreparedStatement stat = Main.getSQLite().getConnection()
+        try (PreparedStatement stat = Main.getDb().getConnection()
                 .prepareStatement("SELECT * FROM homes WHERE `name`=?")) {
             stat.setString(1, homeData.getName());
             

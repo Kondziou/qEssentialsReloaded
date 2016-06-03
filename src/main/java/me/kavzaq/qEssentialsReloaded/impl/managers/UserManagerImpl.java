@@ -28,10 +28,10 @@ public class UserManagerImpl {
         UserImpl user = getUser(player);
         PreparedStatement stat = null;
         try {
-            PreparedStatement kitStat = Main.getSQLite().getConnection().prepareStatement("SELECT * FROM kits WHERE uuid=?");
+            PreparedStatement kitStat = Main.getDb().getConnection().prepareStatement("SELECT * FROM kits WHERE uuid=?");
             kitStat.setString(1, player.getUniqueId().toString());
 
-            PreparedStatement homeStat = Main.getSQLite().getConnection().prepareStatement("SELECT * FROM homes WHERE uuid=?");
+            PreparedStatement homeStat = Main.getDb().getConnection().prepareStatement("SELECT * FROM homes WHERE uuid=?");
             homeStat.setString(1, player.getUniqueId().toString());
 
             ResultSet kitRs = kitStat.executeQuery();

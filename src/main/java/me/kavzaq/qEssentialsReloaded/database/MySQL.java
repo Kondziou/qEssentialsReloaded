@@ -12,29 +12,25 @@ import org.bukkit.Bukkit;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 
-public class SQLite implements Database {
+public class MySQL implements Database {
 
-    private File file = new File(Main.getInstance().getDataFolder(), "sqlite.db");
+    private final String user, pass;
     
     public String driver;
     public String database_url;
     
     public Connection connection = null;
     
-    public SQLite() {
+    public MySQL(String host, String user, String pass, String name) {
+        this(host, 3306, user, pass, name);
+    }
+    
+    public MySQL(String host, int port, String user, String pass, String name) {
+        this.user = user;
+        this.pass = pass;
         // setting variables
-        driver = "org.sqlite.JDBC";
-        if (!Main.getInstance().getDataFolder().exists()) {
-            Main.getInstance().getDataFolder().mkdirs();
-        }
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                Main.log.send(e);
-            }
-        }
-        database_url = "jdbc:sqlite:" + file.getAbsolutePath();
+        driver = "com.mysql.jdbc.Driver";
+        database_url = "jdbc:mysql://" + host + ":" + port + "/" + name;
         
         // searching for driver
         try {
@@ -81,7 +77,7 @@ public class SQLite implements Database {
         // connecting
         if (connection == null) {
             try { 
-                connection = DriverManager.getConnection(database_url);
+                connection = DriverManager.getConnection(database_url, user, pass);
             } catch (SQLException sqle) {
                 Main.log.send(sqle);
             }

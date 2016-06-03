@@ -50,7 +50,7 @@ public class BanImpl {
     
     public void save() {
         try {
-            try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "UPDATE `bans` SET `reason`=?,`till`=? WHERE `punished`=?")) {
                 stat.setString(1, this.getReason());
                 stat.setLong(2, this.getTill());
