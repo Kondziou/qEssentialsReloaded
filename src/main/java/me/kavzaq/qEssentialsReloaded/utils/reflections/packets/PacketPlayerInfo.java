@@ -11,6 +11,7 @@ import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.json.JSONPacketBuilder;
 import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
+import net.minecraft.server.v1_10_R1.EnumGamemode;
 
 public class PacketPlayerInfo {
     
@@ -25,7 +26,7 @@ public class PacketPlayerInfo {
         try {
             cons = PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO$PLAYER_INFO_DATA
                     .getDeclaredConstructor(PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO, GameProfile.class, int.class, 
-                            PacketEssential.WORLD_SETTINGS$ENUM_GAMEMODE, PacketEssential.ICHAT_BASE_COMPONENT);
+                            EnumGamemode.class, PacketEssential.ICHAT_BASE_COMPONENT);
         } catch (NoSuchMethodException | SecurityException e) {
             Main.log.send(e);
         }
@@ -33,7 +34,7 @@ public class PacketPlayerInfo {
             return cons.newInstance(PACKET_PLAY_OUT_PLAYER_INFO_CONSTRUCTOR, 
                     gp, 
                     TabConfigurationImpl.tablistPing, 
-                    Enum.valueOf((Class<Enum>) PacketEssential.WORLD_SETTINGS$ENUM_GAMEMODE, "SURVIVAL"), 
+                    EnumGamemode.SURVIVAL, 
                     JSONPacketBuilder.build("{\"text\": \"" + Util.fixColors(slot) + "\"}"));
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                 | InvocationTargetException e) {

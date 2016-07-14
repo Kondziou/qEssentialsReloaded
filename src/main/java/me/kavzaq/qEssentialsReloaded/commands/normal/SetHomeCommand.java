@@ -43,7 +43,7 @@ public class SetHomeCommand extends CommandImpl {
             }
         }
         
-        if (!StringUtils.isAlpha(args[0])) {
+        if ((!StringUtils.isAlpha(args[0])) || (args[0].length() <= 1)) {
             Util.sendMessage(p, MessagesImpl.SETHOME_INVALID);
             return;
         }

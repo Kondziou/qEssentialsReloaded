@@ -10,6 +10,7 @@ import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
 import net.minecraft.server.v1_10_R1.EntityPlayer;
 import net.minecraft.server.v1_10_R1.Packet;
 import net.minecraft.server.v1_10_R1.PlayerConnection;
+import net.minecraft.server.v1_10_R1.WorldSettings;
 import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
 
 public class PacketEssential {
@@ -22,7 +23,6 @@ public class PacketEssential {
     public static Class<?> PACKET_PLAY_OUT_PLAYER_INFO$PLAYER_INFO_DATA = ReflectionUtils.getCraftClass("PacketPlayOutPlayerInfo$PlayerInfoData");
     public static Class<?> ICHAT_BASE_COMPONENT = ReflectionUtils.getCraftClass("IChatBaseComponent");
     public static Class<?> ICHAT_BASE_COMPONENT$CHAT_SERIALIZER = ReflectionUtils.getCraftClass("IChatBaseComponent$ChatSerializer");
-    public static Class<?> WORLD_SETTINGS$ENUM_GAMEMODE = ReflectionUtils.getCraftClass("WorldSettings$EnumGamemode");
     public static Class<?> PACKET_PLAY_OUT_ENTITY_METADATA = ReflectionUtils.getCraftClass("PacketPlayOutEntityMetadata");
     public static Class<?> PACKET_PLAY_OUT_ENTITY_DESTROY =    ReflectionUtils.getCraftClass("PacketPlayOutEntityDestroy");
     public static Class<?> PACKET_PLAY_OUT_ENTITY_TELEPORT = ReflectionUtils.getCraftClass("PacketPlayOutEntityTeleport");
