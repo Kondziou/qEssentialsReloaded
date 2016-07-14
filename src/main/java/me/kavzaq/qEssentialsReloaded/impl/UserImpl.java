@@ -107,7 +107,7 @@ public class UserImpl {
     
     public void implementKit(KitDataImpl kitData) {
         try {
-            try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                     "INSERT INTO `kits` (`uuid`, `name`, `cooldown`) VALUES (?, ?, ?)")) {
                 stat.setString(1, this.uuid.toString());
                 stat.setString(2, kitData.getName());
@@ -122,7 +122,7 @@ public class UserImpl {
     
     public void implementHome(HomeDataImpl homeData) {
         try {
-            try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                     "INSERT INTO `homes` (`uuid`, `name`, `world`, `x`, `y`, `z`, `pitch`, `yaw`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")) {
                 stat.setString(1, this.uuid.toString());
                 stat.setString(2, homeData.getName());
@@ -142,7 +142,7 @@ public class UserImpl {
     
     public void saveKit(KitDataImpl kitData) {
         try {
-            try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "UPDATE `kits` SET `name`=?,`cooldown`=? WHERE `uuid`=? AND `name`=?")) {
                 stat.setString(1, kitData.getName());
                 stat.setLong(2, kitData.getCooldown());
@@ -158,7 +158,7 @@ public class UserImpl {
     
     public void saveHome(HomeDataImpl homeData) {
         try {
-            try (PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "UPDATE `homes` SET `name`=?,`world`=?,`x`=?,`y`=?,`z`=?,`pitch`=?,`yaw`=? WHERE `uuid`=? AND `name`=?")) {
                 stat.setString(1, homeData.getName());
                 stat.setString(2, homeData.getLocation().getWorld().getName());
@@ -179,7 +179,7 @@ public class UserImpl {
     
     public void deleteHome(HomeDataImpl homeData) {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "DELETE FROM `homes` WHERE `uuid`=? AND `name`=?");
             stat.setString(1, this.uuid.toString());
             stat.setString(2, homeData.getName());
@@ -192,7 +192,7 @@ public class UserImpl {
     
     public void deleteKit(KitDataImpl kitData) {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                 "DELETE FROM `kits` WHERE `uuid`=? AND `name`=?");
             stat.setString(1, this.uuid.toString());
             stat.setString(2, kitData.getName());

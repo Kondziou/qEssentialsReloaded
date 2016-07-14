@@ -65,6 +65,8 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.WarpCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WeatherCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WorldCommand;
+import me.kavzaq.qEssentialsReloaded.database.Database;
+import me.kavzaq.qEssentialsReloaded.database.MySQL;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
@@ -106,11 +108,12 @@ import me.kavzaq.qEssentialsReloaded.utils.LogUtils;
 import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Server;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 public class Main extends JavaPlugin {
-
+    
     private static Metrics metrics;
     private static Main inst;
     private static UserManagerImpl userManager;
@@ -122,7 +125,7 @@ public class Main extends JavaPlugin {
     private static MessageContainerImpl messagecontainer;
     private static KitManagerImpl kitmanager;
     private static Random random;
-    private static SQLite sqlite;
+    private static Database database;
     
     public static final LogUtils log = new LogUtils(LogType.INFO);
 
@@ -134,7 +137,7 @@ public class Main extends JavaPlugin {
     public static Chat chat = null;
     public static boolean economy_support = false;
     public static boolean chat_support = false;
-
+    
     private boolean setupChat() {
         RegisteredServiceProvider<Chat> chatProvider
                 = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
@@ -162,8 +165,8 @@ public class Main extends JavaPlugin {
         return random;
     }
     
-    public static SQLite getSQLite() {
-        return sqlite;
+    public static Database getDb() {
+        return database;
     }
 
     public static Metrics getMetrics() {
@@ -220,9 +223,27 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         startTime = System.currentTimeMillis();
+        
         log.send("[qEssentialsReloaded] Loading resources...");
-        log.send("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
-        sqlite = new SQLite();
+        saveDefaultConfig();
+        File f = new File(getDataFolder(), "config.yml");
+        try {
+            if (!getDataFolder().exists()) getDataFolder().mkdir();
+            if (!f.exists()) f.createNewFile();
+            Main.getInstance().getConfig().load(f);
+        } catch (IOException | InvalidConfigurationException ex) {
+            Main.log.send(ex);
+        }
+        log.send("[qEssentialsReloaded] Creating variables, connecting to database and creating tables...");
+        if(getConfig().getBoolean("database.mysql", false)){
+            database = new MySQL(getConfig().getString("database.host"),
+                                 getConfig().getInt("database.port"),
+                                 getConfig().getString("database.user"),
+                                 getConfig().getString("database.pass"),
+                                 getConfig().getString("database.name"));
+        }else{
+            database = new SQLite();
+        }
         log.send("[qEssentialsReloaded] Instantiating object implementations...");
         userManager = new UserManagerImpl();
         tabmanager = new TabManagerImpl();
@@ -269,15 +290,6 @@ public class Main extends JavaPlugin {
         CacheFile.save();
         CacheFile.saveDefaultConfig();
        
-        saveDefaultConfig();
-        File f = new File(getDataFolder(), "config.yml");
-        try {
-            if (!getDataFolder().exists()) getDataFolder().mkdir();
-            if (!f.exists()) f.createNewFile();
-            Main.getInstance().getConfig().load(f);
-        } catch (IOException | InvalidConfigurationException ex) {
-            Main.log.send(ex);
-        }
         log.send("[qEssentialsReloaded] [Translation] Loaded " + MessagesImpl.LANGUAGE + " translation created by " + MessagesImpl.TRANSLATION_AUTHOR);
         log.send("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();

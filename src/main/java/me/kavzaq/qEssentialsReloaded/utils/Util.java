@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -21,6 +20,7 @@ import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 
 import com.google.common.collect.Lists;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import org.apache.commons.io.IOUtils;
 
 public class Util {
     

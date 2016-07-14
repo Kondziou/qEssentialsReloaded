@@ -120,7 +120,7 @@ public class MessagesImpl {
     public static String WEATHER_THUNDER_SUCCESS = "&7Successfully switched weather to &crainy&7! (&c%world%&7)";
     
     // Time command
-    public static String TIME_DAY_SUCCESS = "&Successfully switched time to &cday&7! (&c%world%&7)";
+    public static String TIME_DAY_SUCCESS = "&7Successfully switched time to &cday&7! (&c%world%&7)";
     public static String TIME_NIGHT_SUCCESS = "&7Successfully swtiched time to &cnight&7! (&c%world%&7)";
     public static String TIME_OWN_SUCCESS = "&7Successfully switched time to &c%time%&7! (&c%world%&7)";
     

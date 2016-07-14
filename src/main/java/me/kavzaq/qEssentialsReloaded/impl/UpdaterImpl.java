@@ -25,20 +25,15 @@ public class UpdaterImpl {
     }
 
     public static void checkUpdate() {
-        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
-            
-            @Override
-            public void run() {
-                try {
-                    newestVersion = Util.readUrl("http://kavzaq.cba.pl/plugins/qessentials/update.txt");
-                } catch (Exception e) {
-                    Main.log.send(e);
-                    return;
-                }
-                if (!currentVersion.equalsIgnoreCase(newestVersion)) {
-                    actualVersion = false;
-                }
-                
+        Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), () -> {
+            try {
+                newestVersion = Util.readUrl("http://kavzaq.cba.pl/plugins/qessentials/update.txt");
+            } catch (Exception e) {
+                Main.log.send(e);
+                return;
+            }
+            if (!currentVersion.equalsIgnoreCase(newestVersion)) {
+                actualVersion = false;
             }
         });
     }

@@ -21,7 +21,7 @@ public class WarpManagerImpl {
     
     public static void loadWarps() {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
+            PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
                     "SELECT * FROM warps");
             ResultSet rs = stat.executeQuery();
             while (rs.next()) {
@@ -43,11 +43,11 @@ public class WarpManagerImpl {
     
     public static void delWarp(String name) {
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
-                "DELETE FROM `warps` WHERE `name`=?");
-            stat.setString(1, name);
-            stat.executeUpdate();
-            stat.close();
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
+                    "DELETE FROM `warps` WHERE `name`=?")) {
+                stat.setString(1, name);
+                stat.executeUpdate();
+            }
             WarpImpl toDelete = getWarp(name);
             warps.remove(toDelete);
         } catch (SQLException e) {
@@ -58,17 +58,17 @@ public class WarpManagerImpl {
     public static void addWarp(String name, Location location) {
         WarpImpl warp = new WarpImpl(name, location);
         try {
-            PreparedStatement stat = Main.getSQLite().getConnection().prepareStatement(
-                "INSERT INTO `warps` (`name`, `world`, `x`, `y`, `z`, `pitch`, `yaw`) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            stat.setString(1, warp.getName());
-            stat.setString(2, warp.getLocation().getWorld().getName());
-            stat.setFloat(3, (float)warp.getLocation().getX());
-            stat.setFloat(4, (float)warp.getLocation().getY());
-            stat.setFloat(5, (float)warp.getLocation().getZ());
-            stat.setFloat(6, warp.getLocation().getYaw());
-            stat.setFloat(7, warp.getLocation().getPitch());
-            stat.executeUpdate();
-            stat.close();
+            try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
+                    "INSERT INTO `warps` (`name`, `world`, `x`, `y`, `z`, `pitch`, `yaw`) VALUES (?, ?, ?, ?, ?, ?, ?)")) {
+                stat.setString(1, warp.getName());
+                stat.setString(2, warp.getLocation().getWorld().getName());
+                stat.setFloat(3, (float)warp.getLocation().getX());
+                stat.setFloat(4, (float)warp.getLocation().getY());
+                stat.setFloat(5, (float)warp.getLocation().getZ());
+                stat.setFloat(6, warp.getLocation().getYaw());
+                stat.setFloat(7, warp.getLocation().getPitch());
+                stat.executeUpdate();
+            }
         } catch (SQLException e) {
             Main.log.send(e);
         }

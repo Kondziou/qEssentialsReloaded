@@ -27,7 +27,7 @@ public abstract class CommandImpl extends Command {
 
     public abstract void onExecute(CommandSender s, String[] args);
     
-    
+    @Override
     public boolean execute(CommandSender s, String str, String[] args) {
         if (!s.hasPermission(this.permission)) {
             Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", this.permission));

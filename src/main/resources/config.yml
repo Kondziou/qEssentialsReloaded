@@ -6,7 +6,8 @@
 ####################################################
 # Messages language. More languages you can find on github
 # http://github.com/xVacuum/qEssentialsReloaded
-# Available: pl, en
+# Available to download (on github): pl
+# Available as default: en
 language: en
 # Help page length (commands per page)
 help-page-length: 10
@@ -21,6 +22,22 @@ disabled-worlds:
   - 'blockedworld2'
 # Kill messages
 kill-messages-disabled: false
+####################################################
+##                   Database                     ##
+####################################################
+# MySQL configuration. 
+database:
+    # Type `true` in `mysql` to enable.
+    # `false` means the mysql function is disabled, and plugin uses SQLite (file *.db)
+    mysql: false
+    # MySQL port
+    port: 3306
+    # MySQL host (ip address or localhost if server is local)
+    host: localhost
+    # MySQL username
+    user: root
+    # Database name
+    name: database_name
 ####################################################
 ##                    Helpop                      ##
 ####################################################

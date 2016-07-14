@@ -1,7 +1,5 @@
 package me.kavzaq.qEssentialsReloaded.database;
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,29 +10,25 @@ import org.bukkit.Bukkit;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 
-public class SQLite implements Database {
+public class MySQL implements Database {
 
-    private File file = new File(Main.getInstance().getDataFolder(), "sqlite.db");
+    private final String user, pass;
     
     public String driver;
     public String database_url;
     
     public Connection connection = null;
     
-    public SQLite() {
+    public MySQL(String host, String user, String pass, String name) {
+        this(host, 3306, user, pass, name);
+    }
+    
+    public MySQL(String host, int port, String user, String pass, String name) {
+        this.user = user;
+        this.pass = pass;
         // setting variables
-        driver = "org.sqlite.JDBC";
-        if (!Main.getInstance().getDataFolder().exists()) {
-            Main.getInstance().getDataFolder().mkdirs();
-        }
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                Main.log.send(e);
-            }
-        }
-        database_url = "jdbc:sqlite:" + file.getAbsolutePath();
+        driver = "com.mysql.jdbc.Driver";
+        database_url = "jdbc:mysql://" + host + ":" + port + "/" + name;
         
         // searching for driver
         try {
@@ -79,7 +73,7 @@ public class SQLite implements Database {
         // connecting
         if (connection == null) {
             try { 
-                connection = DriverManager.getConnection(database_url);
+                connection = DriverManager.getConnection(database_url, user, pass);
             } catch (SQLException sqle) {
                 Main.log.send(sqle);
             }
@@ -96,6 +90,7 @@ public class SQLite implements Database {
         
         PreparedStatement statKits = getConnection().prepareStatement(queryKits);
         executeUpdate(statKits);
+        
 
         String queryHomes = 
                 "CREATE TABLE IF NOT EXISTS homes (" +
@@ -109,8 +104,9 @@ public class SQLite implements Database {
                 "yaw FLOAT(255))";
         
         PreparedStatement statHomes = getConnection().prepareStatement(queryHomes);
-        executeUpdate(statHomes);
+        executeUpdate(statHomes); 
         
+       
         String queryWarps = 
                 "CREATE TABLE IF NOT EXISTS warps (" +
                 "name VARCHAR(255)," +
@@ -120,7 +116,7 @@ public class SQLite implements Database {
                 "z FLOAT(255)," +
                 "pitch FLOAT(255)," +
                 "yaw FLOAT(255))";
-        
+       
         try (PreparedStatement statWarps = getConnection().prepareStatement(queryWarps)) {
             statWarps.executeUpdate();
         }

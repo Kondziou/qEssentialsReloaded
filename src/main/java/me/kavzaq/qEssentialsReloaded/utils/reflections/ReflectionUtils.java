@@ -82,7 +82,7 @@ public class ReflectionUtils {
     
     public static Method getTypedMethod(Class<?> cl, String method, Class<?> type, Class<?>... params) {
         for (final Method m : cl.getDeclaredMethods()) {
-            if ((m == null || m.getName().equals(m)) && (type == null) || m.getReturnType().equals(type) 
+            if ((m == null || m.getName().equals(m.getName())) && (type == null) || m.getReturnType().equals(type) 
                     && Arrays.equals(m.getParameterTypes(), params)) {
                 m.setAccessible(true);
                 return m;

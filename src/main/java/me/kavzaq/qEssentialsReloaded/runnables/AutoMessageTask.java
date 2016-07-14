@@ -17,7 +17,7 @@ public class AutoMessageTask implements Runnable {
     
     @Override
     public void run() {
-        if ((messageList.size() == 0) || (messageList == null)) {
+        if ((messageList.isEmpty()) || (messageList == null)) {
             return;
         }
         if (currentIndex > (messageList.size() - 1)) {
