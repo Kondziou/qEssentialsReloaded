@@ -10,7 +10,6 @@ import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
 import net.minecraft.server.v1_10_R1.EntityPlayer;
 import net.minecraft.server.v1_10_R1.Packet;
 import net.minecraft.server.v1_10_R1.PlayerConnection;
-import net.minecraft.server.v1_10_R1.WorldSettings;
 import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
 
 public class PacketEssential {

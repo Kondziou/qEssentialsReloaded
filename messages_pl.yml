@@ -218,6 +218,15 @@ BAN_FORMAT:
 UNBAN_BROADCAST: '&cUnban &8-> &7Gracz &c%player% &7zostal odbanowany!'
 UNBAN_SUCCESS: '&7Pomyslnie odbanowano &c%player%&7!'
 UNBAN_UNKNOWN: '&4Blad: &cGracz nie jest zbanowany!'
+BOSSBAR_SUCCESS:
+- '&7Pomyslnie wyslano wiadomosc na pasku smoka!'
+- '&7  Odbiorca/y: &c%receiver%'
+- '&7  Wiadomosc: &c%message%'
+- '&7  Kolor: %color%'
+- '&7  Styl: &c%style%'
+- '&7  Stan paska: &c%progress%'
+- '&7  Czas: &c%timeout%'
+- '&7  Okres: &c%interval%'
 TEMPBAN_BROADCAST: '&cTempban &8-> &7Gracz &c%player%&7 zostal zbanowany na czas &c%till%&7
   za &c%reason%&7!'
 TEMPBAN_SUCCESS: '&7Pomyslnie zbanowano na czas gracza &c%player%&7!'

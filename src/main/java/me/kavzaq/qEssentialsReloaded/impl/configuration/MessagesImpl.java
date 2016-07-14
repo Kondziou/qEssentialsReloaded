@@ -302,8 +302,19 @@ public class MessagesImpl {
     
     // Unban command
     public static String UNBAN_BROADCAST = "&cUnban &8-> &7Player &c%player% &7has been unbanned!";
-    public static String UNBAN_SUCCESS = "&7Successfully unbaned player &c%player%&7!";
+    public static String UNBAN_SUCCESS = "&7Successfully unbanned player &c%player%&7!";
     public static String UNBAN_UNKNOWN = "&4Error: &cPlayer is already unbanned!";
+    
+    // BossBar command
+    public static List<String> BOSSBAR_SUCCESS = Arrays.asList(
+            "&7Successfully sent a bossbar message!",
+            "&7  Receiver: &c%receiver%",
+            "&7  Message: &c%message%",
+            "&7  Color: %color%",
+            "&7  Style: &c%style%",
+            "&7  Progress: &c%progress%",
+            "&7  Timeout: &c%timeout%",
+            "&7  Interval: &c%interval%");
     
     // Commands desc
     public static String BACK_DESC = "Teleports to last location";

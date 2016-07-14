@@ -18,6 +18,7 @@ import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.ThunderAlias;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BackCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BanCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.BossBarCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BroadcastCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ChatCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ClearInventoryCommand;
@@ -108,7 +109,6 @@ import me.kavzaq.qEssentialsReloaded.utils.LogUtils;
 import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
-import org.bukkit.Server;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
@@ -356,6 +356,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new BanCommand());
         CommandManager.registerCommand(new TempBanCommand());
         CommandManager.registerCommand(new UnbanCommand());
+        CommandManager.registerCommand(new BossBarCommand());
         //aliases
         CommandManager.registerCommand(new SunAlias());
         CommandManager.registerCommand(new ThunderAlias());

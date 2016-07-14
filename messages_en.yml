@@ -205,8 +205,17 @@ TEMPBAN_BROADCAST: '&cTempban &8-> &7Player &c%player%&7 has been banned till &c
   for &c%reason%&7!'
 TEMPBAN_SUCCESS: '&7Successfully temporary banned player &c%player%&7!'
 UNBAN_BROADCAST: '&cUnban &8-> &7Player &c%player% &7has been unbanned!'
-UNBAN_SUCCESS: '&7Successfully unbaned player &c%player%&7!'
+UNBAN_SUCCESS: '&7Successfully unbanned player &c%player%&7!'
 UNBAN_UNKNOWN: '&4Error: &cPlayer is already unbanned!'
+BOSSBAR_SUCCESS:
+- '&7Successfully sent a bossbar message!'
+- '&7  Receiver: &c%receiver%'
+- '&7  Message: &c%message%'
+- '&7  Color: %color%'
+- '&7  Style: &c%style%'
+- '&7  Progress: &c%progress%'
+- '&7  Timeout: &c%timeout%'
+- '&7  Interval: &c%interval%'
 BACK_DESC: Teleports to last location
 BROADCAST_DESC: Global broadcast
 CHAT_DESC: Chat management

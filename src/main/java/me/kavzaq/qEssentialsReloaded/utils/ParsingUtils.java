@@ -9,10 +9,44 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.google.common.collect.Lists;
+import me.kavzaq.qEssentialsReloaded.impl.BossBarImpl;
+import org.bukkit.entity.Player;
+import org.inventivetalent.bossbar.BossBarAPI.Color;
+import org.inventivetalent.bossbar.BossBarAPI.Style;
 
 public class ParsingUtils {
     
     private ParsingUtils() { }
+    
+    public static BossBarImpl getConfiguredBossBar(Player sender, String syntax, String message) {
+        String[] args = syntax.split(";");
+        BossBarImpl bar = new BossBarImpl();
+        // receiver;color;style;progress;timeout;interval
+        bar.setReceiver(args[0]);
+        bar.setSender(sender);
+        bar.setMessage(message);
+        if ((args.length >= 2) && (!args[1].equalsIgnoreCase("*"))) {
+            bar.setColor(Color.valueOf(args[1]));
+        }
+        else bar.setColor(Color.WHITE);
+        if ((args.length >= 3) && (!args[2].equalsIgnoreCase("*"))) {
+            bar.setStyle(Style.valueOf(args[2]));
+        }
+        else bar.setStyle(Style.PROGRESS);
+        if ((args.length >= 4) && (!args[3].equalsIgnoreCase("*"))) {
+            bar.setProgress(Float.valueOf(args[3]));
+        }
+        else bar.setProgress(1.0f);
+        if ((args.length >= 5) && (!args[4].equalsIgnoreCase("*"))) {
+            bar.setTimeout(Integer.valueOf(args[4]));
+        }
+        else bar.setTimeout(60);
+        if ((args.length >= 6) && (!args[5].equalsIgnoreCase("*"))) {
+            bar.setInterval(Integer.valueOf(args[5]));
+        }
+        else bar.setInterval(2);
+        return bar;
+    }
     
     public static ItemStack getParsedItem(String syntax) {
         String[] args = syntax.split(" ");

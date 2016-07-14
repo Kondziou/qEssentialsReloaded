@@ -43,9 +43,13 @@ public class ReflectionUtils {
  
     public static Field getField(Class<?> cl, String field_name) {
         try {
-            Field field = cl.getDeclaredField(field_name);
-            return field;
-        } catch (SecurityException | NoSuchFieldException e) {
+            for (final Field field : cl.getDeclaredFields()) {
+                if ((field_name == null || field.getName().equals(field_name))) {
+                    field.setAccessible(true);
+                    return field;
+                }
+            }
+        } catch (SecurityException e) {
             Main.log.send(e);
         } 
         return null;
