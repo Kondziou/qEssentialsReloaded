@@ -1,4 +1,4 @@
 name: qEssentialsReloaded
 version: 1.4
 main: me.kavzaq.qEssentialsReloaded.Main
-softdepend: [FunnyGuilds, Vault, PermissionsEx]
+softdepend: [FunnyGuilds, Vault, PermissionsEx, BossBarAPI]
