@@ -137,6 +137,7 @@ public class Main extends JavaPlugin {
     public static Chat chat = null;
     public static boolean economy_support = false;
     public static boolean chat_support = false;
+    public static boolean bossbar_support = false;
     
     private boolean setupChat() {
         RegisteredServiceProvider<Chat> chatProvider
@@ -253,6 +254,13 @@ public class Main extends JavaPlugin {
         messagecontainer = new MessageContainerImpl();
         kitmanager = new KitManagerImpl();
         log.send("[qEssentialsReloaded] Doing some miscellaneous work...");
+        log.send("[qEssentialsReloaded] [Misc] Loading BossBarAPI (by inventivetalent) optionally...");
+        if (!Bukkit.getPluginManager().isPluginEnabled("BossBarAPI")) {
+            log.send(LogType.WARN, "[qEssentialsReloaded] [Misc] BossBarAPI missing, disabling bossbar command...");
+        } else {
+            log.send("[qEssentialsReloaded] [Misc] BossBarAPI found, enabling bossbar command...");
+            bossbar_support = true;
+        }
         log.send("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
         if (!Bukkit.getPluginManager().isPluginEnabled("FunnyGuilds")) {
             log.send(LogType.WARN, "[qEssentialsReloaded] [Misc] FunnyGuilds missing, disabling tab variables...");
@@ -356,7 +364,9 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new BanCommand());
         CommandManager.registerCommand(new TempBanCommand());
         CommandManager.registerCommand(new UnbanCommand());
-        CommandManager.registerCommand(new BossBarCommand());
+        if (bossbar_support) {
+            CommandManager.registerCommand(new BossBarCommand());   
+        }
         //aliases
         CommandManager.registerCommand(new SunAlias());
         CommandManager.registerCommand(new ThunderAlias());
