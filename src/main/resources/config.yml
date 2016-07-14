@@ -22,6 +22,14 @@ disabled-worlds:
   - 'blockedworld2'
 # Kill messages
 kill-messages-disabled: false
+# Database
+database:
+  mysql: false
+  host: localhost
+  port: 3306
+  user: root
+  pass: password
+  name: database
 ####################################################
 ##                   Database                     ##
 ####################################################

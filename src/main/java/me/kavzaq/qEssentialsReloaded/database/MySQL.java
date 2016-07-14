@@ -1,5 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.database;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -68,7 +70,6 @@ public class MySQL implements Database {
         });
     }
      
-    @Override
     public Connection getConnection() {
         // connecting
         if (connection == null) {
@@ -90,7 +91,6 @@ public class MySQL implements Database {
         
         PreparedStatement statKits = getConnection().prepareStatement(queryKits);
         executeUpdate(statKits);
-        
 
         String queryHomes = 
                 "CREATE TABLE IF NOT EXISTS homes (" +
@@ -106,7 +106,6 @@ public class MySQL implements Database {
         PreparedStatement statHomes = getConnection().prepareStatement(queryHomes);
         executeUpdate(statHomes); 
         
-       
         String queryWarps = 
                 "CREATE TABLE IF NOT EXISTS warps (" +
                 "name VARCHAR(255)," +
@@ -120,7 +119,7 @@ public class MySQL implements Database {
         try (PreparedStatement statWarps = getConnection().prepareStatement(queryWarps)) {
             statWarps.executeUpdate();
         }
-        
+
         String queryBans = 
                 "CREATE TABLE IF NOT EXISTS bans (" +
                 "punisher VARCHAR(36)," +
