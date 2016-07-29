@@ -4,7 +4,7 @@ nbactions.xml
 nb-configuration.xml
 
 # intellij idea
-.idea/
+.idea
 qEssentialsReloaded.iml
 
 # maven
