@@ -1,37 +1,36 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class TimeCommand extends CommandImpl {
 
     public TimeCommand() {
         super("time", "Time management", "/time <day/night/<time>>", "time", Arrays.asList("qtime", "czas"));
-        
+
     }
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         World world = p.getWorld();
-        if((args.length == 0) || (args.length >= 2)){
+        if ((args.length == 0) || (args.length >= 2)) {
             Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
-        if (args.length == 1){
-            if(args[0].equalsIgnoreCase("day")){
+        if (args.length == 1) {
+            if (args[0].equalsIgnoreCase("day")) {
                 world.setTime(2500L);
                 Util.sendMessage(p, MessagesImpl.TIME_DAY_SUCCESS.replace("%world%", world.getName()));
                 return;
-            } else if (args[0].equalsIgnoreCase("night")){
+            } else if (args[0].equalsIgnoreCase("night")) {
                 world.setTime(14500L);
                 Util.sendMessage(p, MessagesImpl.TIME_NIGHT_SUCCESS.replace("%world%", world.getName()));
                 return;
@@ -52,7 +51,7 @@ public class TimeCommand extends CommandImpl {
                 return;
             }
         }
-        
+
     }
 
 }

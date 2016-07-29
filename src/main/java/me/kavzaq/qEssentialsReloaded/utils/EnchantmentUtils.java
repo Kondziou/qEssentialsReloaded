@@ -1,16 +1,17 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
-import java.util.HashMap;
-
+import com.google.common.collect.Maps;
 import org.bukkit.enchantments.Enchantment;
 
-import com.google.common.collect.Maps;
+import java.util.HashMap;
 
 public class EnchantmentUtils {
-    
-    private EnchantmentUtils() { }
+
+    private EnchantmentUtils() {
+    }
+
     public static HashMap<String, Enchantment> enchants = Maps.newHashMap();
-    
+
     public static void configureEnchantments() {
         enchants.put("alldamage", Enchantment.DAMAGE_ALL);
         enchants.put("alldmg", Enchantment.DAMAGE_ALL);

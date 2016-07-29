@@ -1,20 +1,18 @@
 package me.kavzaq.qEssentialsReloaded.commands.aliases;
 
+import com.google.common.collect.Lists;
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 
-import com.google.common.collect.Lists;
-
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
-
-public class DayAlias extends CommandImpl  {
+public class DayAlias extends CommandImpl {
 
     public DayAlias() {
         super("day", "Time alias", "/day", "time.aliases", Lists.newArrayList());
-        
+
     }
 
     @Override

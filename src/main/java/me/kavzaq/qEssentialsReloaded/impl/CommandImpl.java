@@ -1,24 +1,23 @@
 package me.kavzaq.qEssentialsReloaded.impl;
 
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import java.util.List;
-
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.List;
 
 public abstract class CommandImpl extends Command {
-    
+
     private final String permission;
     private boolean isPlayerOnly;
-    
+
     public CommandImpl(String name, String description, String usage, String permission, List<String> aliases) {
         super(name, description, usage, aliases);
         this.permission = "qessentials." + permission;
     }
-    
+
     public CommandImpl(String name, String description, String usage, String permission, List<String> aliases, boolean isPlayerOnly) {
         super(name, description, usage, aliases);
         this.permission = "qessentials." + permission;
@@ -26,7 +25,7 @@ public abstract class CommandImpl extends Command {
     }
 
     public abstract void onExecute(CommandSender s, String[] args);
-    
+
     @Override
     public boolean execute(CommandSender s, String str, String[] args) {
         if (!s.hasPermission(this.permission)) {

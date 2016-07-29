@@ -1,29 +1,28 @@
 package me.kavzaq.qEssentialsReloaded.impl.managers;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-import org.bukkit.entity.Player;
-
 import com.google.common.collect.Lists;
 import me.kavzaq.qEssentialsReloaded.Main;
-
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachmentInfo;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 public class UserManagerImpl {
 
     private final List<UserImpl> users = Lists.newArrayList();
-    
+
     public List<UserImpl> getUsers() {
         return users;
     }
-    
+
     public UserImpl loadUser(Player player) {
         UserImpl user = getUser(player);
         PreparedStatement stat = null;
@@ -42,13 +41,13 @@ public class UserManagerImpl {
             }
             while (homeRs.next()) {
                 user.addHome(new HomeDataImpl
-                    (homeRs.getString("name"), new Location(
-                            Bukkit.getWorld(homeRs.getString("world")), 
-                            homeRs.getDouble("x"),
-                            homeRs.getDouble("y"),
-                            homeRs.getDouble("z"),
-                            homeRs.getFloat("yaw"),
-                            homeRs.getFloat("pitch"))));
+                        (homeRs.getString("name"), new Location(
+                                Bukkit.getWorld(homeRs.getString("world")),
+                                homeRs.getDouble("x"),
+                                homeRs.getDouble("y"),
+                                homeRs.getDouble("z"),
+                                homeRs.getFloat("yaw"),
+                                homeRs.getFloat("pitch"))));
             }
             if (!users.contains(user)) {
                 users.add(user);
@@ -59,14 +58,14 @@ public class UserManagerImpl {
         }
         return getUser(player);
     }
-    
+
     public UserImpl getUser(Player player) {
         for (UserImpl user : users) {
             if (user.getUUID().equals(player.getUniqueId())) return user;
         }
         return new UserImpl(player.getName(), player.getUniqueId());
     }
-     
+
     public int availableHomes(Player player) {
         String homePerm = null;
         if ((player.hasPermission("'*'")) || (player.isOp())) return -1;

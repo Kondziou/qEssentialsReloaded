@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- Model version -->
     <modelVersion>4.0.0</modelVersion>
-    
+
     <!-- Maven project informations -->
     <groupId>me.kavzaq</groupId>
     <artifactId>qEssentialsReloaded</artifactId>
     <version>1.4</version>
     <packaging>jar</packaging>
-    
+
     <repositories>
         <repository>
             <!-- Vault repository -->
@@ -25,7 +26,7 @@
             <url>https://repo.inventivetalent.org/content/groups/public/</url>
         </repository>
     </repositories>
-    
+
     <build>
         <!-- Maven Jar Plugin -->
         <plugins>
@@ -46,7 +47,7 @@
             </resource>
         </resources>
     </build>
-    
+
     <dependencies>
         <!-- BossBar API -->
         <dependency>
@@ -89,7 +90,7 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-    
+
     <!-- Compiling properties -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -1,17 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.Main;
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class GodCommand extends CommandImpl {
 
@@ -30,7 +29,7 @@ public class GodCommand extends CommandImpl {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)s;
+            Player p = (Player) s;
             UserImpl u = Main.getUserManager().getUser(p);
             boolean godState = !u.isGod();
             p.setHealth(20.0);
@@ -39,9 +38,8 @@ public class GodCommand extends CommandImpl {
             Util.sendMessage(p, MessagesImpl.GOD_SWITCHED
                     .replace("%mode%", BooleanUtils.getParsedBoolean(godState)));
             return;
-        }
-        else if (args.length == 1) {
-            if(s.hasPermission("qessentials.god.others")){
+        } else if (args.length == 1) {
+            if (s.hasPermission("qessentials.god.others")) {
                 if (Bukkit.getPlayer(args[0]) == null) {
                     Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                     return;
@@ -63,12 +61,12 @@ public class GodCommand extends CommandImpl {
                         .replace("%mode%", BooleanUtils.getParsedBoolean(godState))
                         .replace("%player%", s.getName()));
                 return;
-            }else{
+            } else {
                 Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.god.others"));
             }
             return;
         }
-        
+
     }
 
 }

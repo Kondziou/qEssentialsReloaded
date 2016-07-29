@@ -5,12 +5,8 @@
  */
 package me.kavzaq.qEssentialsReloaded.impl;
 
-import com.google.common.collect.Lists;
-import net.md_5.bungee.api.chat.TextComponent;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.inventivetalent.bossbar.BossBar;
@@ -18,8 +14,11 @@ import org.inventivetalent.bossbar.BossBarAPI;
 import org.inventivetalent.bossbar.BossBarAPI.Color;
 import org.inventivetalent.bossbar.BossBarAPI.Style;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class BossBarImpl {
-    
+
     private Player sender;
     private String receiver;
     private String message;
@@ -28,33 +27,33 @@ public class BossBarImpl {
     private float progress;
     private int timeout;
     private int interval;
-    
-    public BossBarImpl() { }
-    
+
+    public BossBarImpl() {
+    }
+
     public void show() {
         // Receiver setting
         Collection<Player> players = new ArrayList<>();
         if (receiver.equalsIgnoreCase("broadcast")) {
-            players = (Collection<Player>)Bukkit.getOnlinePlayers();
+            players = (Collection<Player>) Bukkit.getOnlinePlayers();
         } else {
             if (Bukkit.getPlayer(receiver) != null) {
                 Player receiverPlayer = Bukkit.getPlayer(receiver);
                 players.add(receiverPlayer);
                 receiver = receiverPlayer.getName();
-            }
-            else {
+            } else {
                 receiver = "broadcast";
             }
         }
         // Creating a bossbar using BossBarAPI by inventivetalent
         BossBar bar = BossBarAPI.addBar(sender,
-            new TextComponent(Util.fixColors(message)), 
-            color, style, progress, timeout, interval);
+                new TextComponent(Util.fixColors(message)),
+                color, style, progress, timeout, interval);
         for (Player p : players) {
             bar.addPlayer(p);
         }
     }
-    
+
     public String toStringColor() {
         switch (color) {
             case BLUE:
@@ -76,75 +75,75 @@ public class BossBarImpl {
         }
         return null;
     }
-    
+
     public BossBarImpl setSender(Player sender) {
         this.sender = sender;
         return this;
     }
-    
+
     public BossBarImpl setReceiver(String receiver) {
         this.receiver = receiver;
         return this;
     }
-    
+
     public BossBarImpl setMessage(String message) {
         this.message = message;
         return this;
     }
-    
+
     public BossBarImpl setColor(Color color) {
         this.color = color;
         return this;
     }
-    
+
     public BossBarImpl setStyle(Style style) {
         this.style = style;
         return this;
     }
-    
+
     public BossBarImpl setProgress(float progress) {
         this.progress = progress;
         return this;
     }
-    
+
     public BossBarImpl setTimeout(int timeout) {
         this.timeout = timeout;
         return this;
     }
-    
+
     public BossBarImpl setInterval(int interval) {
         this.interval = interval;
         return this;
     }
-    
+
     public Player getSender() {
         return sender;
     }
-    
+
     public String getReceiver() {
         return receiver;
     }
-    
+
     public String getMessage() {
         return message;
     }
-    
+
     public Color getColor() {
         return color;
     }
-    
+
     public Style getStyle() {
         return style;
     }
-    
+
     public float getProgress() {
         return progress;
     }
-    
+
     public int getTimeout() {
         return timeout;
     }
-    
+
     public int getInterval() {
         return interval;
     }

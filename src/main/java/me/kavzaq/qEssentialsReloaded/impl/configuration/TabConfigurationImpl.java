@@ -1,15 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.impl.configuration;
 
 public class TabConfigurationImpl {
-    
-    private TabConfigurationImpl() { }
-    
+
+    private TabConfigurationImpl() {
+    }
+
     public static boolean tablistEnabled = true;
     public static int tablistRefreshTime = 1;
     public static String tablistHeader = "&cqEssentialsReloaded &7rises from the ashes";
     public static String tablistFooter = "&c1.9+ &7tools plugin for every server type";
     public static int tablistPing = 35;
-    
+
     public static String tabSlot_1 = "";
     public static String tabSlot_2 = "";
     public static String tabSlot_3 = "";
@@ -30,7 +31,7 @@ public class TabConfigurationImpl {
     public static String tabSlot_18 = "";
     public static String tabSlot_19 = "";
     public static String tabSlot_20 = "";
-    
+
     public static String tabSlot_21 = "";
     public static String tabSlot_22 = "";
     public static String tabSlot_23 = "";
@@ -51,7 +52,7 @@ public class TabConfigurationImpl {
     public static String tabSlot_38 = "";
     public static String tabSlot_39 = "";
     public static String tabSlot_40 = "";
-    
+
     public static String tabSlot_41 = "";
     public static String tabSlot_42 = "";
     public static String tabSlot_43 = "";
@@ -72,7 +73,7 @@ public class TabConfigurationImpl {
     public static String tabSlot_58 = "";
     public static String tabSlot_59 = "";
     public static String tabSlot_60 = "";
-    
+
     public static String tabSlot_61 = "";
     public static String tabSlot_62 = "";
     public static String tabSlot_63 = "";

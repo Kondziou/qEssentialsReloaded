@@ -1,17 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-import me.kavzaq.qEssentialsReloaded.Main;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.GameModeUtils;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.GameModeUtils;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class GameModeCommand extends CommandImpl {
 
@@ -30,7 +28,7 @@ public class GameModeCommand extends CommandImpl {
                 Util.sendMessage(sender, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)sender;
+            Player p = (Player) sender;
             GameMode mode = GameModeUtils.parseGameMode(args[0]);
             if (mode == null) {
                 Util.sendMessage(p, MessagesImpl.GAMEMODE_UNKNOWN);
@@ -39,8 +37,7 @@ public class GameModeCommand extends CommandImpl {
             p.setGameMode(mode);
             Util.sendMessage(p, MessagesImpl.GAMEMODE_SUCCESS.replace("%mode%", mode.name().toLowerCase()));
             return;
-        }
-        else if (args.length == 2) {
+        } else if (args.length == 2) {
             if (Bukkit.getPlayer(args[1]) == null) {
                 Util.sendMessage(sender, MessagesImpl.OFFLINE_PLAYER);
                 return;

@@ -1,81 +1,20 @@
 package me.kavzaq.qEssentialsReloaded;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Random;
-
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.RegisteredServiceProvider;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.Metrics;
-
 import me.kavzaq.qEssentialsReloaded.commands.CommandManager;
 import me.kavzaq.qEssentialsReloaded.commands.admin.ReloadCommand;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.DayAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.ThunderAlias;
-import me.kavzaq.qEssentialsReloaded.commands.normal.BackCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.BanCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.BossBarCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.BroadcastCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.ChatCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.ClearInventoryCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.DelHomeCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.DelWarpCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.DisplayNameCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.EnchantCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.EnderchestCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.FeedCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.FlyCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.GameModeCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.GarbageCollectorCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.GiveCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.GodCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.HatCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.HeadCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.HealCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.HelpCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.HelpopCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.HomeCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.InvseeCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.ItemCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.KickCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.KillCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.KitCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.ListCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.MessageCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.PowerToolCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.RepairCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.ReplyCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.SetHomeCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.SetSpawnCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.SetWarpCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.SpawnCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TempBanCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TimeCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TpAcceptCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TpCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TpDenyCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TpHereCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TpPosCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.TpaCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.UnbanCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.WarpCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.WeatherCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
-import me.kavzaq.qEssentialsReloaded.commands.normal.WorldCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.*;
 import me.kavzaq.qEssentialsReloaded.database.Database;
 import me.kavzaq.qEssentialsReloaded.database.MySQL;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.TabConfigurationImpl;
-import me.kavzaq.qEssentialsReloaded.impl.managers.KitManagerImpl;
-import me.kavzaq.qEssentialsReloaded.impl.managers.UserManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.containers.MessageContainerImpl;
-import me.kavzaq.qEssentialsReloaded.impl.managers.BanManagerImpl;
+import me.kavzaq.qEssentialsReloaded.impl.managers.*;
 import me.kavzaq.qEssentialsReloaded.impl.packet.TabExecutorImpl;
 import me.kavzaq.qEssentialsReloaded.impl.packet.TabManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.teleport.TeleportRequestImpl;
@@ -84,36 +23,33 @@ import me.kavzaq.qEssentialsReloaded.io.MessageFile;
 import me.kavzaq.qEssentialsReloaded.io.Messages;
 import me.kavzaq.qEssentialsReloaded.io.Tablist;
 import me.kavzaq.qEssentialsReloaded.io.TablistFile;
-import me.kavzaq.qEssentialsReloaded.listeners.AsyncPlayerChatListener;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerLoginListener;
-import me.kavzaq.qEssentialsReloaded.listeners.EntityDamageListener;
-import me.kavzaq.qEssentialsReloaded.listeners.FoodLevelChangeListener;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerJoinListener;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerMoveListener;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerQuitListener;
-import me.kavzaq.qEssentialsReloaded.listeners.SignChangeListener;
+import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
+import me.kavzaq.qEssentialsReloaded.listeners.*;
 import me.kavzaq.qEssentialsReloaded.runnables.AutoMessageTask;
 import me.kavzaq.qEssentialsReloaded.runnables.TablistRefreshTask;
 import me.kavzaq.qEssentialsReloaded.runnables.metrics.MetricsCollector;
 import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
 import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
-import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
-import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
-import me.kavzaq.qEssentialsReloaded.impl.managers.ChatManagerImpl;
-import me.kavzaq.qEssentialsReloaded.impl.managers.WarpManagerImpl;
-import me.kavzaq.qEssentialsReloaded.io.caches.CacheFile;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerDeathListener;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerInteractListener;
-import me.kavzaq.qEssentialsReloaded.listeners.PlayerRespawnListener;
 import me.kavzaq.qEssentialsReloaded.utils.LogUtils;
 import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
+import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
+import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.RegisteredServiceProvider;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.mcstats.Metrics;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
 
 public class Main extends JavaPlugin {
-    
+
     private static Metrics metrics;
     private static Main inst;
     private static UserManagerImpl userManager;
@@ -126,7 +62,7 @@ public class Main extends JavaPlugin {
     private static KitManagerImpl kitmanager;
     private static Random random;
     private static Database database;
-    
+
     public static final LogUtils log = new LogUtils(LogType.INFO);
 
     // FunnyGuilds
@@ -138,7 +74,7 @@ public class Main extends JavaPlugin {
     public static boolean economy_support = false;
     public static boolean chat_support = false;
     public static boolean bossbar_support = false;
-    
+
     private boolean setupChat() {
         RegisteredServiceProvider<Chat> chatProvider
                 = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
@@ -165,7 +101,7 @@ public class Main extends JavaPlugin {
     public static Random getRandom() {
         return random;
     }
-    
+
     public static Database getDb() {
         return database;
     }
@@ -224,7 +160,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         startTime = System.currentTimeMillis();
-        
+
         log.send("[qEssentialsReloaded] Loading resources...");
         saveDefaultConfig();
         File f = new File(getDataFolder(), "config.yml");
@@ -236,13 +172,13 @@ public class Main extends JavaPlugin {
             Main.log.send(ex);
         }
         log.send("[qEssentialsReloaded] Creating variables, connecting to database and creating tables...");
-        if(getConfig().getBoolean("database.mysql", false)){
+        if (getConfig().getBoolean("database.mysql", false)) {
             database = new MySQL(getConfig().getString("database.host"),
-                                 getConfig().getInt("database.port"),
-                                 getConfig().getString("database.user"),
-                                 getConfig().getString("database.pass"),
-                                 getConfig().getString("database.name"));
-        }else{
+                    getConfig().getInt("database.port"),
+                    getConfig().getString("database.user"),
+                    getConfig().getString("database.pass"),
+                    getConfig().getString("database.name"));
+        } else {
             database = new SQLite();
         }
         log.send("[qEssentialsReloaded] Instantiating object implementations...");
@@ -290,14 +226,14 @@ public class Main extends JavaPlugin {
         TablistFile.loadFile();
         Tablist.loadTablist();
         Tablist.saveTablist();
-        
+
         if (!CacheFile.getFile().exists()) {
             CacheFile.loadFile();
             CacheFile.getFileConfiguration().set("SPAWN_LOCATION", "world 0 100 0 0.0 0.0");
         }
         CacheFile.save();
         CacheFile.saveDefaultConfig();
-       
+
         log.send("[qEssentialsReloaded] [Translation] Loaded " + MessagesImpl.LANGUAGE + " translation created by " + MessagesImpl.TRANSLATION_AUTHOR);
         log.send("[qEssentialsReloaded] Registering listeners...");
         PluginManager pm = Bukkit.getPluginManager();
@@ -365,7 +301,7 @@ public class Main extends JavaPlugin {
         CommandManager.registerCommand(new TempBanCommand());
         CommandManager.registerCommand(new UnbanCommand());
         if (bossbar_support) {
-            CommandManager.registerCommand(new BossBarCommand());   
+            CommandManager.registerCommand(new BossBarCommand());
         }
         //aliases
         CommandManager.registerCommand(new SunAlias());

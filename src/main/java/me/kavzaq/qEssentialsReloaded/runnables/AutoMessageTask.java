@@ -1,20 +1,19 @@
 package me.kavzaq.qEssentialsReloaded.runnables;
 
-import java.util.List;
-
+import me.kavzaq.qEssentialsReloaded.Main;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.List;
 
 public class AutoMessageTask implements Runnable {
-    
+
     private static int currentIndex = 0;
 
-    private static final List<String> messageList = 
+    private static final List<String> messageList =
             Main.getInstance().getConfig().getStringList("automessages");
-    
+
     @Override
     public void run() {
         if ((messageList.isEmpty()) || (messageList == null)) {
@@ -23,7 +22,8 @@ public class AutoMessageTask implements Runnable {
         if (currentIndex > (messageList.size() - 1)) {
             currentIndex = 0;
         }
-        String currentMessage = messageList.get(currentIndex);    currentIndex++;
+        String currentMessage = messageList.get(currentIndex);
+        currentIndex++;
         for (Player p : Bukkit.getOnlinePlayers()) {
             Util.sendMessage(p, currentMessage);
         }

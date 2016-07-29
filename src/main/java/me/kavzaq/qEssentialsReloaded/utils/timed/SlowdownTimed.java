@@ -1,17 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.utils.timed;
 
-import java.util.HashMap;
-
+import com.google.common.collect.Maps;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.entity.Player;
 
-import com.google.common.collect.Maps;
-
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.HashMap;
 
 public class SlowdownTimed {
-    
-    private SlowdownTimed() { }
-    
+
+    private SlowdownTimed() {
+    }
+
     private static HashMap<Player, Long> lastMessageSended = Maps.newHashMap();
 
     public static HashMap<Player, Long> getLastMessages() {
@@ -21,17 +20,17 @@ public class SlowdownTimed {
     public static void setLastMessage(Player p, long l) {
         lastMessageSended.put(p, l);
     }
-    
+
     public static boolean isBlocked(Player p) {
         long timeSended = lastMessageSended.get(p) == null ? 0 : lastMessageSended.get(p);
-        if(timeSended == 0) return false; 
+        if (timeSended == 0) return false;
         long timeCurrent = System.currentTimeMillis();
-        if(timeSended > timeCurrent) {
+        if (timeSended > timeCurrent) {
             return true;
         }
         return false;
     }
-    
+
     public static String timeRemain(Player p) {
         return Util.parseTime(((lastMessageSended.get(p) == null ? 0 : lastMessageSended.get(p) - System.currentTimeMillis())) + 1);
     }

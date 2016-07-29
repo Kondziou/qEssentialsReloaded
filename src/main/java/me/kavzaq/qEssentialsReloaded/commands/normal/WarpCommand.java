@@ -1,6 +1,5 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.WarpImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
@@ -11,15 +10,17 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class WarpCommand extends CommandImpl {
-    
+
     public WarpCommand() {
         super("warp", "Teleport to a warp", "/warp [name]", "warp", Arrays.asList("qwarp"), true);
     }
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         if (args.length == 0) {
             Util.sendMessage(p, MessagesImpl.WARP_LIST + ListingUtils.getWarpList());
             return;
@@ -43,5 +44,5 @@ public class WarpCommand extends CommandImpl {
         }
         Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
     }
-    
+
 }

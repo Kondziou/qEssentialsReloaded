@@ -1,16 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class ClearInventoryCommand extends CommandImpl {
 
@@ -30,18 +29,17 @@ public class ClearInventoryCommand extends CommandImpl {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)s;
+            Player p = (Player) s;
             PlayerInventory i = p.getInventory();
             i.clear();
             i.setArmorContents(new ItemStack[i.getArmorContents().length]);
             i.setExtraContents(new ItemStack[i.getExtraContents().length]);
             i.setStorageContents(new ItemStack[i.getStorageContents().length]);
-            
+
             i.setHeldItemSlot(0);
             Util.sendMessage(p, MessagesImpl.CLEAR_SUCCESS);
-        }
-        else if (args.length == 1) {
-            if(s.hasPermission("qessentials.clear.others")){
+        } else if (args.length == 1) {
+            if (s.hasPermission("qessentials.clear.others")) {
                 if (Bukkit.getPlayer(args[0]) == null) {
                     Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                     return;
@@ -52,20 +50,20 @@ public class ClearInventoryCommand extends CommandImpl {
                     return;
                 }
                 PlayerInventory i = other.getInventory();
-                
+
                 i.clear();
                 i.setArmorContents(new ItemStack[i.getArmorContents().length]);
                 i.setExtraContents(new ItemStack[i.getExtraContents().length]);
                 i.setStorageContents(new ItemStack[i.getStorageContents().length]);
-                
+
                 i.setHeldItemSlot(0);
-                
+
                 Util.sendMessage(s, MessagesImpl.CLEAR_OTHER_SUCCESS
                         .replace("%player%", other.getName()));
                 Util.sendMessage(other, MessagesImpl.CLEAR_OTHER_CLEARED
                         .replace("%player%", s.getName()));
                 return;
-            }else{
+            } else {
                 Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.clear.others"));
             }
         }

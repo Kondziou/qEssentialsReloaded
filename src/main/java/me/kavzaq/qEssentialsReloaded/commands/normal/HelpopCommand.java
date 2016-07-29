@@ -1,16 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.timed.HelpopTimed;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class HelpopCommand extends CommandImpl {
 
@@ -19,7 +18,7 @@ public class HelpopCommand extends CommandImpl {
     }
 
     private static final StringBuilder localsb = new StringBuilder();
-    
+
     @Override
     public void onExecute(CommandSender s, String[] args) {
         if (args.length == 0) {
@@ -59,7 +58,7 @@ public class HelpopCommand extends CommandImpl {
                         .replace("%message%", localsb.toString()));
             }
         }
-        
+
     }
 
 }

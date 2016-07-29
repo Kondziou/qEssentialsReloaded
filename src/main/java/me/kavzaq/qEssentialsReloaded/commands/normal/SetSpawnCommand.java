@@ -1,23 +1,17 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import com.google.common.collect.Lists;
-import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.List;
 import me.kavzaq.qEssentialsReloaded.Main;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.io.caches.CacheManager;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.io.caches.CacheManager;
-import me.kavzaq.qEssentialsReloaded.io.input.SynchronizedInput;
-import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
-import org.bukkit.Bukkit;
+import java.util.Arrays;
 
 public class SetSpawnCommand extends CommandImpl {
 
@@ -27,11 +21,11 @@ public class SetSpawnCommand extends CommandImpl {
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         Location loc = p.getLocation();
         World w = p.getWorld();
         w.setSpawnLocation(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-        
+
         Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
             @Override
             public void run() {
@@ -41,15 +35,15 @@ public class SetSpawnCommand extends CommandImpl {
                     Main.log.send(e);
                     return;
                 }
-                
+
                 String coords = "x" + loc.getBlockX() + ", y" + loc.getBlockY() + ", z" + loc.getBlockZ();
 
                 Util.sendMessage(p, MessagesImpl.SETSPAWN_SUCCESS
-                       .replace("%coords%", coords)
-                       .replace("%world%", w.getName()));
-                }
+                        .replace("%coords%", coords)
+                        .replace("%world%", w.getName()));
+            }
         });
-            
+
     }
 
 }

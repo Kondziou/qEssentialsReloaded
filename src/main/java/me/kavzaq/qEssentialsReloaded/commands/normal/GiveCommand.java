@@ -1,26 +1,25 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.ParsingUtils;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.ParsingUtils;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class GiveCommand extends CommandImpl {
 
     public GiveCommand() {
-        super("give", "Gives a item to player", "/give <player> <material:data> <amount> [name] [loreline1;loreline2] [enchantment:1;enchantment:2]", "give", 
+        super("give", "Gives a item to player", "/give <player> <material:data> <amount> [name] [loreline1;loreline2] [enchantment:1;enchantment:2]", "give",
                 Arrays.asList("qgive", "daj"));
-        
+
     }
 
     @Override
@@ -30,7 +29,7 @@ public class GiveCommand extends CommandImpl {
             return;
         }
         Player other = Bukkit.getPlayer(args[0]);
-        if(other == null){
+        if (other == null) {
             Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
             return;
         }
@@ -42,13 +41,12 @@ public class GiveCommand extends CommandImpl {
         ItemStack item;
         try {
             item = ParsingUtils.getParsedItem(syntax);
-        }catch (Exception e) {
+        } catch (Exception e) {
             Util.sendMessage(s, MessagesImpl.ITEM_UNKNOWN);
             return;
         }
         HashMap<Integer, ItemStack> itemsNotStored = other.getInventory().addItem(item);
-        for(Entry<Integer, ItemStack> entry : itemsNotStored.entrySet())
-        {   
+        for (Entry<Integer, ItemStack> entry : itemsNotStored.entrySet()) {
             other.getWorld().dropItemNaturally(other.getLocation(), entry.getValue());
         }
         Util.sendMessage(other, MessagesImpl.ITEM_OTHER_GIVE

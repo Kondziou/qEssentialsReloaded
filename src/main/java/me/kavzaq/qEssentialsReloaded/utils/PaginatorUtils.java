@@ -1,17 +1,19 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import org.bukkit.command.CommandSender;
+
 import java.util.Map.Entry;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import org.bukkit.command.CommandSender;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-
 public class PaginatorUtils {
-    
-    private PaginatorUtils() { }
+
+    private PaginatorUtils() {
+    }
+
     public static SortedMap<Integer, String> map = new TreeMap<Integer, String>();
-    
+
     // z bukkit forums, bo jestem slaby w paginowaniu ;d
     public static void paginateHelp(CommandSender p, int page, int pageLength) {
         int size = getSize(pageLength);
@@ -28,15 +30,15 @@ public class PaginatorUtils {
             }
         }
     }
-    
+
     public static int getSize(int pageLength) {
         return (((map.size() % pageLength) == 0) ? map.size() / pageLength : (map.size() / pageLength) + 1);
     }
-    
+
     public static boolean containsPage(int page, int pageLength) {
         return page <= getSize(pageLength);
     }
-    
+
     public static void configureHelp() {
         map.put(0, MessagesImpl.HELP_INDEX.replace("%command%", "back").replace("%description%", MessagesImpl.BACK_DESC));
         map.put(1, MessagesImpl.HELP_INDEX.replace("%command%", "broadcast").replace("%description%", MessagesImpl.BROADCAST_DESC));

@@ -1,17 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class BackCommand extends CommandImpl {
 
@@ -21,7 +20,7 @@ public class BackCommand extends CommandImpl {
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         if (args.length >= 2) {
             Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
             return;
@@ -31,9 +30,8 @@ public class BackCommand extends CommandImpl {
             new TeleportUtils(p).teleport(last);
             Util.sendMessage(p, MessagesImpl.BACK_SUCCESS);
             return;
-        } 
-        else if (args.length == 1) {
-            if(s.hasPermission("qessentials.back.others")){
+        } else if (args.length == 1) {
+            if (s.hasPermission("qessentials.back.others")) {
                 if (Bukkit.getPlayer(args[0]) == null) {
                     Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                     return;
@@ -47,11 +45,11 @@ public class BackCommand extends CommandImpl {
                 new TeleportUtils(p).teleport(last);
                 Util.sendMessage(p, MessagesImpl.BACK_OTHER.replace("%player%", other.getName()));
                 return;
-            }else{
+            } else {
                 Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.back.others"));
             }
         }
-        
+
     }
 
 }

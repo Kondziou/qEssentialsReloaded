@@ -5,7 +5,6 @@
  */
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.impl.BossBarImpl;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
@@ -15,12 +14,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class BossBarCommand extends CommandImpl { 
+import java.util.Arrays;
+
+public class BossBarCommand extends CommandImpl {
 
     private static final StringBuilder localsb = new StringBuilder();
-    
+
     public BossBarCommand() {
-        super("bossbar", "Sends a message on bossbar", "/bossbar <<receiver>;[color/*];[style/*];[progress/*];[timeout/*];[interval/*]> <message>", "bossbar", 
+        super("bossbar", "Sends a message on bossbar", "/bossbar <<receiver>;[color/*];[style/*];[progress/*];[timeout/*];[interval/*]> <message>", "bossbar",
                 Arrays.asList("bb", "bbar", "bossb", "bar", "boss"));
     }
 
@@ -34,8 +35,8 @@ public class BossBarCommand extends CommandImpl {
             Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
             return;
         }
-        Player p = (Player)s;
-        
+        Player p = (Player) s;
+
         String message = null;
         BossBarImpl bar = null;
         try {
@@ -47,7 +48,7 @@ public class BossBarCommand extends CommandImpl {
             Util.sendMessage(p, "&cAn error occured with executing this syntax. Check your spelling!");
             return;
         }
-        
+
         for (String str : MessagesImpl.BOSSBAR_SUCCESS) {
             Util.sendMessage(p, str
                     .replace("%receiver%", bar.getReceiver())
@@ -59,7 +60,6 @@ public class BossBarCommand extends CommandImpl {
                     .replace("%interval%", String.valueOf(bar.getInterval())));
         }
     }
-    
-    
-    
+
+
 }

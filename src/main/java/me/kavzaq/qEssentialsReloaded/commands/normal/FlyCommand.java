@@ -1,15 +1,14 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class FlyCommand extends CommandImpl {
 
@@ -28,15 +27,14 @@ public class FlyCommand extends CommandImpl {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)s;
+            Player p = (Player) s;
             boolean flyState = !p.isFlying();
             p.setAllowFlight(flyState);
             Util.sendMessage(p, MessagesImpl.FLY_SWITCHED
                     .replace("%mode%", BooleanUtils.getParsedBoolean(flyState)));
             return;
-        }
-        else if (args.length == 1) {
-            if(s.hasPermission("qessentials.fly.others")){
+        } else if (args.length == 1) {
+            if (s.hasPermission("qessentials.fly.others")) {
                 if (Bukkit.getPlayer(args[0]) == null) {
                     Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                     return;
@@ -55,7 +53,7 @@ public class FlyCommand extends CommandImpl {
                         .replace("%mode%", BooleanUtils.getParsedBoolean(flyState))
                         .replace("%player%", s.getName()));
                 return;
-            }else{
+            } else {
                 Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.fly.others"));
             }
             return;

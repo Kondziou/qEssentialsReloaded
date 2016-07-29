@@ -9,6 +9,8 @@
 # Available to download (on github): pl
 # Available as default: en
 language: en
+# Updater 
+updater: false
 # Help page length (commands per page)
 help-page-length: 10
 # Quit/Join formats

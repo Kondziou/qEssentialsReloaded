@@ -1,6 +1,5 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
@@ -8,8 +7,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class KillCommand extends CommandImpl {
-    
+
     public KillCommand() {
         super("kill", "Kills a player", "/kill [player]", "kill", Arrays.asList("qkill", "zabij", "slay"));
     }
@@ -21,7 +22,7 @@ public class KillCommand extends CommandImpl {
             return;
         }
         if (args.length == 0) {
-            Player p = (Player)s;
+            Player p = (Player) s;
             if (!(p instanceof Player)) {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
@@ -29,8 +30,7 @@ public class KillCommand extends CommandImpl {
             p.setHealth(0.0);
             Util.sendMessage(p, MessagesImpl.KILL_SUCCESS);
             return;
-        }
-        else if (args.length == 1) {
+        } else if (args.length == 1) {
             if (Bukkit.getPlayer(args[0]) == null) {
                 Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                 return;
@@ -47,5 +47,5 @@ public class KillCommand extends CommandImpl {
                     .replace("%player%", s.getName()));
         }
     }
-    
+
 }

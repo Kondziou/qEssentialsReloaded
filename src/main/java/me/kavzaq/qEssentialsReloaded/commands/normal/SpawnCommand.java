@@ -1,31 +1,30 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.Main;
-
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.io.caches.CacheManager;
 import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class SpawnCommand extends CommandImpl {
 
     public SpawnCommand() {
         super("spawn", "Teleports player to a spawn", "/spawn [player]", "spawn", Arrays.asList("qspawn"));
     }
-    
+
     private static Location spawnLocation = null;
-    
+
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        if(args.length >= 2){
+        if (args.length >= 2) {
             Util.sendMessage(s, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
@@ -34,23 +33,22 @@ public class SpawnCommand extends CommandImpl {
             public void run() {
                 try {
                     spawnLocation = CacheManager.getSpawnLocation();
-                    
-                    if(args.length == 0){
-                        if(!(s instanceof Player)){
+
+                    if (args.length == 0) {
+                        if (!(s instanceof Player)) {
                             Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                             return;
                         }
-                        Player p = (Player)s;
-            
+                        Player p = (Player) s;
+
                         new TeleportUtils(p).teleport(spawnLocation);
                         if (Main.getInstance().getConfig().getBoolean("teleport-spawn-effects")) {
                             p.getWorld().playEffect(spawnLocation, Effect.MOBSPAWNER_FLAMES, 0, 0);
                             p.getWorld().playEffect(spawnLocation, Effect.SMOKE, 0, 0);
                         }
-                        Util.sendMessage(p, MessagesImpl.TELEPORT_SUCCESS);
                         return;
                     }
-                    if(args.length == 1){
+                    if (args.length == 1) {
                         if (Bukkit.getPlayer(args[0]) == null) {
                             Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                             return;
@@ -66,9 +64,9 @@ public class SpawnCommand extends CommandImpl {
                             other.getWorld().playEffect(spawnLocation, Effect.SMOKE, 0, 0);
                         }
                         Util.sendMessage(s, MessagesImpl.SPAWN_OTHER_SUCCESS
-                            .replace("%player%", other.getName()));
+                                .replace("%player%", other.getName()));
                         Util.sendMessage(other, MessagesImpl.SPAWN_OTHER_TELEPORTED
-                            .replace("%player%", s.getName()));
+                                .replace("%player%", s.getName()));
                     }
                 } catch (Exception e) {
                     Main.log.send(e);
@@ -76,6 +74,6 @@ public class SpawnCommand extends CommandImpl {
                 }
             }
         });
-        
+
     }
 }

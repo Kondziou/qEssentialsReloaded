@@ -1,16 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-import org.apache.commons.lang3.StringUtils;
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.timed.TemporaryBanTimed;
+import org.apache.commons.lang3.StringUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class KickCommand extends CommandImpl {
 
@@ -34,17 +34,16 @@ public class KickCommand extends CommandImpl {
                 Util.sendMessage(s, MessagesImpl.SAME_PERSON);
                 return;
             }
-            TemporaryBanTimed.setLastTempBan(other.getUniqueId(), System.currentTimeMillis() + 
+            TemporaryBanTimed.setLastTempBan(other.getUniqueId(), System.currentTimeMillis() +
                     Main.getInstance().getConfig().getLong("kick-temporary-ban") * 1000);
 
             other.kickPlayer(Util.fixColors(MessagesImpl.KICK_DEFAULT_REASON));
             Bukkit.broadcastMessage(Util.fixColors(MessagesImpl.KICK_BROADCAST
                     .replace("%player%", other.getName())
                     .replace("%reason%", MessagesImpl.KICK_DEFAULT_REASON)));
-        
+
             return;
-        }
-        else {
+        } else {
             if (Bukkit.getPlayer(args[0]) == null) {
                 Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                 return;
@@ -54,14 +53,14 @@ public class KickCommand extends CommandImpl {
                 Util.sendMessage(s, MessagesImpl.SAME_PERSON);
                 return;
             }
-            TemporaryBanTimed.setLastTempBan(other.getUniqueId(), System.currentTimeMillis() + 
+            TemporaryBanTimed.setLastTempBan(other.getUniqueId(), System.currentTimeMillis() +
                     Main.getInstance().getConfig().getLong("kick-temporary-ban") * 1000);
             other.kickPlayer(Util.fixColors(MessagesImpl.KICK_FORMAT
                     .replace("%reason%", StringUtils.join(args, " ", 1, args.length))));
             Bukkit.broadcastMessage(Util.fixColors(MessagesImpl.KICK_BROADCAST
                     .replace("%player%", other.getName())
                     .replace("%reason%", StringUtils.join(args, " ", 1, args.length))));
-        
+
             return;
         }
     }

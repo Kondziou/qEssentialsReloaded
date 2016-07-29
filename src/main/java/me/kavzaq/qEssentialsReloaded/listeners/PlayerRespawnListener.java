@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 public class PlayerRespawnListener implements Listener {
-    
+
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         Player p = e.getPlayer();

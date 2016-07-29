@@ -1,6 +1,5 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.impl.BanImpl;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
@@ -9,6 +8,8 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+
+import java.util.Arrays;
 
 public class UnbanCommand extends CommandImpl {
 
@@ -23,17 +24,17 @@ public class UnbanCommand extends CommandImpl {
             return;
         }
         OfflinePlayer other = Bukkit.getOfflinePlayer(args[0]);
-        
+
         if (BanManagerImpl.isPardonned(other)) {
             Util.sendMessage(s, MessagesImpl.UNBAN_UNKNOWN);
             return;
         }
-        
+
         BanImpl ban = BanManagerImpl.getBan(other);
         BanManagerImpl.deleteBan(ban);
-        
+
         Util.sendMessage(s, MessagesImpl.UNBAN_SUCCESS.replace("%player%", other.getName()));
         Bukkit.broadcastMessage(Util.fixColors(MessagesImpl.UNBAN_BROADCAST.replace("%player%", other.getName())));
     }
-    
+
 }

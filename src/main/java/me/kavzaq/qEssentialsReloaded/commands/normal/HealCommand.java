@@ -1,16 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
-public class HealCommand extends CommandImpl{
+public class HealCommand extends CommandImpl {
 
     public HealCommand() {
         super("heal", "Heals player", "/heal [player]", "heal", Arrays.asList("ulecz", "qheal"));
@@ -24,19 +23,18 @@ public class HealCommand extends CommandImpl{
         }
         if (args.length == 0) {
             if (sender instanceof Player) {
-                Player p = (Player)sender;
+                Player p = (Player) sender;
                 p.setHealth(20.0);
                 p.setFoodLevel(20);
                 p.setFireTicks(0);
                 Util.sendMessage(p, MessagesImpl.HEAL_SUCCESS);
                 return;
-            } else{
+            } else {
                 Util.sendMessage(sender, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-        } 
-        else if (args.length == 1) {
-            if(sender.hasPermission("qessentials.heal.others")){
+        } else if (args.length == 1) {
+            if (sender.hasPermission("qessentials.heal.others")) {
                 if (Bukkit.getPlayer(args[0]) == null) {
                     Util.sendMessage(sender, MessagesImpl.OFFLINE_PLAYER);
                     return;
@@ -54,13 +52,12 @@ public class HealCommand extends CommandImpl{
                 Util.sendMessage(other, MessagesImpl.HEAL_OTHER_HEALED
                         .replace("%player%", sender.getName()));
                 return;
-            }else{
+            } else {
                 Util.sendMessage(sender, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.heal.others"));
             }
         }
-        
+
     }
-    
-    
+
 
 }

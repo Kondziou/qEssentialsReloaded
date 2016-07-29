@@ -1,15 +1,14 @@
 package me.kavzaq.qEssentialsReloaded.impl.managers;
 
-import java.util.List;
-
-import org.bukkit.configuration.ConfigurationSection;
-
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
 import me.kavzaq.qEssentialsReloaded.utils.LogUtils.LogType;
+import org.bukkit.configuration.ConfigurationSection;
+
+import java.util.List;
 
 public class KitManagerImpl {
-    
+
     private static final StringBuilder localsb = new StringBuilder();
 
     public void load() {
@@ -18,10 +17,10 @@ public class KitManagerImpl {
         for (String kitStr : csKits.getKeys(false)) {
             preloaded = true;
             ConfigurationSection cs = csKits.getConfigurationSection(kitStr);
-            
+
             int cooldown = cs.getInt("cooldown");
             List<String> items = cs.getStringList("items");
-            
+
             KitImpl kit = new KitImpl(kitStr);
             kit.setCooldown(cooldown * 1000);
             kit.setItems(items);
@@ -32,10 +31,10 @@ public class KitManagerImpl {
         }
     }
 
-    
+
     public String getKits() {
         localsb.setLength(0);
-        for (String kitStr : Main.getInstance().getConfig().getConfigurationSection("kits").getKeys(false)){
+        for (String kitStr : Main.getInstance().getConfig().getConfigurationSection("kits").getKeys(false)) {
             localsb.append(", " + kitStr);
         }
         if (localsb.length() == 0) {

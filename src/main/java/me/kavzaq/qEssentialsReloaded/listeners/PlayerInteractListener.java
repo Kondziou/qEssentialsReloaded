@@ -1,7 +1,6 @@
 package me.kavzaq.qEssentialsReloaded.listeners;
 
 import com.google.common.collect.Lists;
-import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -11,8 +10,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.List;
+
 public class PlayerInteractListener implements Listener {
-    
+
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e) {
         Player p = e.getPlayer();
@@ -37,5 +38,5 @@ public class PlayerInteractListener implements Listener {
             }
         }
     }
-    
+
 }

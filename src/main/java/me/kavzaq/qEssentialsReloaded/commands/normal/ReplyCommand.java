@@ -1,15 +1,14 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class ReplyCommand extends CommandImpl {
 
@@ -21,7 +20,7 @@ public class ReplyCommand extends CommandImpl {
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         if (args.length == 0) {
             Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
             return;
@@ -39,11 +38,11 @@ public class ReplyCommand extends CommandImpl {
             }
             localsb.append(str);
         }
-        
+
         String message = Util.fixColors(localsb.toString());
         Main.getMessageData().getMessageContainer().put(p.getName(), other.getName());
         Main.getMessageData().getMessageContainer().put(other.getName(), p.getName());
-        
+
         Util.sendMessage(p, MessagesImpl.MESSAGE_TO_FORMAT
                 .replace("%player%", other.getName())
                 .replace("%message%", message));

@@ -1,16 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.runnables.metrics;
 
 import com.google.common.collect.Lists;
-import java.util.List;
-import org.mcstats.Metrics.Graph;
-import org.mcstats.Metrics.Plotter;
-
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.WarpManagerImpl;
+import org.mcstats.Metrics.Graph;
+import org.mcstats.Metrics.Plotter;
+
+import java.util.List;
 
 public class MetricsCollector implements Runnable {
 
@@ -25,14 +24,14 @@ public class MetricsCollector implements Runnable {
                 homes.add(homeData);
             }
         }
-        
+
         g.addPlotter(new Plotter("Warps") {
 
             @Override
             public int getValue() {
                 return WarpManagerImpl.getWarps().size();
             }
-            
+
         });
         g.addPlotter(new Plotter("Homes") {
 
@@ -40,7 +39,7 @@ public class MetricsCollector implements Runnable {
             public int getValue() {
                 return homes.size();
             }
-            
+
         });
         g.addPlotter(new Plotter("Kits") {
 
@@ -48,7 +47,7 @@ public class MetricsCollector implements Runnable {
             public int getValue() {
                 return kits.size();
             }
-            
+
         });
         Main.getMetrics().start();
     }

@@ -1,16 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.impl;
 
 import com.google.common.collect.Lists;
-import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
+import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
-import java.sql.SQLException;
+import me.kavzaq.qEssentialsReloaded.impl.data.KitDataImpl;
+import me.kavzaq.qEssentialsReloaded.utils.SQLUtils;
+import org.bukkit.entity.Player;
+
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
-import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.utils.SQLUtils;
-
-import org.bukkit.entity.Player;
 
 public class UserImpl {
 
@@ -19,19 +19,19 @@ public class UserImpl {
     private boolean god;
     private List<HomeDataImpl> homes = Lists.newArrayList();
     private List<KitDataImpl> kits = Lists.newArrayList();
-    
+
     private static boolean changed = false;
-    
+
     public UserImpl(Player player) {
         this.name = player.getName();
         this.uuid = player.getUniqueId();
     }
-    
+
     public UserImpl(String name, UUID uuid) {
         this.name = name;
         this.uuid = uuid;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -43,7 +43,7 @@ public class UserImpl {
     public boolean isGod() {
         return god;
     }
-    
+
     public List<KitDataImpl> getKits() {
         return kits;
     }
@@ -65,7 +65,7 @@ public class UserImpl {
         changed = true;
         save();
     }
-    
+
     public void setGod(boolean god) {
         this.god = god;
     }
@@ -73,26 +73,26 @@ public class UserImpl {
     public List<HomeDataImpl> getHomes() {
         return homes;
     }
-    
+
     public void setHomes(List<HomeDataImpl> homes) {
         this.homes = homes;
         changed = true;
         save();
-    } 
-    
+    }
+
     public void addHome(HomeDataImpl homeData) {
         this.homes.add(homeData);
         changed = true;
         save();
     }
-    
+
 
     public void delHome(HomeDataImpl homeData) {
         this.homes.remove(homeData);
         changed = true;
-        deleteHome(homeData); 
+        deleteHome(homeData);
     }
-    
+
     public void save() {
         if (!changed) return;
         for (KitDataImpl kitData : this.getKits()) {
@@ -104,7 +104,7 @@ public class UserImpl {
             else saveHome(homeData);
         }
     }
-    
+
     public void implementKit(KitDataImpl kitData) {
         try {
             try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
@@ -119,7 +119,7 @@ public class UserImpl {
             Main.log.send(e);
         }
     }
-    
+
     public void implementHome(HomeDataImpl homeData) {
         try {
             try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
@@ -127,9 +127,9 @@ public class UserImpl {
                 stat.setString(1, this.uuid.toString());
                 stat.setString(2, homeData.getName());
                 stat.setString(3, homeData.getLocation().getWorld().getName());
-                stat.setFloat(4, (float)homeData.getLocation().getX());
-                stat.setFloat(5, (float)homeData.getLocation().getY());
-                stat.setFloat(6, (float)homeData.getLocation().getZ());
+                stat.setFloat(4, (float) homeData.getLocation().getX());
+                stat.setFloat(5, (float) homeData.getLocation().getY());
+                stat.setFloat(6, (float) homeData.getLocation().getZ());
                 stat.setFloat(7, homeData.getLocation().getYaw());
                 stat.setFloat(8, homeData.getLocation().getPitch());
                 stat.executeUpdate();
@@ -139,11 +139,11 @@ public class UserImpl {
             Main.log.send(e);
         }
     }
-    
+
     public void saveKit(KitDataImpl kitData) {
         try {
             try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
-                "UPDATE `kits` SET `name`=?,`cooldown`=? WHERE `uuid`=? AND `name`=?")) {
+                    "UPDATE `kits` SET `name`=?,`cooldown`=? WHERE `uuid`=? AND `name`=?")) {
                 stat.setString(1, kitData.getName());
                 stat.setLong(2, kitData.getCooldown());
                 stat.setString(3, this.uuid.toString());
@@ -155,16 +155,16 @@ public class UserImpl {
             Main.log.send(e);
         }
     }
-    
+
     public void saveHome(HomeDataImpl homeData) {
         try {
             try (PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
-                "UPDATE `homes` SET `name`=?,`world`=?,`x`=?,`y`=?,`z`=?,`pitch`=?,`yaw`=? WHERE `uuid`=? AND `name`=?")) {
+                    "UPDATE `homes` SET `name`=?,`world`=?,`x`=?,`y`=?,`z`=?,`pitch`=?,`yaw`=? WHERE `uuid`=? AND `name`=?")) {
                 stat.setString(1, homeData.getName());
                 stat.setString(2, homeData.getLocation().getWorld().getName());
-                stat.setFloat(3, (float)homeData.getLocation().getX());
-                stat.setFloat(4, (float)homeData.getLocation().getY());
-                stat.setFloat(5, (float)homeData.getLocation().getZ());
+                stat.setFloat(3, (float) homeData.getLocation().getX());
+                stat.setFloat(4, (float) homeData.getLocation().getY());
+                stat.setFloat(5, (float) homeData.getLocation().getZ());
                 stat.setFloat(6, homeData.getLocation().getYaw());
                 stat.setFloat(7, homeData.getLocation().getPitch());
                 stat.setString(8, this.uuid.toString());
@@ -176,11 +176,11 @@ public class UserImpl {
             Main.log.send(e);
         }
     }
-    
+
     public void deleteHome(HomeDataImpl homeData) {
         try {
             PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
-                "DELETE FROM `homes` WHERE `uuid`=? AND `name`=?");
+                    "DELETE FROM `homes` WHERE `uuid`=? AND `name`=?");
             stat.setString(1, this.uuid.toString());
             stat.setString(2, homeData.getName());
             stat.executeUpdate();
@@ -189,11 +189,11 @@ public class UserImpl {
             Main.log.send(e);
         }
     }
-    
+
     public void deleteKit(KitDataImpl kitData) {
         try {
             PreparedStatement stat = Main.getDb().getConnection().prepareStatement(
-                "DELETE FROM `kits` WHERE `uuid`=? AND `name`=?");
+                    "DELETE FROM `kits` WHERE `uuid`=? AND `name`=?");
             stat.setString(1, this.uuid.toString());
             stat.setString(2, kitData.getName());
             stat.executeUpdate();

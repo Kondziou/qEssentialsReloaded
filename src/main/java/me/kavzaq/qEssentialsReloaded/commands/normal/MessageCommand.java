@@ -1,16 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.Main;
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class MessageCommand extends CommandImpl {
 
@@ -36,7 +35,7 @@ public class MessageCommand extends CommandImpl {
         String message = Util.fixColors(StringUtils.join(args, " ", 1, args.length));
         Main.getMessageData().getMessageContainer().put(s.getName(), other.getName());
         Main.getMessageData().getMessageContainer().put(other.getName(), s.getName());
-        
+
         Util.sendMessage(s, MessagesImpl.MESSAGE_TO_FORMAT
                 .replace("%player%", other.getName())
                 .replace("%message%", message));

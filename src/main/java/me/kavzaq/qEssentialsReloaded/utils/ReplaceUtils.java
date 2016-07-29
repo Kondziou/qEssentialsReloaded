@@ -1,6 +1,5 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
-import java.util.Calendar;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
@@ -14,12 +13,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.Calendar;
+
 public class ReplaceUtils {
-    
-    private ReplaceUtils() { }
-    
+
+    private ReplaceUtils() {
+    }
+
     // variables from qEssentialsReloaded
-    
+
     // {PLAYER} - player name
     // {DISPLAYNAME} - player displayname
     // {GOD} - god enabled?
@@ -37,7 +39,7 @@ public class ReplaceUtils {
     // {WHITELISTED} - is whitelisted
     // {ONLINE} - online players
     // {TPS} - ticking monitor 
-    
+
     // variables from FunnyGuilds
     // {FG/TPS} - funnyguilds ticking monitor
     // {FG/PING} - player ping
@@ -46,11 +48,11 @@ public class ReplaceUtils {
     // {FG/DEATHS} - deaths
     // {FG/GTOP-x} - top guilds
     // {FG/PTOP-x} - top players
-    
+
     // VARIABLE SUPPORT FROM GUILDS, RANKINGS ITD. WILL BE ADDED SOON (WHEN PLUGINS ON 1.9 WILL COME ON)
     // variable support now:
     //   - FunnyGuilds
-    
+
     public static String replaceVariables(Player player, String string) {
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
@@ -60,7 +62,7 @@ public class ReplaceUtils {
         string = StringUtils.replace(string, "{PLAYER}", player.getName());
         string = StringUtils.replace(string, "{DISPLAYNAME}", player.getDisplayName());
         string = StringUtils.replace(string, "{ONLINE}", String.valueOf(Bukkit.getOnlinePlayers().size()));
-        
+
         string = StringUtils.replace(string, "{FOOD}", String.valueOf(player.getFoodLevel()));
         string = StringUtils.replace(string, "{HEALTH}", String.valueOf(player.getHealth()));
         // time
@@ -82,12 +84,12 @@ public class ReplaceUtils {
         string = StringUtils.replace(string, "{OP}", BooleanUtils.getParsedBooleanYesNo(player.isOp()));
         string = StringUtils.replace(string, "{GOD}", BooleanUtils.getParsedBooleanYesNo(user.isGod()));
         string = StringUtils.replace(string, "{WHITELISTED}", BooleanUtils.getParsedBooleanYesNo(player.isWhitelisted()));
-        
-        String tps = String.valueOf(TPSMonitor.getCurrentTPS()).contains("-1.0") ? "Calculating..." : 
-            String.valueOf(TPSMonitor.getCurrentTPS()); 
-        
+
+        String tps = String.valueOf(TPSMonitor.getCurrentTPS()).contains("-1.0") ? "Calculating..." :
+                String.valueOf(TPSMonitor.getCurrentTPS());
+
         string = StringUtils.replace(string, "{TPS}", tps);
-        
+
         if (Main.funnyguilds_support) {
             User fgu = User.get(player);
             string = StringUtils.replace(string, "{FG/TPS}", Ticking.getTPS());
@@ -95,14 +97,14 @@ public class ReplaceUtils {
             string = StringUtils.replace(string, "{FG/POINTS}", Integer.toString(fgu.getRank().getPoints()));
             string = StringUtils.replace(string, "{FG/KILLS}", Integer.toString(fgu.getRank().getKills()));
             string = StringUtils.replace(string, "{FG/DEATHS}", Integer.toString(fgu.getRank().getDeaths()));
-            
+
             String parsedRank = parseRank(string);
             if (parsedRank != null) string = parsedRank;
         }
         return string;
-        
+
     }
-    
+
     // FunnyGuilds method / rank support
     public static String parseRank(String string) {
         if (!string.contains("TOP-")) return null;
@@ -112,17 +114,17 @@ public class ReplaceUtils {
         for (char c : string.toCharArray()) {
             boolean end = false;
             switch (c) {
-            case '{':
-                open = true;
-                break;
-            case '-':
-                start = true;
-                break;
-            case '}':
-                end = true;
-                break;
-            default:
-                if (open && start) sb.append(c);
+                case '{':
+                    open = true;
+                    break;
+                case '-':
+                    start = true;
+                    break;
+                case '}':
+                    end = true;
+                    break;
+                default:
+                    if (open && start) sb.append(c);
             }
             if (end) break;
         }
@@ -135,7 +137,7 @@ public class ReplaceUtils {
                                 guild.getTag() + " " +
                                         StringUtils.replace(Settings.getInstance().playerlistPoints,
                                                 "{FG/POINTS}", Integer.toString(guild.getRank().getPoints()))
-                                );
+                        );
                 else return StringUtils
                         .replace(string, "{FG/GTOP-" + Integer.toString(i) + '}', "Brak");
             } else if (string.contains("FG/PTOP")) {

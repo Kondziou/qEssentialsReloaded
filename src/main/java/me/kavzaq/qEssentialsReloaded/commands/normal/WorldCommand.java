@@ -1,18 +1,17 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-import java.util.List;
 import me.kavzaq.qEssentialsReloaded.Main;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
+import java.util.List;
 
 public class WorldCommand extends CommandImpl {
 
@@ -31,13 +30,12 @@ public class WorldCommand extends CommandImpl {
                         .replace("%world%", world.getName()));
             }
             return;
-        }
-        else {
+        } else {
             if (!(s instanceof Player)) {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)s;
+            Player p = (Player) s;
             World world = Bukkit.getWorld(args[0]);
             if (world == null) {
                 Util.sendMessage(p, MessagesImpl.WORLD_NOT_EXISTS);

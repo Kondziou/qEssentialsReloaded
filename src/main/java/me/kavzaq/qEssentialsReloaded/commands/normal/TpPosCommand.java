@@ -1,15 +1,15 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class TpPosCommand extends CommandImpl {
 
@@ -28,8 +28,8 @@ public class TpPosCommand extends CommandImpl {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)s;
-            int x,y,z;
+            Player p = (Player) s;
+            int x, y, z;
             try {
                 x = Integer.valueOf(args[0]);
                 y = Integer.valueOf(args[1]);
@@ -41,15 +41,14 @@ public class TpPosCommand extends CommandImpl {
             TeleportUtils tpu = new TeleportUtils(p);
             tpu.teleport(new Location(p.getWorld(), x, y, z), true);
             Util.sendMessage(p, MessagesImpl.TPPOS_SUCCESS
-                .replace("%coords%", "x" + x + ", y" + y + ", z" + z));
-        }
-        else if (args.length == 4) {
+                    .replace("%coords%", "x" + x + ", y" + y + ", z" + z));
+        } else if (args.length == 4) {
             if (Bukkit.getPlayer(args[3]) == null) {
                 Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYER);
                 return;
             }
             Player other = Bukkit.getPlayer(args[3]);
-            int x,y,z;
+            int x, y, z;
             try {
                 x = Integer.valueOf(args[0]);
                 y = Integer.valueOf(args[1]);
@@ -61,12 +60,12 @@ public class TpPosCommand extends CommandImpl {
             TeleportUtils tpu = new TeleportUtils(other);
             tpu.teleport(new Location(other.getWorld(), x, y, z), true);
             Util.sendMessage(s, MessagesImpl.TPPOS_OTHER_SUCCESS
-                .replace("%coords%", "x" + x + ", y" + y + ", z" + z)
-                .replace("%player%", other.getName()));
+                    .replace("%coords%", "x" + x + ", y" + y + ", z" + z)
+                    .replace("%player%", other.getName()));
             Util.sendMessage(other, MessagesImpl.TPPOS_OTHER_TELEPORTED
-                .replace("%coords%", "x" + x + ", y" + y + ", z" + z)
-                .replace("%player%", s.getName()));
+                    .replace("%coords%", "x" + x + ", y" + y + ", z" + z)
+                    .replace("%player%", s.getName()));
         }
     }
-    
+
 }

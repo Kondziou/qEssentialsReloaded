@@ -1,15 +1,14 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class TpCommand extends CommandImpl {
 
@@ -19,35 +18,35 @@ public class TpCommand extends CommandImpl {
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        if((args.length == 0) || (args.length > 2)){
+        if ((args.length == 0) || (args.length > 2)) {
             Util.sendMessage(s, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
-        if(args.length == 1){
-            if(!(s instanceof Player)){
+        if (args.length == 1) {
+            if (!(s instanceof Player)) {
                 Util.sendMessage(s, MessagesImpl.ONLY_PLAYER);
                 return;
             }
-            Player p = (Player)s;
-            if(args[0].equalsIgnoreCase("all")){
-                if(!p.hasPermission("qessentials.teleport.all")){
+            Player p = (Player) s;
+            if (args[0].equalsIgnoreCase("all")) {
+                if (!p.hasPermission("qessentials.teleport.all")) {
                     Util.sendMessage(p, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.teleport.all"));
                     return;
                 }
                 Util.sendMessage(p, MessagesImpl.TP_ALL_SUCCESS);
-                for (Player online : Bukkit.getOnlinePlayers()){
+                for (Player online : Bukkit.getOnlinePlayers()) {
                     if (online.equals(p)) return;
                     TeleportUtils tpu = new TeleportUtils(online);
                     tpu.teleport(p.getLocation());
                 }
                 return;
-            }else{
+            } else {
                 Player tpTo = Bukkit.getPlayerExact(args[0]);
                 if (s.equals(tpTo)) {
                     Util.sendMessage(s, MessagesImpl.SAME_PERSON);
                     return;
                 }
-                if(!(tpTo == null)){
+                if (!(tpTo == null)) {
                     if (s.equals(tpTo)) {
                         Util.sendMessage(s, MessagesImpl.TELEPORT_SAME_PERSON);
                         return;
@@ -55,17 +54,17 @@ public class TpCommand extends CommandImpl {
                     TeleportUtils tpu = new TeleportUtils(p);
                     tpu.teleport(tpTo.getLocation());
                     return;
-                }else{
+                } else {
                     Util.sendMessage(p, MessagesImpl.OFFLINE_PLAYER);
                     return;
                 }
             }
         }
-        if(args.length == 2){
-            if(s.hasPermission("qessentials.teleport.others")){
+        if (args.length == 2) {
+            if (s.hasPermission("qessentials.teleport.others")) {
                 Player tpFrom = Bukkit.getPlayer(args[0]);
                 Player tpTo = Bukkit.getPlayer(args[1]);
-                if ((!(tpFrom == null)) || (!(tpTo == null))){
+                if ((!(tpFrom == null)) || (!(tpTo == null))) {
                     if (tpFrom.equals(tpTo)) {
                         Util.sendMessage(s, MessagesImpl.SAME_PERSONS);
                         return;
@@ -85,12 +84,12 @@ public class TpCommand extends CommandImpl {
                     Util.sendMessage(s, MessagesImpl.OFFLINE_PLAYERS);
                     return;
                 }
-            }else{
+            } else {
                 Util.sendMessage(s, MessagesImpl.NO_PERMISSION.replace("%permission%", "qessentials.teleport.others"));
                 return;
             }
         }
-        
+
     }
 
 }

@@ -1,14 +1,13 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.RepairUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class RepairCommand extends CommandImpl {
 
@@ -18,7 +17,7 @@ public class RepairCommand extends CommandImpl {
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         if (args.length >= 2) {
             Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
             return;
@@ -26,8 +25,7 @@ public class RepairCommand extends CommandImpl {
         if (args.length == 0) {
             RepairUtils.repair(p);
             return;
-        }
-        else if (args.length == 1) {
+        } else if (args.length == 1) {
             if (args[0].equalsIgnoreCase("all")) {
                 if (!p.hasPermission("qessentials.repair.all")) {
                     Util.sendMessage(p, MessagesImpl.NO_PERMISSION
@@ -36,8 +34,7 @@ public class RepairCommand extends CommandImpl {
                 }
                 RepairUtils.repairAll(p);
                 return;
-            }
-            else if (args[0].equalsIgnoreCase("armor")) {
+            } else if (args[0].equalsIgnoreCase("armor")) {
                 if (!p.hasPermission("qessentials.repair.armor")) {
                     Util.sendMessage(p, MessagesImpl.NO_PERMISSION
                             .replace("%permission%", "qessentials.repair.armor"));
@@ -45,13 +42,12 @@ public class RepairCommand extends CommandImpl {
                 }
                 RepairUtils.repairArmor(p);
                 return;
-            }
-            else {
+            } else {
                 Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
                 return;
             }
         }
-        
+
     }
 
 }

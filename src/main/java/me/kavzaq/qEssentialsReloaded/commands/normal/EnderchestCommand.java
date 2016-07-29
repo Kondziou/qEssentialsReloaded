@@ -1,14 +1,13 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class EnderchestCommand extends CommandImpl {
 
@@ -18,7 +17,7 @@ public class EnderchestCommand extends CommandImpl {
 
     @Override
     public void onExecute(CommandSender s, String[] args) {
-        Player p = (Player)s;
+        Player p = (Player) s;
         if (args.length >= 2) {
             Util.sendMessage(p, MessagesImpl.BAD_ARGS + getUsage());
             return;
@@ -26,8 +25,7 @@ public class EnderchestCommand extends CommandImpl {
         if (args.length == 0) {
             p.openInventory(p.getEnderChest());
             return;
-        }
-        else if (args.length == 1) {
+        } else if (args.length == 1) {
             if (!p.hasPermission("qessentials.enderchest.others")) {
                 Util.sendMessage(p, MessagesImpl.NO_PERMISSION
                         .replace("%permission%", "qessentials.enderchest.others"));

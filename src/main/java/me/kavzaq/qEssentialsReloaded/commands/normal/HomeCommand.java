@@ -1,19 +1,17 @@
 package me.kavzaq.qEssentialsReloaded.commands.normal;
 
-import java.util.Arrays;
-
+import me.kavzaq.qEssentialsReloaded.Main;
+import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
+import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
+import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
+import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
+import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import me.kavzaq.qEssentialsReloaded.Main;
-import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
-import me.kavzaq.qEssentialsReloaded.impl.data.HomeDataImpl;
-import me.kavzaq.qEssentialsReloaded.impl.configuration.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
-import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
-import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
-import me.kavzaq.qEssentialsReloaded.utils.Util;
+import java.util.Arrays;
 
 public class HomeCommand extends CommandImpl {
 
@@ -27,16 +25,14 @@ public class HomeCommand extends CommandImpl {
             Util.sendMessage(s, MessagesImpl.BAD_ARGS + getUsage());
             return;
         }
-        Player p = (Player)s;
+        Player p = (Player) s;
         UserImpl u = Main.getUserManager().getUser(p);
-        
+
         if (args.length == 0) {
             Util.sendMessage(p, MessagesImpl.HOME_LIST_HEADER);
             Util.sendMessage(p, ListingUtils.getHomeList(p));
             return;
-        }
-        
-        else if (args.length == 1) {
+        } else if (args.length == 1) {
             String homeName = args[0];
             HomeDataImpl _home = null;
             for (HomeDataImpl home : u.getHomes()) {

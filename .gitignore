@@ -3,6 +3,10 @@ nbproject/
 nbactions.xml
 nb-configuration.xml
 
+# intellij idea
+.idea/
+qEssentialsReloaded.iml
+
 # maven
 target/
 dependency-reduced-pom.xml
@@ -21,3 +25,5 @@ manifest.mf
 
 # Linux temp files
 *~
+src/main/java/META-INF/
+src/test/

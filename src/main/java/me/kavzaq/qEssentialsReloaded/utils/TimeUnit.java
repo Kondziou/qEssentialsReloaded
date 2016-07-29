@@ -3,9 +3,12 @@ package me.kavzaq.qEssentialsReloaded.utils;
 import org.apache.commons.lang.StringUtils;
 
 public class TimeUnit {
-    
+
     private static final StringBuilder localsb = new StringBuilder();
-    private TimeUnit() { }
+
+    private TimeUnit() {
+    }
+
     public static long parseUnit(String unit) {
         localsb.setLength(0);
         String[] split = unit.split("");
@@ -15,7 +18,7 @@ public class TimeUnit {
             if (!StringUtils.isNumeric(split[index])) {
                 done = true;
                 break;
-            } 
+            }
             localsb.append(split[index]);
             index++;
         }
@@ -35,5 +38,5 @@ public class TimeUnit {
         }
         return 0;
     }
-    
+
 }
